@@ -2,7 +2,8 @@ const assert = require('assert').strict;
 const cdigit = require('..');
 
 describe('Luhn algorithm', () => {
-  const luhn = cdigit.luhn;
+  const name = 'luhn';
+  const algo = cdigit[name];
 
   const valid = [
     ['639283842', '8'], ['612168805', '2'],
@@ -25,113 +26,113 @@ describe('Luhn algorithm', () => {
     ['578979745902582135441775638253369716621004051', '2'],
   ];
 
-  describe('luhn.generate()', () => {
+  describe(name + '.generate()', () => {
     it('generates a correct check digit', () => {
       for (const [num, checkdigit] of valid) {
-        assert.equal(luhn.generate(num), checkdigit, `luhn.generate(${num})`);
+        assert.equal(algo.generate(num), checkdigit, `${name}.generate(${num})`);
       }
     });
 
     it('is not affected by leading zeros', () => {
       for (let [num, checkdigit] of valid) {
         num = '0000' + num;
-        assert.equal(luhn.generate(num), checkdigit, `luhn.generate(${num})`);
+        assert.equal(algo.generate(num), checkdigit, `${name}.generate(${num})`);
       }
     });
 
     it('accepts Number type as argument', () => {
       for (const [num, checkdigit] of valid) {
-        assert.equal(luhn.generate(Number(num)), checkdigit, `luhn.generate(${num})`);
+        assert.equal(algo.generate(Number(num)), checkdigit, `${name}.generate(${num})`);
       }
     });
     it('accepts large decimal strings', () => {
       for (const [num, checkdigit] of large) {
-        assert.equal(luhn.generate(num), checkdigit, `luhn.generate(${num})`);
+        assert.equal(algo.generate(num), checkdigit, `${name}.generate(${num})`);
       }
     });
   });
 
-  describe('luhn.validate()', () => {
+  describe(name + '.validate()', () => {
     it('returns true if a code or a pair of number and check digit is valid', () => {
       for (const [num, checkdigit] of valid) {
-        assert.ok(luhn.validate(num + checkdigit), `luhn.validate(${num + checkdigit})`);
-        assert.ok(luhn.validate(num, checkdigit), `luhn.validate(${num}, ${checkdigit})`);
+        assert.ok(algo.validate(num + checkdigit), `${name}.validate(${num + checkdigit})`);
+        assert.ok(algo.validate(num, checkdigit), `${name}.validate(${num}, ${checkdigit})`);
       }
     });
     it('returns false if a code or a pair of number and check digit is invalid', () => {
       for (const [num, checkdigit] of invalid) {
-        assert.ok(!luhn.validate(num + checkdigit), `!luhn.validate(${num + checkdigit})`);
-        assert.ok(!luhn.validate(num, checkdigit), `!luhn.validate(${num}, ${checkdigit})`);
+        assert.ok(!algo.validate(num + checkdigit), `!${name}.validate(${num + checkdigit})`);
+        assert.ok(!algo.validate(num, checkdigit), `!${name}.validate(${num}, ${checkdigit})`);
       }
     });
 
     it('is not affected by leading zeros', () => {
       for (let [num, checkdigit] of valid) {
         num = '0000' + num;
-        assert.ok(luhn.validate(num + checkdigit), `luhn.validate(${num + checkdigit})`);
-        assert.ok(luhn.validate(num, checkdigit), `luhn.validate(${num}, ${checkdigit})`);
+        assert.ok(algo.validate(num + checkdigit), `${name}.validate(${num + checkdigit})`);
+        assert.ok(algo.validate(num, checkdigit), `${name}.validate(${num}, ${checkdigit})`);
       }
     });
 
     it('accepts Number type as argument', () => {
       for (const [num, checkdigit] of valid) {
-        assert.ok(luhn.validate(Number(num + checkdigit)), `luhn.validate(${num + checkdigit})`);
-        assert.ok(luhn.validate(Number(num), checkdigit), `luhn.validate(${num}, ${checkdigit})`);
+        assert.ok(algo.validate(Number(num + checkdigit)), `${name}.validate(${num + checkdigit})`);
+        assert.ok(algo.validate(Number(num), checkdigit), `${name}.validate(${num}, ${checkdigit})`);
       }
     });
     it('accepts large decimal strings', () => {
       for (const [num, checkdigit] of large) {
-        assert.ok(luhn.validate(num + checkdigit), `luhn.validate(${num + checkdigit})`);
-        assert.ok(luhn.validate(num, checkdigit), `luhn.validate(${num}, ${checkdigit})`);
+        assert.ok(algo.validate(num + checkdigit), `${name}.validate(${num + checkdigit})`);
+        assert.ok(algo.validate(num, checkdigit), `${name}.validate(${num}, ${checkdigit})`);
       }
     });
   });
 
-  describe('luhn.encode()', () => {
+  describe(name + '.encode()', () => {
     it('appends a correct check digit to a number', () => {
       for (const [num, checkdigit] of valid) {
-        assert.equal(luhn.encode(num), num + checkdigit, `luhn.encode(${num})`);
+        assert.equal(algo.encode(num), num + checkdigit, `${name}.encode(${num})`);
       }
     });
 
     it('is not affected by leading zeros', () => {
       for (let [num, checkdigit] of valid) {
         num = '0000' + num;
-        assert.equal(luhn.encode(num), num + checkdigit, `luhn.encode(${num})`);
+        assert.equal(algo.encode(num), num + checkdigit, `${name}.encode(${num})`);
       }
     });
 
     it('accepts Number type as argument', () => {
       for (const [num, checkdigit] of valid) {
-        assert.equal(luhn.encode(Number(num)), num + checkdigit, `luhn.encode(${num})`);
+        assert.equal(algo.encode(Number(num)), num + checkdigit, `${name}.encode(${num})`);
       }
     });
     it('accepts large decimal strings', () => {
       for (const [num, checkdigit] of large) {
-        assert.equal(luhn.encode(num), num + checkdigit, `luhn.encode(${num})`);
+        assert.equal(algo.encode(num), num + checkdigit, `${name}.encode(${num})`);
       }
     });
   });
 
-  describe('luhn.decode()', () => {
+  describe(name + '.decode()', () => {
     it('separates the leading digits and the last digit', () => {
       for (const [num, checkdigit] of valid) {
-        assert.deepEqual(luhn.decode(num + checkdigit), [num, checkdigit], `luhn.decode(${num + checkdigit})`);
+        assert.deepEqual(algo.decode(num + checkdigit), [num, checkdigit], `${name}.decode(${num + checkdigit})`);
       }
     });
     it('accepts Number type as argument', () => {
       for (const [num, checkdigit] of valid) {
-        assert.deepEqual(luhn.decode(Number(num + checkdigit)), [num, checkdigit], `luhn.decode(${num + checkdigit})`);
+        assert.deepEqual(algo.decode(Number(num + checkdigit)), [num, checkdigit], `${name}.decode(${num + checkdigit})`);
       }
     });
     it('accepts large decimal strings', () => {
       for (const [num, checkdigit] of large) {
-        assert.deepEqual(luhn.decode(num + checkdigit), [num, checkdigit], `luhn.decode(${num + checkdigit})`);
+        assert.deepEqual(algo.decode(num + checkdigit), [num, checkdigit], `${name}.decode(${num + checkdigit})`);
       }
     });
   });
 
-  describe('bulk example tests', () => {
+  describe('bulk example test', () => {
     const examples = [
       '79927398713',
       '49927398716',
@@ -174,11 +175,11 @@ describe('Luhn algorithm', () => {
     it('applies the four functions to collected valid examples', () => {
       for (const e of examples) {
         const [num, checkdigit] = [e.slice(0, -1), e.slice(-1)];
-        assert.equal(luhn.generate(num), checkdigit, `luhn.generate(${num})`);
-        assert.ok(luhn.validate(e), `luhn.validate(${e})`);
-        assert.ok(luhn.validate(num, checkdigit), `luhn.validate(${num}, ${checkdigit})`);
-        assert.equal(luhn.encode(num), e, `luhn.encode(${num})`);
-        assert.deepEqual(luhn.decode(e), [num, checkdigit], `luhn.decode(${e})`);
+        assert.equal(algo.generate(num), checkdigit, `${name}.generate(${num})`);
+        assert.ok(algo.validate(e), `${name}.validate(${e})`);
+        assert.ok(algo.validate(num, checkdigit), `${name}.validate(${num}, ${checkdigit})`);
+        assert.equal(algo.encode(num), e, `${name}.encode(${num})`);
+        assert.deepEqual(algo.decode(e), [num, checkdigit], `${name}.decode(${e})`);
       }
     });
   });
