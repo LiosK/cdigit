@@ -35,7 +35,7 @@ export default new class Verhoeff extends CdigitAlgo {
 
     let c = 0;
     for (let i = 0, len = num.length; i < len; ++i) {
-      c = d[c][p[i % 8][Number(num[len - i - 1])]];
+      c = d[c][p[i & 7][Number(num[len - i - 1])]];
     }
 
     return inv[c];
