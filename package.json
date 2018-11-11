@@ -1,6 +1,6 @@
 {
   "name": "cdigit",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Generate and validate check digits",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -20,6 +20,9 @@
     "luhn",
     "modulus 10",
     "mod 10",
+    "iso7064",
+    "mod 97",
+    "mod 97-10",
     "verhoeff"
   ],
   "author": "LiosK <contact@mail.liosk.net>",
