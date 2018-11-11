@@ -1,4 +1,4 @@
-import CdigitAlgo from './common';
+import { CdigitAlgo } from './common';
 
 const alphabet = ((ds) => {
   const map: {[key: string]: string} = {};
@@ -8,7 +8,7 @@ const alphabet = ((ds) => {
   return map;
 })('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
-export default new class Mod97_10 extends CdigitAlgo {
+export default new class Mod97_10 implements CdigitAlgo {
   generate(num: string): string {
     num = String(num) + '00';
 
@@ -25,8 +25,21 @@ export default new class Mod97_10 extends CdigitAlgo {
     return ('0' + String(98 - c)).slice(-2);
   }
 
+  encode(num: string): string {
+    num = String(num);
+    return num + this.generate(num);
+  }
+
   decode(code: string): [string, string] {
     code = String(code);
     return [code.slice(0, -2), code.slice(-2)];
+  }
+
+  validate(codeOrNum: string, checkdigit: string = ''): boolean {
+    let num = String(codeOrNum);
+    if (checkdigit === '') {
+      [num, checkdigit] = this.decode(num);
+    }
+    return this.generate(num) === String(checkdigit);
   }
 }
