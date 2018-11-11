@@ -1,13 +1,19 @@
 const cdigit = require('cdigit');
 
-// Generate and validate check digits using Luhn algorithm
-console.log(cdigit.luhn.generate('1234'));  // '4'
-console.log(cdigit.luhn.encode('1234'));    // '12344'
+// Luhn algorithm
+console.log(cdigit.luhn.compute('1234'));   // '4'
+console.log(cdigit.luhn.generate('1234'));  // '12344'
 console.log(cdigit.luhn.validate('12344')); // true
 console.log(cdigit.luhn.validate('12345')); // false
 
-// Generate and validate check digits using Verhoeff algorithm
-console.log(cdigit.verhoeff.generate('1234'));  // '0'
-console.log(cdigit.verhoeff.encode('1234'));    // '12340'
+// Verhoeff algorithm
+console.log(cdigit.verhoeff.compute('1234'));   // '0'
+console.log(cdigit.verhoeff.generate('1234'));  // '12340'
 console.log(cdigit.verhoeff.validate('12340')); // true
 console.log(cdigit.verhoeff.validate('12345')); // false
+
+// ISO/IEC 7064, MOD 97-10 algorithm
+console.log(cdigit.mod97_10.compute('1234'));     // '82'
+console.log(cdigit.mod97_10.generate('1234'));    // '123482'
+console.log(cdigit.mod97_10.validate('123482'));  // true
+console.log(cdigit.mod97_10.validate('123456'));  // false

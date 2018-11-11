@@ -1,13 +1,27 @@
 export interface CdigitAlgo {
-  /*** Generate a check digit for a number. */
+  /***
+   * Generate a valid number string from a given source number. The generated
+   * number includes the check digit(s) computed and placed in accordance with
+   * the algorithm.
+   */
   generate(num: string): string;
 
-  /*** Return a combined string of a number and its check digit. */
-  encode(num: string): string;
+  /***
+   * Check if a given string is valid in accordance with the algorithm. The
+   * argument must include check digit(s) as well as the source number.
+   */
+  validate(num: string): boolean;
 
-  /*** Split a code into a pair of number and check digit. */
-  decode(code: string): [string, string];
+  /*** Generate check digit(s) from a given source number. */
+  compute(num: string): string;
 
-  /*** Return true if a code or a pair of number and check digit is valid. */
-  validate(codeOrNum: string, checkdigit?: string): boolean;
+  /*** Split a number into its source number and check digits. */
+  parse(num: string): [string, string];
 }
+
+export const helper = {
+  parseTail: (num: string, n: number): [string, string] => {
+    num = String(num);
+    return [num.slice(0, -n), num.slice(-n)];
+  },
+};

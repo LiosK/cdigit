@@ -49,65 +49,62 @@ describe('Verhoeff algorithm', () => {
     ['072362376664550213123924793974247', '1'],
   ];
 
-  describe(name + '.generate()', () => {
+  describe(name + '.compute()', () => {
     it('generates a correct check digit', () => {
       for (const [num, checkdigit] of valid) {
-        assert.equal(algo.generate(num), checkdigit, `${name}.generate(${num})`);
+        assert.equal(algo.compute(num), checkdigit, `${name}.compute(${num})`);
       }
     });
 
     it('accepts large decimal strings', () => {
       for (const [num, checkdigit] of large) {
-        assert.equal(algo.generate(num), checkdigit, `${name}.generate(${num})`);
+        assert.equal(algo.compute(num), checkdigit, `${name}.compute(${num})`);
       }
     });
   });
 
   describe(name + '.validate()', () => {
-    it('returns true if a code or a pair of number and check digit is valid', () => {
+    it('returns true if a number is valid', () => {
       for (const [num, checkdigit] of valid) {
         assert.ok(algo.validate(num + checkdigit), `${name}.validate(${num + checkdigit})`);
-        assert.ok(algo.validate(num, checkdigit), `${name}.validate(${num}, ${checkdigit})`);
       }
     });
-    it('returns false if a code or a pair of number and check digit is invalid', () => {
+    it('returns false if a number is invalid', () => {
       for (const [num, checkdigit] of invalid) {
         assert.ok(!algo.validate(num + checkdigit), `!${name}.validate(${num + checkdigit})`);
-        assert.ok(!algo.validate(num, checkdigit), `!${name}.validate(${num}, ${checkdigit})`);
       }
     });
 
     it('accepts large decimal strings', () => {
       for (const [num, checkdigit] of large) {
         assert.ok(algo.validate(num + checkdigit), `${name}.validate(${num + checkdigit})`);
-        assert.ok(algo.validate(num, checkdigit), `${name}.validate(${num}, ${checkdigit})`);
       }
     });
   });
 
-  describe(name + '.encode()', () => {
+  describe(name + '.generate()', () => {
     it('appends a correct check digit to a number', () => {
       for (const [num, checkdigit] of valid) {
-        assert.equal(algo.encode(num), num + checkdigit, `${name}.encode(${num})`);
+        assert.equal(algo.generate(num), num + checkdigit, `${name}.generate(${num})`);
       }
     });
 
     it('accepts large decimal strings', () => {
       for (const [num, checkdigit] of large) {
-        assert.equal(algo.encode(num), num + checkdigit, `${name}.encode(${num})`);
+        assert.equal(algo.generate(num), num + checkdigit, `${name}.generate(${num})`);
       }
     });
   });
 
-  describe(name + '.decode()', () => {
+  describe(name + '.parse()', () => {
     it('separates the leading digits and the last digit', () => {
       for (const [num, checkdigit] of valid) {
-        assert.deepEqual(algo.decode(num + checkdigit), [num, checkdigit], `${name}.decode(${num + checkdigit})`);
+        assert.deepEqual(algo.parse(num + checkdigit), [num, checkdigit], `${name}.parse(${num + checkdigit})`);
       }
     });
     it('accepts large decimal strings', () => {
       for (const [num, checkdigit] of large) {
-        assert.deepEqual(algo.decode(num + checkdigit), [num, checkdigit], `${name}.decode(${num + checkdigit})`);
+        assert.deepEqual(algo.parse(num + checkdigit), [num, checkdigit], `${name}.parse(${num + checkdigit})`);
       }
     });
   });
@@ -144,11 +141,10 @@ describe('Verhoeff algorithm', () => {
     it('applies the four functions to collected valid examples', () => {
       for (const e of examples) {
         const [num, checkdigit] = [e.slice(0, -1), e.slice(-1)];
-        assert.equal(algo.generate(num), checkdigit, `${name}.generate(${num})`);
+        assert.equal(algo.compute(num), checkdigit, `${name}.compute(${num})`);
         assert.ok(algo.validate(e), `${name}.validate(${e})`);
-        assert.ok(algo.validate(num, checkdigit), `${name}.validate(${num}, ${checkdigit})`);
-        assert.equal(algo.encode(num), e, `${name}.encode(${num})`);
-        assert.deepEqual(algo.decode(e), [num, checkdigit], `${name}.decode(${e})`);
+        assert.equal(algo.generate(num), e, `${name}.generate(${num})`);
+        assert.deepEqual(algo.parse(e), [num, checkdigit], `${name}.parse(${e})`);
       }
     });
   });

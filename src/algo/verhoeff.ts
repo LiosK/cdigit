@@ -1,4 +1,4 @@
-import { CdigitAlgo } from './common';
+import { CdigitAlgo, helper } from './common';
 
 /*** Verhoeff multiplication table */
 const d = [
@@ -30,8 +30,8 @@ const p = [
 const inv = ['0', '4', '3', '2', '1', '5', '6', '7', '8', '9'];
 
 export default new class Verhoeff implements CdigitAlgo {
-  generate(num: string): string {
-    num = String(num) + '0';
+  compute(num: string): string {
+    num = String(num).replace(/[^0-9]/g, '') + '0';
 
     let c = 0;
     for (let i = 0, len = num.length; i < len; ++i) {
@@ -41,21 +41,16 @@ export default new class Verhoeff implements CdigitAlgo {
     return inv[c];
   }
 
-  encode(num: string): string {
-    num = String(num);
-    return num + this.generate(num);
+  generate(num: string): string {
+    return String(num) + this.compute(num);
   }
 
-  decode(code: string): [string, string] {
-    code = String(code);
-    return [code.slice(0, -1), code.slice(-1)];
+  validate(num: string): boolean {
+    const [src, cc] = this.parse(num);
+    return this.compute(src) === cc;
   }
 
-  validate(codeOrNum: string, checkdigit: string = ''): boolean {
-    let num = String(codeOrNum);
-    if (checkdigit === '') {
-      [num, checkdigit] = this.decode(num);
-    }
-    return this.generate(num) === String(checkdigit);
+  parse(num: string): [string, string] {
+    return helper.parseTail(num, 1);
   }
 }

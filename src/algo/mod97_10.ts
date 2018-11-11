@@ -1,45 +1,27 @@
-import { CdigitAlgo } from './common';
-
-const alphabet = ((ds) => {
-  const map: {[key: string]: string} = {};
-  for (let i = 0; i < ds.length; ++i) {
-    map[ds[i]] = String(i);
-  }
-  return map;
-})('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+import { CdigitAlgo, helper } from './common';
 
 export default new class Mod97_10 implements CdigitAlgo {
-  generate(num: string): string {
-    num = String(num) + '00';
+  compute(num: string): string {
+    num = String(num).replace(/[^0-9]/g, '') + '00';
 
-    let base10 = '';
-    for (const c of num) {
-      base10 += alphabet[c];
-    }
-
-    let c = Number(base10.slice(0, 9)) % 97;
-    for (let i = 9, len = base10.length; i < len; i += 7) {
-      c = Number(String(c) + base10.slice(i, i + 7)) % 97;
+    let c = Number(num.slice(0, 14)) % 97;  // 10^14 < 2^48
+    for (let i = 14, len = num.length; i < len; i += 12) {
+      c = Number(String(c) + num.slice(i, i + 12)) % 97;
     }
 
     return ('0' + String(98 - c)).slice(-2);
   }
 
-  encode(num: string): string {
-    num = String(num);
-    return num + this.generate(num);
+  generate(num: string): string {
+    return String(num) + this.compute(num);
   }
 
-  decode(code: string): [string, string] {
-    code = String(code);
-    return [code.slice(0, -2), code.slice(-2)];
+  validate(num: string): boolean {
+    const [src, cc] = this.parse(num);
+    return this.compute(src) === cc;
   }
 
-  validate(codeOrNum: string, checkdigit: string = ''): boolean {
-    let num = String(codeOrNum);
-    if (checkdigit === '') {
-      [num, checkdigit] = this.decode(num);
-    }
-    return this.generate(num) === String(checkdigit);
+  parse(num: string): [string, string] {
+    return helper.parseTail(num, 2);
   }
 }

@@ -1,37 +1,37 @@
-import { CdigitAlgo } from './common';
+import { CdigitAlgo, helper } from './common';
 
-const LUHN_ODD_LOOKUP = [0, 2, 4, 6, 8, 1, 3, 5, 7, 9];
+const oddLookup: {[key: string]: number} = {
+  '0': 0, '1': 2, '2': 4, '3': 6, '4': 8,
+  '5': 1, '6': 3, '7': 5, '8': 7, '9': 9,
+};
 
 export default new class Luhn implements CdigitAlgo {
-  generate(num: string): string {
-    num = String(num);
+  compute(num: string): string {
+    num = String(num).replace(/[^0-9]/g, '');
 
     let sum = 0;
-    for (let i = num.length - 1; i > -1; i -= 2) { // "odd" digits
-      sum += LUHN_ODD_LOOKUP[Number(num[i])];
-    }
-    for (let i = num.length - 2; i > -1; i -= 2) { // "even" digits
-      sum += Number(num[i]);
+    let odd = 1;
+    for (let i = num.length - 1; i > -1; --i) {
+      sum += odd ? oddLookup[num[i]] : Number(num[i]);
+      odd ^= 1;
+      if (sum > 0xffffffffffff) { // ~2^48 at max
+        sum %= 10;
+      }
     }
 
     return String(10 - sum % 10).slice(-1);
   }
 
-  encode(num: string): string {
-    num = String(num);
-    return num + this.generate(num);
+  generate(num: string): string {
+    return String(num) + this.compute(num);
   }
 
-  decode(code: string): [string, string] {
-    code = String(code);
-    return [code.slice(0, -1), code.slice(-1)];
+  validate(num: string): boolean {
+    const [src, cc] = this.parse(num);
+    return this.compute(src) === cc;
   }
 
-  validate(codeOrNum: string, checkdigit: string = ''): boolean {
-    let num = String(codeOrNum);
-    if (checkdigit === '') {
-      [num, checkdigit] = this.decode(num);
-    }
-    return this.generate(num) === String(checkdigit);
+  parse(num: string): [string, string] {
+    return helper.parseTail(num, 1);
   }
 }
