@@ -1,4 +1,4 @@
-export interface CdigitAlgo {
+export interface Algo {
   /***
    * Generate a valid number string from a given source number. The generated
    * number includes the check digit(s) computed and placed in accordance with

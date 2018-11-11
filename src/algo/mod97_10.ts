@@ -1,6 +1,6 @@
-import { CdigitAlgo, helper } from './common';
+import { Algo, helper } from './common';
 
-export default new class Mod97_10 implements CdigitAlgo {
+export default new class Mod97_10 implements Algo {
   compute(num: string): string {
     num = String(num).replace(/[^0-9]/g, '') + '00';
 

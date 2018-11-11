@@ -1,4 +1,4 @@
-import { CdigitAlgo, helper } from './common';
+import { Algo, helper } from './common';
 
 /*** Verhoeff multiplication table */
 const d = [
@@ -29,7 +29,7 @@ const p = [
 /*** Verhoeff inverse table */
 const inv = ['0', '4', '3', '2', '1', '5', '6', '7', '8', '9'];
 
-export default new class Verhoeff implements CdigitAlgo {
+export default new class Verhoeff implements Algo {
   compute(num: string): string {
     num = String(num).replace(/[^0-9]/g, '') + '0';
 
