@@ -1,181 +1,104 @@
+'use strict';
 const assert = require('assert').strict;
-const cdigit = require('..');
+const common = require('./common');
+const algo = require('..').luhn;
 
 describe('Luhn algorithm', () => {
-  const name = 'luhn';
-  const algo = cdigit[name];
-
+  // {{{ List sample strings
   const valid = [
-    ['639283842', '8'], ['612168805', '2'],
-    ['924800170', '4'], ['427176307', '2'],
-    ['916912504', '5'], ['385833974', '4'],
-    ['603976130', '6'], ['788414730', '2'],
+    // short cases
+    ['6392838428', '639283842', '8'],
+    ['6121688052', '612168805', '2'],
+    ['9248001704', '924800170', '4'],
+    ['4271763072', '427176307', '2'],
+    ['9169125045', '916912504', '5'],
+    ['3858339744', '385833974', '4'],
+    ['6039761306', '603976130', '6'],
+    ['7884147302', '788414730', '2'],
+
+    // leading zeros
+    ['006392838428', '00639283842', '8'],
+    ['006121688052', '00612168805', '2'],
+    ['009248001704', '00924800170', '4'],
+    ['004271763072', '00427176307', '2'],
+    ['00009169125045', '0000916912504', '5'],
+    ['00003858339744', '0000385833974', '4'],
+    ['00006039761306', '0000603976130', '6'],
+    ['00007884147302', '0000788414730', '2'],
+
+    // special characters
+    ['6-39-28-38428', '6-39-28-3842', '8'],
+    ['61 216 88 052', '61 216 88 05', '2'],
+    ['X92-4800170ABC4', 'X92-4800170ABC', '4'],
+    ['  4271  7630 7 2', '  4271  7630 7 ', '2'],
+
+    // large
+    ['3376893546118112789115841911189412691086037650', '337689354611811278911584191118941269108603765', '0'],
+    ['4258184707858608072651591977459052874031809715', '425818470785860807265159197745905287403180971', '5'],
+    ['5641025207262236983056258592719326376834268565', '564102520726223698305625859271932637683426856', '5'],
+    ['5789797459025821354417756382533697166210040512', '578979745902582135441775638253369716621004051', '2'],
+
+    // bulk
+    ['79927398713', '7992739871', '3'],
+    ['49927398716', '4992739871', '6'],
+    ['1234567812345670', '123456781234567', '0'],
+    ['4024007199952671', '402400719995267', '1'],
+    ['4968009448991185', '496800944899118', '5'],
+    ['4485031936696447520', '448503193669644752', '0'],
+    ['2720991026808100', '272099102680810', '0'],
+    ['5313977435287891', '531397743528789', '1'],
+    ['5144122279996944', '514412227999694', '4'],
+    ['345624181492183', '34562418149218', '3'],
+    ['379723913300158', '37972391330015', '8'],
+    ['345999017580637', '34599901758063', '7'],
+    ['6011232699595685', '601123269959568', '5'],
+    ['6011491169622003', '601149116962200', '3'],
+    ['6011285697355763491', '601128569735576349', '1'],
+    ['3542720990091367', '354272099009136', '7'],
+    ['3532233574622997', '353223357462299', '7'],
+    ['3532788220114354666', '353278822011435466', '6'],
+    ['5403399339551671', '540339933955167', '1'],
+    ['5585760385211280', '558576038521128', '0'],
+    ['5481899719102875', '548189971910287', '5'],
+    ['30540557891578', '3054055789157', '8'],
+    ['30071210433038', '3007121043303', '8'],
+    ['30126773590440', '3012677359044', '0'],
+    ['36300226927160', '3630022692716', '0'],
+    ['36462605784370', '3646260578437', '0'],
+    ['36705219593581', '3670521959358', '1'],
+    ['6763637858365987', '676363785836598', '7'],
+    ['6762136018635356', '676213601863535', '6'],
+    ['6762285720444928', '676228572044492', '8'],
+    ['4175003833113538', '417500383311353', '8'],
+    ['4917845148786751', '491784514878675', '1'],
+    ['4508189071154330', '450818907115433', '0'],
+    ['6397642356831336', '639764235683133', '6'],
+    ['6379177784930725', '637917778493072', '5'],
+    ['6371983222326360', '637198322232636', '0'],
   ];
 
   const invalid = [
-    ['639283842', '1'], ['612168805', '9'],
-    ['924800170', '7'], ['427176307', '5'],
-    ['916912504', '2'], ['385833974', '5'],
-    ['603976130', '4'], ['788414730', '1'],
+    '6392838421',
+    '6121688059',
+    '9248001707',
+    '4271763075',
+    '9169125042',
+    '3858339745',
+    '6039761304',
+    '7884147301',
   ];
+  // }}}
 
-  const large = [
-    ['337689354611811278911584191118941269108603765', '0'],
-    ['425818470785860807265159197745905287403180971', '5'],
-    ['564102520726223698305625859271932637683426856', '5'],
-    ['578979745902582135441775638253369716621004051', '2'],
-  ];
+  common.testAlgo(algo, valid, invalid);
 
-  describe(name + '.compute()', () => {
-    it('generates a correct check digit', () => {
-      for (const [num, checkdigit] of valid) {
-        assert.equal(algo.compute(num), checkdigit, `${name}.compute(${num})`);
-      }
-    });
-
-    it('is not affected by leading zeros', () => {
-      for (let [num, checkdigit] of valid) {
-        num = '0000' + num;
-        assert.equal(algo.compute(num), checkdigit, `${name}.compute(${num})`);
-      }
-    });
-
+  describe('luhn.validate()', () => {
     it('accepts Number type as argument', () => {
-      for (const [num, checkdigit] of valid) {
-        assert.equal(algo.compute(Number(num)), checkdigit, `${name}.compute(${num})`);
-      }
-    });
-    it('accepts large decimal strings', () => {
-      for (const [num, checkdigit] of large) {
-        assert.equal(algo.compute(num), checkdigit, `${name}.compute(${num})`);
+      const shortCases = valid.slice(0, 16);
+      for (const [num, src, cc] of shortCases) {
+        assert.ok(algo.validate(Number(num)), `validate(Number(${num})`);
       }
     });
   });
-
-  describe(name + '.validate()', () => {
-    it('returns true if a number is valid', () => {
-      for (const [num, checkdigit] of valid) {
-        assert.ok(algo.validate(num + checkdigit), `${name}.validate(${num + checkdigit})`);
-      }
-    });
-    it('returns false if a number is invalid', () => {
-      for (const [num, checkdigit] of invalid) {
-        assert.ok(!algo.validate(num + checkdigit), `!${name}.validate(${num + checkdigit})`);
-      }
-    });
-
-    it('is not affected by leading zeros', () => {
-      for (let [num, checkdigit] of valid) {
-        num = '0000' + num;
-        assert.ok(algo.validate(num + checkdigit), `${name}.validate(${num + checkdigit})`);
-      }
-    });
-
-    it('accepts Number type as argument', () => {
-      for (const [num, checkdigit] of valid) {
-        assert.ok(algo.validate(Number(num + checkdigit)), `${name}.validate(${num + checkdigit})`);
-      }
-    });
-    it('accepts large decimal strings', () => {
-      for (const [num, checkdigit] of large) {
-        assert.ok(algo.validate(num + checkdigit), `${name}.validate(${num + checkdigit})`);
-      }
-    });
-  });
-
-  describe(name + '.generate()', () => {
-    it('appends a correct check digit to a number', () => {
-      for (const [num, checkdigit] of valid) {
-        assert.equal(algo.generate(num), num + checkdigit, `${name}.generate(${num})`);
-      }
-    });
-
-    it('is not affected by leading zeros', () => {
-      for (let [num, checkdigit] of valid) {
-        num = '0000' + num;
-        assert.equal(algo.generate(num), num + checkdigit, `${name}.generate(${num})`);
-      }
-    });
-
-    it('accepts Number type as argument', () => {
-      for (const [num, checkdigit] of valid) {
-        assert.equal(algo.generate(Number(num)), num + checkdigit, `${name}.generate(${num})`);
-      }
-    });
-    it('accepts large decimal strings', () => {
-      for (const [num, checkdigit] of large) {
-        assert.equal(algo.generate(num), num + checkdigit, `${name}.generate(${num})`);
-      }
-    });
-  });
-
-  describe(name + '.parse()', () => {
-    it('separates the leading digits and the last digit', () => {
-      for (const [num, checkdigit] of valid) {
-        assert.deepEqual(algo.parse(num + checkdigit), [num, checkdigit], `${name}.parse(${num + checkdigit})`);
-      }
-    });
-    it('accepts Number type as argument', () => {
-      for (const [num, checkdigit] of valid) {
-        assert.deepEqual(algo.parse(Number(num + checkdigit)), [num, checkdigit], `${name}.parse(${num + checkdigit})`);
-      }
-    });
-    it('accepts large decimal strings', () => {
-      for (const [num, checkdigit] of large) {
-        assert.deepEqual(algo.parse(num + checkdigit), [num, checkdigit], `${name}.parse(${num + checkdigit})`);
-      }
-    });
-  });
-
-  describe('bulk example test', () => {
-    const examples = [
-      '79927398713',
-      '49927398716',
-      '1234567812345670',
-      '4024007199952671',
-      '4968009448991185',
-      '4485031936696447520',
-      '2720991026808100',
-      '5313977435287891',
-      '5144122279996944',
-      '345624181492183',
-      '379723913300158',
-      '345999017580637',
-      '6011232699595685',
-      '6011491169622003',
-      '6011285697355763491',
-      '3542720990091367',
-      '3532233574622997',
-      '3532788220114354666',
-      '5403399339551671',
-      '5585760385211280',
-      '5481899719102875',
-      '30540557891578',
-      '30071210433038',
-      '30126773590440',
-      '36300226927160',
-      '36462605784370',
-      '36705219593581',
-      '6763637858365987',
-      '6762136018635356',
-      '6762285720444928',
-      '4175003833113538',
-      '4917845148786751',
-      '4508189071154330',
-      '6397642356831336',
-      '6379177784930725',
-      '6371983222326360',
-    ];
-
-    it('applies the four functions to collected valid examples', () => {
-      for (const e of examples) {
-        const [num, checkdigit] = [e.slice(0, -1), e.slice(-1)];
-        assert.equal(algo.compute(num), checkdigit, `${name}.compute(${num})`);
-        assert.ok(algo.validate(e), `${name}.validate(${e})`);
-        assert.equal(algo.generate(num), e, `${name}.generate(${num})`);
-        assert.deepEqual(algo.parse(e), [num, checkdigit], `${name}.parse(${e})`);
-      }
-    });
-  });
-
 });
+
+// vim: fdm=marker fmr&
