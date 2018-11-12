@@ -6,7 +6,8 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepare": "npm run build && npm test",
+    "prepare": "npm run tslint && npm run build && npm test",
+    "tslint": "tslint -p package.json",
     "test": "mocha"
   },
   "repository": {
@@ -39,6 +40,9 @@
   "dependencies": {},
   "devDependencies": {
     "mocha": "^5.2.0",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "tsutils": "^3.4.0",
     "typescript": "^3.1.6"
   }
 }

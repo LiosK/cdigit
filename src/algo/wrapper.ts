@@ -12,7 +12,7 @@ export default class AlgoWrapper implements Algo {
   }
 
   generate(num: string): string {
-    return String(num) + this.compute(num);
+    return `${num}${this.compute(num)}`;
   }
 
   validate(num: string): boolean {

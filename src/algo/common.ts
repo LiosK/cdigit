@@ -21,7 +21,7 @@ export interface Algo {
 
 export const helper = {
   parseTail: (num: string, n: number): [string, string] => {
-    num = String(num);
-    return [num.slice(0, -n), num.slice(-n)];
+    const ds = String(num);
+    return [ds.slice(0, -n), ds.slice(-n)];
   },
 };

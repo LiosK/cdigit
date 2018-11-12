@@ -31,18 +31,18 @@ const inv = ['0', '4', '3', '2', '1', '5', '6', '7', '8', '9'];
 
 export default new class Verhoeff implements Algo {
   compute(num: string): string {
-    num = String(num).replace(/[^0-9]/g, '') + '0';
+    const ds = `${String(num).replace(/[^0-9]/g, '')}0`;
 
     let c = 0;
-    for (let i = 0, len = num.length; i < len; ++i) {
-      c = d[c][p[i & 7][Number(num[len - i - 1])]];
+    for (let i = 0, len = ds.length; i < len; i += 1) {
+      c = d[c][p[i & 7][Number(ds[len - i - 1])]];
     }
 
     return inv[c];
   }
 
   generate(num: string): string {
-    return String(num) + this.compute(num);
+    return `${num}${this.compute(num)}`;
   }
 
   validate(num: string): boolean {
@@ -53,4 +53,4 @@ export default new class Verhoeff implements Algo {
   parse(num: string): [string, string] {
     return helper.parseTail(num, 1);
   }
-}
+};
