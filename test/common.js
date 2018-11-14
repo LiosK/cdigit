@@ -30,6 +30,16 @@ module.exports = {
           assert.equal(algo.generate(src), num, `generate(${src})`);
         }
       });
+      it('generates a valid number that validate() accepts', () => {
+        for (const [num, src, cc] of validCases) {
+          assert.ok(algo.validate(algo.generate(src)), `validate(generate(${src}))`);
+        }
+      });
+      it('generates a valid number that parse() can parse', () => {
+        for (const [num, src, cc] of validCases) {
+          assert.deepEqual(algo.parse(algo.generate(src)), [src, cc], `parse(generate(${src}))`);
+        }
+      });
     });
 
     describe('validate()', () => {
