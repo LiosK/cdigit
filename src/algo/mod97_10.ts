@@ -4,12 +4,13 @@ export default new class Mod97_10 implements Algo {
   compute(num: string): string {
     const ds = `${String(num).replace(/[^0-9]/g, '')}00`;
 
+    // Simplified procedure as described in ISO/IEC 7064
     let c = Number(ds.slice(0, 14)) % 97; // 10^14 < 2^48
     for (let i = 14, len = ds.length; i < len; i += 12) {
       c = Number(String(c) + ds.slice(i, i + 12)) % 97;
     }
 
-    return `0${98 - c}`.slice(-2);
+    return `0${(98 - c) % 97}`.slice(-2);
   }
 
   generate(num: string): string {
