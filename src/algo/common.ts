@@ -42,7 +42,7 @@ export const helper = {
       num: string, mod: number, radix: number,
       hasTwoCCs: boolean, { output, input }: CharMap,
     ) => {
-      const ds = `${num}${hasTwoCCs ? '00' : '0'}`;
+      const ds = `${num}${output[0].repeat(hasTwoCCs ? 2 : 1)}`;
       const overflowProtection = Math.floor(0xffffffffffff / radix);
 
       let c = 0;
