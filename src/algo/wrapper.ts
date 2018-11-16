@@ -1,3 +1,10 @@
+/**
+ * cdigit
+ *
+ * @copyright 2018 LiosK
+ * @license Apache-2.0
+ */
+
 import { Algo } from './common';
 
 export default class AlgoWrapper implements Algo {

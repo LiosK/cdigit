@@ -1,21 +1,29 @@
+/**
+ * cdigit
+ *
+ * @copyright 2018 LiosK
+ * @license Apache-2.0
+ */
+
+/** Common interface for check digit algorithm implementations. */
 export interface Algo {
-  /***
+  /**
    * Generate a valid number string from a given source number. The generated
    * number includes the check digit(s) computed and placed in accordance with
    * the algorithm.
    */
   generate(num: string): string;
 
-  /***
+  /**
    * Check if a given string is valid in accordance with the algorithm. The
    * argument must include check digit(s) as well as the source number.
    */
   validate(num: string): boolean;
 
-  /*** Generate check digit(s) from a given source number. */
+  /** Generate check digit(s) from a given source number. */
   compute(num: string): string;
 
-  /*** Split a number into its source number and check digits. */
+  /** Split a number into its source number and check digits. */
   parse(num: string): [string, string];
 }
 
@@ -37,7 +45,7 @@ export const helper = {
       }
       return { input: inv, output: alphabet };
     },
-    /*** Implement ISO 7064 pure system recursive method. */
+    /** Implement ISO 7064 pure system recursive method. */
     computePure: (
       num: string, mod: number, radix: number,
       hasTwoCCs: boolean, { output, input }: CharMap,

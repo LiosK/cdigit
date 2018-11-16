@@ -7,8 +7,8 @@
   "scripts": {
     "build": "tsc",
     "prepare": "npm run tslint && npm run build && npm test",
-    "tslint": "tslint -p package.json",
-    "test": "mocha"
+    "test": "mocha",
+    "tslint": "tslint -p package.json"
   },
   "repository": {
     "type": "git",
@@ -17,14 +17,19 @@
   "keywords": [
     "checkdigit",
     "check digit",
-    "algorithm",
+    "check character system",
     "luhn",
-    "modulus 10",
-    "mod 10",
+    "verhoeff",
     "iso7064",
-    "mod 97",
-    "mod 97-10",
-    "verhoeff"
+    "iso/iec 7064",
+    "mod 11–2",
+    "mod 37–2",
+    "mod 97–10",
+    "mod 661–26",
+    "mod 1271–36",
+    "mod 10",
+    "mod 11",
+    "mod 97"
   ],
   "author": "LiosK <contact@mail.liosk.net>",
   "license": "Apache-2.0",

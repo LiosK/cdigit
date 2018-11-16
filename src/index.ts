@@ -1,3 +1,10 @@
+/**
+ * cdigit
+ *
+ * @copyright 2018 LiosK
+ * @license Apache-2.0
+ */
+
 export { default as luhn } from './algo/luhn';
 export { default as verhoeff } from './algo/verhoeff';
 

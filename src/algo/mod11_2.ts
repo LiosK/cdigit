@@ -1,8 +1,15 @@
+/**
+ * cdigit
+ *
+ * @copyright 2018 LiosK
+ * @license Apache-2.0
+ */
+
 import { Algo, helper } from './common';
 
 const charmap = helper.iso7064.compileCharMap(helper.iso7064.numeric);
 
-export default new class Mod11_2 implements Algo {
+class Mod11_2 implements Algo {
   compute(num: string): string {
     const ds = String(num).replace(/[^0-9]/g, '');
     return helper.iso7064.computePure(ds, 11, 2, false, charmap);
@@ -20,4 +27,6 @@ export default new class Mod11_2 implements Algo {
   parse(num: string): [string, string] {
     return helper.parseTail(num, 1);
   }
-};
+}
+
+export default new Mod11_2();

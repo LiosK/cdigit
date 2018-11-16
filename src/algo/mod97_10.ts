@@ -1,6 +1,13 @@
+/**
+ * cdigit
+ *
+ * @copyright 2018 LiosK
+ * @license Apache-2.0
+ */
+
 import { Algo, helper } from './common';
 
-export default new class Mod97_10 implements Algo {
+class Mod97_10 implements Algo {
   compute(num: string): string {
     const ds = `${String(num).replace(/[^0-9]/g, '')}00`;
 
@@ -25,4 +32,6 @@ export default new class Mod97_10 implements Algo {
   parse(num: string): [string, string] {
     return helper.parseTail(num, 2);
   }
-};
+}
+
+export default new Mod97_10();

@@ -1,6 +1,13 @@
+/**
+ * cdigit
+ *
+ * @copyright 2018 LiosK
+ * @license Apache-2.0
+ */
+
 import { Algo, helper } from './common';
 
-/*** Verhoeff multiplication table */
+/** Verhoeff multiplication table */
 const d = [
   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
@@ -14,7 +21,7 @@ const d = [
   [9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
 ];
 
-/*** Verhoeff permutation table */
+/** Verhoeff permutation table */
 const p = [
   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   [1, 5, 7, 6, 2, 8, 3, 0, 9, 4],
@@ -26,10 +33,10 @@ const p = [
   [7, 0, 4, 6, 9, 1, 3, 2, 5, 8],
 ];
 
-/*** Verhoeff inverse table */
+/** Verhoeff inverse table */
 const inv = ['0', '4', '3', '2', '1', '5', '6', '7', '8', '9'];
 
-export default new class Verhoeff implements Algo {
+class Verhoeff implements Algo {
   compute(num: string): string {
     const ds = `${String(num).replace(/[^0-9]/g, '')}0`;
 
@@ -53,4 +60,6 @@ export default new class Verhoeff implements Algo {
   parse(num: string): [string, string] {
     return helper.parseTail(num, 1);
   }
-};
+}
+
+export default new Verhoeff();
