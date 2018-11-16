@@ -6,11 +6,17 @@ const algo = require('..').mod661_26;
 describe('ISO/IEC 7064, MOD 661-26 algorithm', () => {
   // {{{ List sample strings
   const valid = [
-    ['BAISDLAFKBM', 'BAISDLAFK', 'BM']
+    ['BAISDLAFKBM', 'BAISDLAFK', 'BM'],
+    ['GCJFBCIOJTLVOUR', 'GCJFBCIOJTLVO', 'UR'],
+    ['XKFSHTWWCOMYYASPSYTHJWCJ', 'XKFSHTWWCOMYYASPSYTHJW', 'CJ'],
+    ['LTXOIHFVJDZEIVNXTQRPYZIC', 'LTXOIHFVJDZEIVNXTQRPYZ', 'IC'],
+    ['KCBMMBQOYSHXHVOTGSDXKLNU', 'KCBMMBQOYSHXHVOTGSDXKL', 'NU'],
+    ['MHPPPXHROQETTHJDRWSMPJMP', 'MHPPPXHROQETTHJDRWSMPJ', 'MP'],
   ];
 
   const invalid = [
-    'BAISDLAFK12',
+    'BAISDLAFKAB',
+    'GCJFBCIOJTLVOBI',
   ];
   // }}}
 
