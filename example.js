@@ -41,3 +41,9 @@ console.log(cdigit.mod1271_36.compute('12CD'));     // 'JU'
 console.log(cdigit.mod1271_36.generate('12CD'));    // '12CDJU'
 console.log(cdigit.mod1271_36.validate('12CDJU'));  // true
 console.log(cdigit.mod1271_36.validate('12CD56'));  // false
+
+// ISO/IEC 7064, MOD 11-10 algorithm
+console.log(cdigit.mod11_10.compute('1234'));   // '0'
+console.log(cdigit.mod11_10.generate('1234'));  // '12340'
+console.log(cdigit.mod11_10.validate('12340')); // true
+console.log(cdigit.mod11_10.validate('12345')); // false

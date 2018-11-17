@@ -14,4 +14,6 @@ export { default as mod97_10 } from './algo/mod97_10';
 export { default as mod661_26 } from './algo/mod661_26';
 export { default as mod1271_36 } from './algo/mod1271_36';
 
+export { default as mod11_10 } from './algo/mod11_10';
+
 export { default as AlgoWrapper } from './algo/wrapper';

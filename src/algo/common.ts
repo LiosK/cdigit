@@ -67,5 +67,18 @@ export const helper = {
       }
       return output[c];
     },
+    /** Implement ISO 7064 hybrid system recursive method. */
+    computeHybrid: (ds: string, { output, input }: CharMap) => {
+      const mod = output.length;
+
+      let c = mod;
+      for (let i = 0, len = ds.length; i < len; i += 1) {
+        c = (c % (mod + 1)) + input[ds[i]];
+        c = (c % mod || mod) * 2;
+      }
+      c %= mod + 1;
+
+      return output[(mod + 1 - c) % mod];
+    },
   },
 };
