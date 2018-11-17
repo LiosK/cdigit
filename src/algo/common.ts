@@ -9,7 +9,7 @@
 export interface Algo {
   /**
    * Generate a valid number string from a given source number. The generated
-   * number includes the check digit(s) computed and placed in accordance with
+   * string includes the check digit(s) computed and placed in accordance with
    * the algorithm.
    */
   generate(num: string): string;
@@ -20,7 +20,10 @@ export interface Algo {
    */
   validate(num: string): boolean;
 
-  /** Generate check digit(s) from a given source number. */
+  /**
+   * Generate check digit(s) from a given source number. This returns the check
+   * digit(s) only.
+   */
   compute(num: string): string;
 
   /** Split a number into its source number and check digits. */
