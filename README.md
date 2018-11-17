@@ -17,18 +17,18 @@ console.log(cdigit.luhn.validate('12344')); // true
 
 # SUPPORTED ALGORITHMS
 
-| Algorithm                 | Input String          | Check Character(s)                |
-|---------------------------|-----------------------|-----------------------------------|
-| Luhn                      | Numeric (0-9)         | 1 digit (0-9)                     |
-| Verhoeff                  | Numeric (0-9)         | 1 digit (0-9)                     |
-| ISO/IEC 7064, MOD 11-2    | Numeric (0-9)         | 1 digit or 'X' (0-9X)             |
-| ISO/IEC 7064, MOD 37-2    | Alphanumeric (0-9A-Z) | 1 digit, letter, or '*' (0-9A-Z*) |
-| ISO/IEC 7064, MOD 97-10   | Numeric (0-9)         | 2 digits (0-9)                    |
-| ISO/IEC 7064, MOD 661-26  | Alphabetic (A-Z)      | 2 letters (A-Z)                   |
-| ISO/IEC 7064, MOD 1271-36 | Alphanumeric (0-9A-Z) | 2 digits or letters (0-9A-Z)      |
-| ISO/IEC 7064, MOD 11-10   | Numeric (0-9)         | 1 digit (0-9)                     |
-| ISO/IEC 7064, MOD 27-26   | Alphabetic (A-Z)      | 1 letter (A-Z)                    |
-| ISO/IEC 7064, MOD 37-36   | Alphanumeric (0-9A-Z) | 1 digit or letter (0-9A-Z)        |
+| Algorithm                 | Input String          | Check Character(s)                  |
+|---------------------------|-----------------------|-------------------------------------|
+| Luhn                      | Numeric (0-9)         | 1 digit (0-9)                       |
+| Verhoeff                  | Numeric (0-9)         | 1 digit (0-9)                       |
+| ISO/IEC 7064, MOD 11-2    | Numeric (0-9)         | 1 digit or 'X' (0-9X)               |
+| ISO/IEC 7064, MOD 37-2    | Alphanumeric (0-9A-Z) | 1 digit, letter, or '\*' (0-9A-Z\*) |
+| ISO/IEC 7064, MOD 97-10   | Numeric (0-9)         | 2 digits (0-9)                      |
+| ISO/IEC 7064, MOD 661-26  | Alphabetic (A-Z)      | 2 letters (A-Z)                     |
+| ISO/IEC 7064, MOD 1271-36 | Alphanumeric (0-9A-Z) | 2 digits or letters (0-9A-Z)        |
+| ISO/IEC 7064, MOD 11-10   | Numeric (0-9)         | 1 digit (0-9)                       |
+| ISO/IEC 7064, MOD 27-26   | Alphabetic (A-Z)      | 1 letter (A-Z)                      |
+| ISO/IEC 7064, MOD 37-36   | Alphanumeric (0-9A-Z) | 1 digit or letter (0-9A-Z)          |
 
 
 # USAGE EXAMPLES
