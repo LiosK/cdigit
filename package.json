@@ -16,7 +16,7 @@
   },
   "keywords": [
     "checkdigit",
-    "check digit",
+    "check digit algorithm",
     "check character system",
     "luhn",
     "verhoeff",
@@ -31,7 +31,6 @@
     "mod 27-26",
     "mod 37-36",
     "mod 10",
-    "mod 11",
     "mod 97"
   ],
   "author": "LiosK <contact@mail.liosk.net>",
