@@ -20,5 +20,3 @@ export { default as mod1271_36 } from './algo/mod1271_36';
 export { default as mod11_10 } from './algo/mod11_10';
 export { default as mod27_26 } from './algo/mod27_26';
 export { default as mod37_36 } from './algo/mod37_36';
-
-export { default as AlgoWrapper } from './algo/wrapper';
