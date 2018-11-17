@@ -7,25 +7,12 @@
 
 import { Algo, helper } from './common';
 
-const oddLookup: {[key: string]: number} = {
-  0: 0, 1: 2, 2: 4, 3: 6, 4: 8, 5: 1, 6: 3, 7: 5, 8: 7, 9: 9,
-};
+const charmap = helper.iso7064.compileCharMap(helper.iso7064.numeric.slice(0, -1));
 
-class Luhn implements Algo {
+class Mod11_10 implements Algo {
   compute(num: string): string {
     const ds = String(num).replace(/[^0-9]/g, '');
-
-    let sum = 0;
-    let odd = 1;
-    for (let i = ds.length - 1; i > -1; i -= 1) {
-      sum += odd ? oddLookup[ds[i]] : Number(ds[i]);
-      odd ^= 1;
-      if (sum > 0xffffffffffff) { // ~2^48 at max
-        sum %= 10;
-      }
-    }
-
-    return String(10 - sum % 10).slice(-1);
+    return helper.iso7064.computeHybrid(ds, charmap);
   }
 
   generate(num: string): string {
@@ -42,4 +29,4 @@ class Luhn implements Algo {
   }
 }
 
-export default new Luhn();
+export default new Mod11_10();

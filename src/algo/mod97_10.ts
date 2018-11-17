@@ -1,32 +1,37 @@
-import CdigitAlgo from './common';
+/**
+ * cdigit
+ *
+ * @copyright 2018 LiosK
+ * @license Apache-2.0
+ */
 
-const alphabet = ((ds) => {
-  const map: {[key: string]: string} = {};
-  for (let i = 0; i < ds.length; ++i) {
-    map[ds[i]] = String(i);
+import { Algo, helper } from './common';
+
+class Mod97_10 implements Algo {
+  compute(num: string): string {
+    const ds = `${String(num).replace(/[^0-9]/g, '')}00`;
+
+    // Simplified procedure as described in ISO/IEC 7064
+    let c = Number(ds.slice(0, 14)) % 97; // 10^14 < 2^48
+    for (let i = 14, len = ds.length; i < len; i += 12) {
+      c = Number(String(c) + ds.slice(i, i + 12)) % 97;
+    }
+
+    return `0${(98 - c) % 97}`.slice(-2);
   }
-  return map;
-})('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
-export default new class Mod97_10 extends CdigitAlgo {
   generate(num: string): string {
-    num = String(num) + '00';
-
-    let base10 = '';
-    for (const c of num) {
-      base10 += alphabet[c];
-    }
-
-    let c = Number(base10.slice(0, 9)) % 97;
-    for (let i = 9, len = base10.length; i < len; i += 7) {
-      c = Number(String(c) + base10.slice(i, i + 7)) % 97;
-    }
-
-    return ('0' + String(98 - c)).slice(-2);
+    return `${num}${this.compute(num)}`;
   }
 
-  decode(code: string): [string, string] {
-    code = String(code);
-    return [code.slice(0, -2), code.slice(-2)];
+  validate(num: string): boolean {
+    const [src, cc] = this.parse(num);
+    return this.compute(src) === cc;
+  }
+
+  parse(num: string): [string, string] {
+    return helper.parseTail(num, 2);
   }
 }
+
+export default new Mod97_10();

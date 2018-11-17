@@ -1,13 +1,14 @@
 {
   "name": "cdigit",
-  "version": "1.2.0",
-  "description": "Generate and validate check digits",
+  "version": "2.0.0",
+  "description": "Collection of check digit algorithms implemented in JavaScript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepare": "npm run build && npm test",
-    "test": "mocha"
+    "prepare": "npm run tslint && npm run build && npm test",
+    "test": "mocha",
+    "tslint": "tslint -p package.json"
   },
   "repository": {
     "type": "git",
@@ -15,15 +16,22 @@
   },
   "keywords": [
     "checkdigit",
-    "check digit",
-    "algorithm",
+    "check digit algorithm",
+    "check character system",
     "luhn",
-    "modulus 10",
-    "mod 10",
+    "verhoeff",
     "iso7064",
-    "mod 97",
+    "iso/iec 7064",
+    "mod 11-2",
+    "mod 37-2",
     "mod 97-10",
-    "verhoeff"
+    "mod 661-26",
+    "mod 1271-36",
+    "mod 11-10",
+    "mod 27-26",
+    "mod 37-36",
+    "mod 10",
+    "mod 97"
   ],
   "author": "LiosK <contact@mail.liosk.net>",
   "license": "Apache-2.0",
@@ -39,6 +47,9 @@
   "dependencies": {},
   "devDependencies": {
     "mocha": "^5.2.0",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "tsutils": "^3.5.0",
     "typescript": "^3.1.6"
   }
 }
