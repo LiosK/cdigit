@@ -36,6 +36,15 @@ const p = [
 /** Verhoeff inverse table */
 const inv = ['0', '4', '3', '2', '1', '5', '6', '7', '8', '9'];
 
+/**
+ * Note: There is not a firm consensus on the direction (left to right or right
+ * to left) in which a Verhoeff calculator scans numeric text to construct an
+ * input digit sequence. This implementation is hard coded to read a string from
+ * right to left and append the check digit at the rightmost position, which is
+ * a consistent behavior with other popular implementations. Reverse the input
+ * string before calling this class' methods if you need to interpret a string
+ * from left to right.
+ */
 class Verhoeff implements Algo {
   compute(num: string): string {
     const ds = `${String(num).replace(/[^0-9]/g, '')}0`;

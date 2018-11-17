@@ -1,6 +1,6 @@
 {
   "name": "cdigit",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Collection of check digit algorithms implemented in JavaScript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -20,6 +20,7 @@
     "check character system",
     "luhn",
     "verhoeff",
+    "damm",
     "iso7064",
     "iso/iec 7064",
     "mod 11-2",
