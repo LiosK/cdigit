@@ -12,6 +12,12 @@ console.log(cdigit.verhoeff.generate('1234'));  // '12340'
 console.log(cdigit.verhoeff.validate('12340')); // true
 console.log(cdigit.verhoeff.validate('12345')); // false
 
+// Damm algorithm
+console.log(cdigit.damm.compute('1234'));   // '0'
+console.log(cdigit.damm.generate('1234'));  // '12340'
+console.log(cdigit.damm.validate('12340')); // true
+console.log(cdigit.damm.validate('12345')); // false
+
 // ISO/IEC 7064, MOD 11-2 algorithm
 console.log(cdigit.mod11_2.compute('1234'));    // '4'
 console.log(cdigit.mod11_2.generate('1234'));   // '12344'

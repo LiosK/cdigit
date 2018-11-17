@@ -21,6 +21,7 @@ console.log(cdigit.luhn.validate('12344')); // true
 |---------------------------|-------------|-----------------------|-------------------------------------|
 | Luhn                      | luhn        | Numeric (0-9)         | 1 digit (0-9)                       |
 | Verhoeff                  | verhoeff    | Numeric (0-9)         | 1 digit (0-9)                       |
+| Damm                      | damm        | Numeric (0-9)         | 1 digit (0-9)                       |
 | ISO/IEC 7064, MOD 11-2    | mod11_2     | Numeric (0-9)         | 1 digit or 'X' (0-9X)               |
 | ISO/IEC 7064, MOD 37-2    | mod37_2     | Alphanumeric (0-9A-Z) | 1 digit, letter, or '\*' (0-9A-Z\*) |
 | ISO/IEC 7064, MOD 97-10   | mod97_10    | Numeric (0-9)         | 2 digits (0-9)                      |

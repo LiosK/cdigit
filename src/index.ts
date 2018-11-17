@@ -8,6 +8,7 @@
 // Popular generic algorithms
 export { default as luhn } from './algo/luhn';
 export { default as verhoeff } from './algo/verhoeff';
+export { default as damm } from './algo/damm';
 
 // ISO/IEC 7064:2003, Pure systems
 export { default as mod11_2 } from './algo/mod11_2';
