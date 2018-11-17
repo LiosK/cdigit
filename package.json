@@ -1,7 +1,7 @@
 {
   "name": "cdigit",
   "version": "2.0.0-beta",
-  "description": "Generate and validate check digits",
+  "description": "Collection of check digit algorithms implemented in JavaScript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -27,6 +27,9 @@
     "mod 97–10",
     "mod 661–26",
     "mod 1271–36",
+    "mod 11-10",
+    "mod 27-26",
+    "mod 37-36",
     "mod 10",
     "mod 11",
     "mod 97"
