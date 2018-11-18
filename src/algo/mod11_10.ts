@@ -7,12 +7,13 @@
 
 import { Algo, helper } from './common';
 
-const charmap = helper.iso7064.compileCharMap(helper.iso7064.numeric.slice(0, -1));
-
+/** ISO/IEC 7064, MOD 11-10 implementation */
 class Mod11_10 implements Algo {
+  private alphabet: string = helper.iso7064.numeric.slice(0, -1);
+
   compute(num: string): string {
     const ds = String(num).replace(/[^0-9]/g, '');
-    return helper.iso7064.computeHybrid(ds, charmap);
+    return helper.iso7064.computeHybrid(ds, this.alphabet);
   }
 
   generate(num: string): string {

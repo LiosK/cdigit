@@ -7,18 +7,18 @@
 
 import { Algo, helper } from './common';
 
-const oddLookup: {[key: string]: number} = {
-  0: 0, 1: 2, 2: 4, 3: 6, 4: 8, 5: 1, 6: 3, 7: 5, 8: 7, 9: 9,
-};
-
+/** Luhn algorithm implementation */
 class Luhn implements Algo {
   compute(num: string): string {
     const ds = String(num).replace(/[^0-9]/g, '');
+    const lookup: {[digit: string]: number} = {
+      0: 0, 1: 2, 2: 4, 3: 6, 4: 8, 5: 1, 6: 3, 7: 5, 8: 7, 9: 9,
+    };
 
     let sum = 0;
     let odd = 1;
     for (let i = ds.length - 1; i > -1; i -= 1) {
-      sum += odd ? oddLookup[ds[i]] : Number(ds[i]);
+      sum += odd ? lookup[ds[i]] : Number(ds[i]);
       odd ^= 1;
       if (sum > 0xffffffffffff) { // ~2^48 at max
         sum %= 10;
