@@ -7,6 +7,7 @@
 
 import { Algo, helper } from './common';
 
+/** ISO/IEC 7064, MOD 97-10 implementation */
 class Mod97_10 implements Algo {
   compute(num: string): string {
     const ds = `${String(num).replace(/[^0-9]/g, '')}00`;

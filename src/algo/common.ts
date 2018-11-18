@@ -30,35 +30,36 @@ export interface Algo {
   parse(num: string): [string, string];
 }
 
-type CharMap = { input: {[key: string]: number}, output: string };
-
 export const helper = {
   parseTail: (num: string, n: number): [string, string] => {
     const ds = String(num);
     return [ds.slice(0, -n), ds.slice(-n)];
   },
+  _invCharListMemo: {} as {[alphabet: string]: {[character: string]: number}},
+  invertCharList: (alphabet: string): {[character: string]: number} => {
+    if (helper._invCharListMemo[alphabet] == null) {
+      helper._invCharListMemo[alphabet] = {};
+      for (let i = 0, len = alphabet.length; i < len; i += 1) {
+        helper._invCharListMemo[alphabet][alphabet[i]] = i;
+      }
+    }
+    return helper._invCharListMemo[alphabet];
+  },
   iso7064: {
     numeric: '0123456789X',
     alphabetic: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
     alphanumeric: '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ*',
-    compileCharMap: (alphabet: string): CharMap => {
-      const inv: {[key: string]: number} = {};
-      for (let i = 0, len = alphabet.length; i < len; i += 1) {
-        inv[alphabet[i]] = i;
-      }
-      return { input: inv, output: alphabet };
-    },
     /** Implement ISO 7064 pure system recursive method. */
     computePure: (
-      num: string, mod: number, radix: number,
-      hasTwoCCs: boolean, { output, input }: CharMap,
+      num: string, mod: number, radix: number, hasTwoCCs: boolean, alphabet: string,
     ) => {
-      const ds = `${num}${output[0].repeat(hasTwoCCs ? 2 : 1)}`;
+      const ds = `${num}${alphabet[0].repeat(hasTwoCCs ? 2 : 1)}`;
       const overflowProtection = Math.floor(0xffffffffffff / radix);
+      const charmap = helper.invertCharList(alphabet);
 
       let c = 0;
       for (let i = 0, len = ds.length; i < len; i += 1) {
-        c = (c * radix) + input[ds[i]];
+        c = (c * radix) + charmap[ds[i]];
         if (c > overflowProtection) {
           c %= mod;
         }
@@ -66,22 +67,23 @@ export const helper = {
       c = (mod + 1 - c % mod) % mod;
 
       if (hasTwoCCs) {
-        return `${output[Math.floor(c / radix)]}${output[c % radix]}`;
+        return `${alphabet[Math.floor(c / radix)]}${alphabet[c % radix]}`;
       }
-      return output[c];
+      return alphabet[c];
     },
     /** Implement ISO 7064 hybrid system recursive method. */
-    computeHybrid: (ds: string, { output, input }: CharMap) => {
-      const mod = output.length;
+    computeHybrid: (ds: string, alphabet: string) => {
+      const mod = alphabet.length;
+      const charmap = helper.invertCharList(alphabet);
 
       let c = mod;
       for (let i = 0, len = ds.length; i < len; i += 1) {
-        c = (c % (mod + 1)) + input[ds[i]];
+        c = (c % (mod + 1)) + charmap[ds[i]];
         c = (c % mod || mod) * 2;
       }
       c %= mod + 1;
 
-      return output[(mod + 1 - c) % mod];
+      return alphabet[(mod + 1 - c) % mod];
     },
   },
 };
