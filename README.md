@@ -101,5 +101,6 @@ limitations under the License.
 
 # SEE ALSO
 
-* [GitHub Repository](https://github.com/LiosK/cdigit)
-* [npm Package](https://www.npmjs.com/package/cdigit)
+* [GitHub repository](https://github.com/LiosK/cdigit)
+* [npm package](https://www.npmjs.com/package/cdigit)
+* [typedoc-generated documentation (experimental)](https://liosk.github.io/cdigit/)
