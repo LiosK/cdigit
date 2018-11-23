@@ -21,3 +21,18 @@ export * from './algo/mod1271_36';
 export * from './algo/mod11_10';
 export * from './algo/mod27_26';
 export * from './algo/mod37_36';
+
+/** Supported cdigit names */
+export const names = [
+  'luhn',
+  'verhoeff',
+  'damm',
+  'mod11_2',
+  'mod37_2',
+  'mod97_10',
+  'mod661_26',
+  'mod1271_36',
+  'mod11_10',
+  'mod27_26',
+  'mod37_36',
+];

@@ -3,21 +3,6 @@
 const cdigit = require('..');
 const program = require('commander');
 
-const algos = [
-  'luhn',
-  'verhoeff',
-  'damm',
-  'mod11_2',
-  'mod37_2',
-  'mod97_10',
-  'mod661_26',
-  'mod1271_36',
-  'mod11_10',
-  'mod27_26',
-  'mod37_36',
-];
-
-
 // top-level options
 program
   .option('-a, --algo <name>', 'specify check digit algorithm (see below)')
@@ -25,8 +10,8 @@ program
     // custom help
     console.log('');
     console.log('Supported Algorithms:');
-    const maxlen = Math.max(...algos.map(ss => ss.length));
-    algos.forEach((name) => {
+    const maxlen = Math.max(...cdigit.names.map(ss => ss.length));
+    cdigit.names.forEach((name) => {
       console.log(`  ${name.padEnd(maxlen, ' ')}  ${cdigit[name].longName}`);
     });
     console.log('  (--algo defaults to `luhn\' or CDIGIT_CLI_DEFAULT_ALGO env var if set)');
@@ -45,7 +30,7 @@ const handler = (str, cmd) => {
     algo = process.env.CDIGIT_CLI_DEFAULT_ALGO;
   }
 
-  if (!algos.includes(algo)) {
+  if (!cdigit.names.includes(algo)) {
     throw Error(`unknown algorithm \`${algo}'`);
   }
 
