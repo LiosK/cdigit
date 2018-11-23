@@ -1,9 +1,11 @@
-# NAME
+# cdigit: Check Digit Algorithms in JS
 
 cdigit - Collection of check digit algorithms implemented in JavaScript
 
 
-# SYNOPSIS
+## Synopsis
+
+Node.js:
 
 ```javascript
 const cdigit = require('cdigit');
@@ -14,10 +16,18 @@ console.log(cdigit.luhn.generate('1234'));  // '12344'
 console.log(cdigit.luhn.validate('12344')); // true
 ```
 
+Command line:
 
-# SUPPORTED ALGORITHMS
+```bash
+cdigit --algo damm compute 1234
+cdigit --algo damm generate 1234
+cdigit --algo damm validate 12340
+```
 
-## Generic Algorithms
+
+## Supported Algorithms
+
+### Generic Algorithms
 
 | Algorithm                   | cdigit name | Input string          | Check character(s)                  |
 |-----------------------------|-------------|-----------------------|-------------------------------------|
@@ -39,10 +49,10 @@ console.log(cdigit.luhn.validate('12344')); // true
 [ISO/IEC 7064]: https://www.iso.org/standard/31531.html
 
 
-# USAGE
+## Usage - Node.js
 
 Load `cdigit` and access to an algorithm object by cdigit.*name* as listed in
-[SUPPORTED ALGORITHMS section](#supported-algorithms).
+[Supported Algorithms section](#supported-algorithms).
 
 ```javascript
 const cdigit = require('cdigit');
@@ -51,7 +61,7 @@ const algo = cdigit.mod97_10;
 
 Algorithm objects implement the following methods.
 
-## validate(num: string): boolean
+### validate(num: string): boolean
 
 Check if a given string is valid in accordance with the algorithm. The argument
 must include check digit(s) as well as the source number.
@@ -60,7 +70,7 @@ must include check digit(s) as well as the source number.
 console.log(cdigit.mod97_10.validate('123482'));  // true
 ```
 
-## generate(num: string): string
+### generate(num: string): string
 
 Generate a valid number string from a given source number. The generated string
 includes the check digit(s) computed and placed in accordance with the
@@ -70,7 +80,7 @@ algorithm.
 console.log(cdigit.mod97_10.generate('1234'));  // '123482'
 ```
 
-## compute(num: string): string
+### compute(num: string): string
 
 Generate check digit(s) from a given source number. This returns the check
 digit(s) only.
@@ -82,7 +92,37 @@ console.log(cdigit.mod97_10.compute('1234')); // '82'
 See [example.js](example.js) for usage examples.
 
 
-# LICENSE
+## Usage - Command Line
+
+```
+Usage: cdigit [options] [command]
+
+Options:
+  -a, --algo <name>  specify check digit algorithm (see below)
+  -h, --help         output usage information
+
+Commands:
+  validate <string>  check if string is valid
+  generate <string>  generate valid number from string
+  compute <string>   compute check digit from string
+
+Supported Algorithms:
+  luhn        Luhn Algorithm
+  verhoeff    Verhoeff Algorithm
+  damm        Damm Algorithm
+  mod11_2     ISO/IEC 7064, MOD 11-2
+  mod37_2     ISO/IEC 7064, MOD 37-2
+  mod97_10    ISO/IEC 7064, MOD 97-10
+  mod661_26   ISO/IEC 7064, MOD 661-26
+  mod1271_36  ISO/IEC 7064, MOD 1271-36
+  mod11_10    ISO/IEC 7064, MOD 11-10
+  mod27_26    ISO/IEC 7064, MOD 27-26
+  mod37_36    ISO/IEC 7064, MOD 37-36
+  (--algo defaults to `luhn' or CDIGIT_CLI_DEFAULT_ALGO env var if set)
+```
+
+
+## License
 
 Copyright (c) 2018 LiosK
 
@@ -99,7 +139,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-# SEE ALSO
+## See Also
 
 * [GitHub repository](https://github.com/LiosK/cdigit)
 * [npm package](https://www.npmjs.com/package/cdigit)

@@ -64,17 +64,22 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="name">NAME</h1>
+				<h1 id="cdigit-check-digit-algorithms-in-js">cdigit: Check Digit Algorithms in JS</h1>
 				<p>cdigit - Collection of check digit algorithms implemented in JavaScript</p>
-				<h1 id="synopsis">SYNOPSIS</h1>
+				<h2 id="synopsis">Synopsis</h2>
+				<p>Node.js:</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> cdigit = <span class="hljs-built_in">require</span>(<span class="hljs-string">'cdigit'</span>);
 
 <span class="hljs-comment">// Luhn (a.k.a. Mod 10) algorithm</span>
 <span class="hljs-built_in">console</span>.log(cdigit.luhn.compute(<span class="hljs-string">'1234'</span>));   <span class="hljs-comment">// '4'</span>
 <span class="hljs-built_in">console</span>.log(cdigit.luhn.generate(<span class="hljs-string">'1234'</span>));  <span class="hljs-comment">// '12344'</span>
 <span class="hljs-built_in">console</span>.log(cdigit.luhn.validate(<span class="hljs-string">'12344'</span>)); <span class="hljs-comment">// true</span></code></pre>
-				<h1 id="supported-algorithms">SUPPORTED ALGORITHMS</h1>
-				<h2 id="generic-algorithms">Generic Algorithms</h2>
+				<p>Command line:</p>
+				<pre><code class="language-bash">cdigit --algo damm compute 1234
+cdigit --algo damm generate 1234
+cdigit --algo damm validate 12340</code></pre>
+				<h2 id="supported-algorithms">Supported Algorithms</h2>
+				<h3 id="generic-algorithms">Generic Algorithms</h3>
 				<table>
 					<thead>
 						<tr>
@@ -151,27 +156,51 @@
 							<td>1 digit or letter (0-9A-Z)</td>
 						</tr>
 				</tbody></table>
-				<h1 id="usage">USAGE</h1>
+				<h2 id="usage-node-js">Usage - Node.js</h2>
 				<p>Load <code>cdigit</code> and access to an algorithm object by cdigit.<em>name</em> as listed in
-				<a href="#supported-algorithms">SUPPORTED ALGORITHMS section</a>.</p>
+				<a href="#supported-algorithms">Supported Algorithms section</a>.</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> cdigit = <span class="hljs-built_in">require</span>(<span class="hljs-string">'cdigit'</span>);
 <span class="hljs-keyword">const</span> algo = cdigit.mod97_10;</code></pre>
 				<p>Algorithm objects implement the following methods.</p>
-				<h2 id="validate-num-string-boolean">validate(num: string): boolean</h2>
+				<h3 id="validate-num-string-boolean">validate(num: string): boolean</h3>
 				<p>Check if a given string is valid in accordance with the algorithm. The argument
 				must include check digit(s) as well as the source number.</p>
 				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.validate(<span class="hljs-string">'123482'</span>));  <span class="hljs-comment">// true</span></code></pre>
-				<h2 id="generate-num-string-string">generate(num: string): string</h2>
+				<h3 id="generate-num-string-string">generate(num: string): string</h3>
 				<p>Generate a valid number string from a given source number. The generated string
 					includes the check digit(s) computed and placed in accordance with the
 				algorithm.</p>
 				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.generate(<span class="hljs-string">'1234'</span>));  <span class="hljs-comment">// '123482'</span></code></pre>
-				<h2 id="compute-num-string-string">compute(num: string): string</h2>
+				<h3 id="compute-num-string-string">compute(num: string): string</h3>
 				<p>Generate check digit(s) from a given source number. This returns the check
 				digit(s) only.</p>
 				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.compute(<span class="hljs-string">'1234'</span>)); <span class="hljs-comment">// '82'</span></code></pre>
 				<p>See <a href="example.js">example.js</a> for usage examples.</p>
-				<h1 id="license">LICENSE</h1>
+				<h2 id="usage-command-line">Usage - Command Line</h2>
+				<pre><code><span class="hljs-attribute">Usage</span>: cdigit [options] [command]
+
+<span class="angelscript">Options:
+  -a, --algo &lt;name&gt;  specify check digit algorithm (see below)
+  -h, --help         output usage information
+
+Commands:
+  validate &lt;<span class="hljs-built_in">string</span>&gt;  check <span class="hljs-keyword">if</span> <span class="hljs-built_in">string</span> <span class="hljs-keyword">is</span> valid
+  generate &lt;<span class="hljs-built_in">string</span>&gt;  generate valid number <span class="hljs-keyword">from</span> <span class="hljs-built_in">string</span>
+  compute &lt;<span class="hljs-built_in">string</span>&gt;   compute check digit <span class="hljs-keyword">from</span> <span class="hljs-built_in">string</span>
+
+Supported Algorithms:
+  luhn        Luhn Algorithm
+  verhoeff    Verhoeff Algorithm
+  damm        Damm Algorithm
+  mod11_2     ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">11</span><span class="hljs-number">-2</span>
+  mod37_2     ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">37</span><span class="hljs-number">-2</span>
+  mod97_10    ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">97</span><span class="hljs-number">-10</span>
+  mod661_26   ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">661</span><span class="hljs-number">-26</span>
+  mod1271_36  ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">1271</span><span class="hljs-number">-36</span>
+  mod11_10    ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">11</span><span class="hljs-number">-10</span>
+  mod27_26    ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">27</span><span class="hljs-number">-26</span>
+  mod37_36    ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">37</span><span class="hljs-number">-36</span>
+  (--algo defaults to `luhn<span class="hljs-string">' or CDIGIT_CLI_DEFAULT_ALGO env var if set)</span></span></code></pre><h2 id="license">License</h2>
 				<p>Copyright (c) 2018 LiosK</p>
 				<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
 					you may not use this file except in compliance with the License.
@@ -182,7 +211,7 @@
 					WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 					See the License for the specific language governing permissions and
 				limitations under the License.</p>
-				<h1 id="see-also">SEE ALSO</h1>
+				<h2 id="see-also">See Also</h2>
 				<ul>
 					<li><a href="https://github.com/LiosK/cdigit">GitHub repository</a></li>
 					<li><a href="https://www.npmjs.com/package/cdigit">npm package</a></li>
