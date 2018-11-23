@@ -1,5 +1,3 @@
-'use strict';
-const assert = require('assert').strict;
 const common = require('./common');
 const algo = require('..').mod37_2;
 

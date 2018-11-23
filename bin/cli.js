@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-'use strict';
-
 const cdigit = require('..');
 const program = require('commander');
 
@@ -27,10 +25,10 @@ program
     // custom help
     console.log('');
     console.log('Supported Algorithms:');
-    const maxlen = Math.max(...[...algos.keys()].map((ss) => ss.length));
-    for (const [key, val] of algos) {
+    const maxlen = Math.max(...[...algos.keys()].map(ss => ss.length));
+    algos.forEach((val, key) => {
       console.log(`  ${key.padEnd(maxlen, ' ')}  ${val}`);
-    }
+    });
     console.log('  (--algo defaults to `luhn\' or CDIGIT_CLI_DEFAULT_ALGO env var if set)');
   })
   .on('command:*', (cmd) => {
@@ -42,7 +40,7 @@ program
 const handler = (str, cmd) => {
   let algo = 'luhn';
   if (typeof cmd.parent.algo === 'string') {
-    algo = cmd.parent.algo;
+    ({ algo } = cmd.parent);
   } else if (typeof process.env.CDIGIT_CLI_DEFAULT_ALGO === 'string') {
     algo = process.env.CDIGIT_CLI_DEFAULT_ALGO;
   }

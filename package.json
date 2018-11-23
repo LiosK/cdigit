@@ -9,7 +9,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "prepare": "npm run tslint && npm run build && npm test",
+    "eslint": "eslint bin test",
+    "prepare": "npm run tslint && npm run build && npm run eslint && npm test",
     "test": "mocha",
     "tslint": "tslint -p package.json",
     "typedoc": "typedoc --out docs --mode file"
@@ -55,6 +56,11 @@
     "commander": "^2.19.0"
   },
   "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
     "mocha": "^5.2.0",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.1",

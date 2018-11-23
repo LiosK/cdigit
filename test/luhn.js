@@ -1,4 +1,3 @@
-'use strict';
 const assert = require('assert').strict;
 const common = require('./common');
 const algo = require('..').luhn;
@@ -336,9 +335,9 @@ describe('Luhn algorithm', () => {
   describe('luhn.validate()', () => {
     it('accepts Number type as argument', () => {
       const shortCases = valid.slice(0, 16);
-      for (const [num, src, cc] of shortCases) {
+      shortCases.forEach(([num]) => {
         assert.ok(algo.validate(Number(num)), `validate(Number(${num})`);
-      }
+      });
     });
   });
 });
