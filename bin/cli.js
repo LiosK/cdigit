@@ -3,19 +3,19 @@
 const cdigit = require('..');
 const program = require('commander');
 
-const algos = new Map([
-  ['luhn', 'Luhn Algorithm'],
-  ['verhoeff', 'Verhoeff Algorithm'],
-  ['damm', 'Damm Algorithm'],
-  ['mod11_2', 'ISO/IEC 7064, MOD 11-2'],
-  ['mod37_2', 'ISO/IEC 7064, MOD 37-2'],
-  ['mod97_10', 'ISO/IEC 7064, MOD 97-10'],
-  ['mod661_26', 'ISO/IEC 7064, MOD 661-26'],
-  ['mod1271_36', 'ISO/IEC 7064, MOD 1271-36'],
-  ['mod11_10', 'ISO/IEC 7064, MOD 11-10'],
-  ['mod27_26', 'ISO/IEC 7064, MOD 27-26'],
-  ['mod37_36', 'ISO/IEC 7064, MOD 37-36'],
-]);
+const algos = [
+  'luhn',
+  'verhoeff',
+  'damm',
+  'mod11_2',
+  'mod37_2',
+  'mod97_10',
+  'mod661_26',
+  'mod1271_36',
+  'mod11_10',
+  'mod27_26',
+  'mod37_36',
+];
 
 
 // top-level options
@@ -25,9 +25,9 @@ program
     // custom help
     console.log('');
     console.log('Supported Algorithms:');
-    const maxlen = Math.max(...[...algos.keys()].map(ss => ss.length));
-    algos.forEach((val, key) => {
-      console.log(`  ${key.padEnd(maxlen, ' ')}  ${val}`);
+    const maxlen = Math.max(...algos.map(ss => ss.length));
+    algos.forEach((name) => {
+      console.log(`  ${name.padEnd(maxlen, ' ')}  ${cdigit[name].longName}`);
     });
     console.log('  (--algo defaults to `luhn\' or CDIGIT_CLI_DEFAULT_ALGO env var if set)');
   })
@@ -45,7 +45,7 @@ const handler = (str, cmd) => {
     algo = process.env.CDIGIT_CLI_DEFAULT_ALGO;
   }
 
-  if (!algos.has(algo)) {
+  if (!algos.includes(algo)) {
     throw Error(`unknown algorithm \`${algo}'`);
   }
 

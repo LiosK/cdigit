@@ -19,6 +19,9 @@ import { Algo, helper } from './common';
  * from left to right.
  */
 class Verhoeff implements Algo {
+  name = 'verhoeff';
+  longName = 'Verhoeff Algorithm';
+
   /** Verhoeff multiplication table */
   private d = [
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -73,4 +76,4 @@ class Verhoeff implements Algo {
   }
 }
 
-export default new Verhoeff();
+export const verhoeff = new Verhoeff();

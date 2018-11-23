@@ -9,6 +9,9 @@ import { Algo, helper } from './common';
 
 /** Damm algorithm implementation */
 class Damm implements Algo {
+  name = 'damm';
+  longName = 'Damm Algorithm';
+
   /** Damm operation table */
   private opTable = [
     [0, 3, 1, 7, 5, 9, 8, 6, 4, 2],
@@ -48,4 +51,4 @@ class Damm implements Algo {
   }
 }
 
-export default new Damm();
+export const damm = new Damm();

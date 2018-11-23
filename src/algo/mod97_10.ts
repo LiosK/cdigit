@@ -9,6 +9,9 @@ import { Algo, helper } from './common';
 
 /** ISO/IEC 7064, MOD 97-10 implementation */
 class Mod97_10 implements Algo {
+  name = 'mod97_10';
+  longName = 'ISO/IEC 7064, MOD 97-10';
+
   compute(num: string): string {
     const ds = `${String(num).replace(/[^0-9]/g, '')}00`;
 
@@ -35,4 +38,4 @@ class Mod97_10 implements Algo {
   }
 }
 
-export default new Mod97_10();
+export const mod97_10 = new Mod97_10();

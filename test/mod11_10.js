@@ -1,7 +1,7 @@
 const common = require('./common');
 const algo = require('..').mod11_10;
 
-describe('ISO/IEC 7064, MOD 11-10 algorithm', () => {
+describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings
   const valid = [
     ['07945', '0794', '5'],

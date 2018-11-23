@@ -1,7 +1,7 @@
 const common = require('./common');
 const algo = require('..').damm;
 
-describe('Damm algorithm', () => {
+describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings
   const valid = [
     ['896022895609750720135809057315350302282', '89602289560975072013580905731535030228', '2'],

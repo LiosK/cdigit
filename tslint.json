@@ -3,9 +3,8 @@
   "extends": [
     "tslint-config-airbnb"
   ],
-  "jsRules": {},
   "rules": {
-    "class-name": false
-  },
-  "rulesDirectory": []
+    "class-name": false,
+    "variable-name": false
+  }
 }
