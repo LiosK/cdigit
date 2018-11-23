@@ -9,6 +9,9 @@ import { Algo, helper } from './common';
 
 /** Luhn algorithm implementation */
 class Luhn implements Algo {
+  name = 'luhn';
+  longName = 'Luhn Algorithm';
+
   compute(num: string): string {
     const ds = String(num).replace(/[^0-9]/g, '');
     const lookup: {[digit: string]: number} = {
@@ -42,4 +45,4 @@ class Luhn implements Algo {
   }
 }
 
-export default new Luhn();
+export const luhn = new Luhn();

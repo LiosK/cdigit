@@ -2,7 +2,7 @@ const assert = require('assert').strict;
 const common = require('./common');
 const algo = require('..').luhn;
 
-describe('Luhn algorithm', () => {
+describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings
   const valid = [
     // short cases

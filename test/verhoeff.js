@@ -1,7 +1,7 @@
 const common = require('./common');
 const algo = require('..').verhoeff;
 
-describe('Verhoeff algorithm', () => {
+describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings
   const valid = [
     ['2363', '236', '3'],

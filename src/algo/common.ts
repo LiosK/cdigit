@@ -7,6 +7,12 @@
 
 /** Common interface for check digit algorithm implementations. */
 export interface Algo {
+  /** cdigit name of the algorithm */
+  readonly name: string;
+
+  /** Human-readable name of the algorithm */
+  readonly longName: string;
+
   /**
    * Generate a valid number string from a given source number. The generated
    * string includes the check digit(s) computed and placed in accordance with

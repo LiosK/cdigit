@@ -9,6 +9,9 @@ import { Algo, helper } from './common';
 
 /** ISO/IEC 7064, MOD 37-36 implementation */
 class Mod37_36 implements Algo {
+  name = 'mod37_36';
+  longName = 'ISO/IEC 7064, MOD 37-36';
+
   private alphabet: string = helper.iso7064.alphanumeric.slice(0, -1);
 
   compute(num: string): string {
@@ -30,4 +33,4 @@ class Mod37_36 implements Algo {
   }
 }
 
-export default new Mod37_36();
+export const mod37_36 = new Mod37_36();
