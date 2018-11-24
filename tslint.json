@@ -2,9 +2,5 @@
   "defaultSeverity": "error",
   "extends": [
     "tslint-config-airbnb"
-  ],
-  "rules": {
-    "class-name": false,
-    "variable-name": false
-  }
+  ]
 }

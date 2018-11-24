@@ -9,6 +9,12 @@ module.exports = {
    */
   testAlgo: (algo, validCases, invalidStrings) => {
     describe('Algo type', () => {
+      it('implements name', () => {
+        assert.equal(typeof algo.name, 'string', 'typeof algo.name');
+      });
+      it('implements longName', () => {
+        assert.equal(typeof algo.longName, 'string', 'typeof algo.longName');
+      });
       it('implements generate()', () => {
         assert.equal(typeof algo.generate, 'function', 'typeof algo.generate');
       });
