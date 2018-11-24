@@ -7,6 +7,8 @@
 
 import { Algo, helper } from './common';
 
+/* tslint:disable:class-name variable-name */
+
 /** ISO/IEC 7064, MOD 11-10 implementation */
 class Mod11_10 implements Algo {
   name = 'mod11_10';
