@@ -56,3 +56,7 @@ $cmd --algo mod37_36 compute 12CD
 $cmd --algo mod37_36 generate 12CD
 $cmd --algo mod37_36 validate 12CD5
 $cmd --algo mod37_36 validate 12CDE
+$cmd --algo gtin compute 01234567890
+$cmd --algo gtin generate 01234567890
+$cmd --algo gtin validate 012345678905
+$cmd --algo gtin validate 012345678901
