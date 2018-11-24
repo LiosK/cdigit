@@ -19,9 +19,9 @@ console.log(cdigit.luhn.validate('12344')); // true
 Command line:
 
 ```bash
-cdigit --algo damm compute 1234
-cdigit --algo damm generate 1234
-cdigit --algo damm validate 12340
+npx cdigit --algo damm compute 1234
+npx cdigit --algo damm generate 1234
+npx cdigit --algo damm validate 12340
 ```
 
 
