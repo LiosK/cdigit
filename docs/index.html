@@ -74,8 +74,9 @@
 <span class="hljs-built_in">console</span>.log(cdigit.luhn.compute(<span class="hljs-string">'1234'</span>));   <span class="hljs-comment">// '4'</span>
 <span class="hljs-built_in">console</span>.log(cdigit.luhn.generate(<span class="hljs-string">'1234'</span>));  <span class="hljs-comment">// '12344'</span>
 <span class="hljs-built_in">console</span>.log(cdigit.luhn.validate(<span class="hljs-string">'12344'</span>)); <span class="hljs-comment">// true</span></code></pre>
-				<p>Command line:</p>
-				<pre><code class="language-bash">npx cdigit --algo damm compute 1234
+				<p>Command-line:</p>
+				<pre><code class="language-bash"><span class="hljs-comment"># Damm algorithm</span>
+npx cdigit --algo damm compute 1234
 npx cdigit --algo damm generate 1234
 npx cdigit --algo damm validate 12340</code></pre>
 				<h2 id="supported-algorithms">Supported Algorithms</h2>
@@ -109,8 +110,11 @@ npx cdigit --algo damm validate 12340</code></pre>
 						</tr>
 				</tbody></table>
 				<h3 id="iso-iec-7064-family"><a href="https://www.iso.org/standard/31531.html">ISO/IEC 7064</a> Family</h3>
-				<p>ISO/IEC 7064 describes eight check digit (character) systems for numeric,
-				alphabetic, or alphanumeric strings.</p>
+				<p>ISO/IEC 7064 describes eight generic check digit (character) systems for
+					numeric, alphabetic, and alphanumeric strings. ISO/IEC 7064 specifies two types
+					of systems that use the same algorithm with different parameters: Pure systems
+					(MOD 11-2, MOD 37-2, MOD 97-10, MOD 661-26, and MOD 1271-36) and Hybrid systems
+				(MOD 11-10, MOD 27-26, and MOD 37-36).</p>
 				<table>
 					<thead>
 						<tr>
@@ -170,6 +174,12 @@ npx cdigit --algo damm validate 12340</code></pre>
 						</tr>
 				</tbody></table>
 				<h3 id="gtin-global-trade-item-number-family"><a href="https://www.gs1.org/standards/id-keys/gtin">GTIN</a> (Global Trade Item Number) Family</h3>
+				<p>GTINs are internationally unified product identification numbers that are often
+					(or historically) referred to as <a href="https://en.wikipedia.org/wiki/Universal_Product_Code">UPC</a>, <a href="https://en.wikipedia.org/wiki/International_Article_Number">EAN</a>, <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a>-13, etc. GTINs have
+					several variations in length but share the identical check digit algorithm;
+					therefore, <code>cdigit</code> currently provides only one generic <code>gtin</code> object for GTINs
+					and other <a href="https://www.gs1.org/standards/id-keys">GS1 data structures</a>. Note that <code>cdigit.gtin</code> does not check the
+				length or semantic validity of a given GTIN string.</p>
 				<table>
 					<thead>
 						<tr>
@@ -177,7 +187,7 @@ npx cdigit --algo damm validate 12340</code></pre>
 							<th>cdigit name</th>
 							<th>Input string</th>
 							<th>Check character(s)</th>
-							<th>Also referred to as</th>
+							<th>Also known as</th>
 						</tr>
 					</thead>
 					<tbody><tr>
@@ -185,21 +195,21 @@ npx cdigit --algo damm validate 12340</code></pre>
 							<td>gtin</td>
 							<td>Numeric (0-9)</td>
 							<td>1 digit (0-9)</td>
-							<td><a href="https://en.wikipedia.org/wiki/International_Article_Number">EAN</a>-8</td>
+							<td>EAN-8</td>
 						</tr>
 						<tr>
 							<td>GTIN-12</td>
 							<td>gtin</td>
 							<td>Numeric (0-9)</td>
 							<td>1 digit (0-9)</td>
-							<td><a href="https://en.wikipedia.org/wiki/Universal_Product_Code">UPC</a>, UPC-A</td>
+							<td>UPC, UPC-A</td>
 						</tr>
 						<tr>
 							<td>GTIN-13</td>
 							<td>gtin</td>
 							<td>Numeric (0-9)</td>
 							<td>1 digit (0-9)</td>
-							<td>EAN, <a href="https://en.wikipedia.org/wiki/International_Article_Number#Japanese_Article_Number">JAN</a>, <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a>-13, etc.</td>
+							<td>EAN, <a href="https://en.wikipedia.org/wiki/International_Article_Number#Japanese_Article_Number">JAN</a>, ISBN-13, etc.</td>
 						</tr>
 						<tr>
 							<td>GTIN-14</td>
@@ -209,15 +219,12 @@ npx cdigit --algo damm validate 12340</code></pre>
 							<td>EAN, UCC-14</td>
 						</tr>
 				</tbody></table>
-				<p><code>cdigit</code> currently provides only one generic <code>gtin</code> object for GTINs and other
-					<a href="https://www.gs1.org/standards/id-keys">GS1 data structures</a> as they share the same algorithm. Note that <code>cdigit.gtin</code>
-				does not validate the length of a given GTIN string.</p>
 				<h2 id="usage-node-js">Usage - Node.js</h2>
-				<p>Load <code>cdigit</code> and access to an algorithm object by cdigit.<em>name</em> listed in
+				<p>Load <code>cdigit</code> and access to algorithm objects by cdigit.<em>name</em> listed in
 				<a href="#supported-algorithms">Supported Algorithms section</a>.</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> cdigit = <span class="hljs-built_in">require</span>(<span class="hljs-string">'cdigit'</span>);
 <span class="hljs-keyword">const</span> algo = cdigit.mod97_10;</code></pre>
-				<p>Algorithm objects implement the following methods.</p>
+				<p>Algorithm objects implement the following methods:</p>
 				<h3 id="validate-num-string-boolean">validate(num: string): boolean</h3>
 				<p>Check if a given string is valid in accordance with the algorithm. The argument
 				must include check digit(s) as well as the source number.</p>
@@ -228,11 +235,11 @@ npx cdigit --algo damm validate 12340</code></pre>
 				algorithm.</p>
 				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.generate(<span class="hljs-string">'1234'</span>));  <span class="hljs-comment">// '123482'</span></code></pre>
 				<h3 id="compute-num-string-string">compute(num: string): string</h3>
-				<p>Generate check digit(s) from a given source number. This returns the check
-				digit(s) only.</p>
+				<p>Generate check digit(s) from a given source number. Unlike <code>generate()</code>, this
+				method returns the check digit(s) only.</p>
 				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.compute(<span class="hljs-string">'1234'</span>)); <span class="hljs-comment">// '82'</span></code></pre>
-				<p>See <a href="example.js">example.js</a> for usage examples.</p>
-				<h2 id="usage-command-line">Usage - Command Line</h2>
+				<p>See <a href="https://npm.runkit.com/cdigit">example.js</a> for usage examples.</p>
+				<h2 id="usage-command-line">Usage - Command-line</h2>
 				<pre><code><span class="hljs-attribute">Usage</span>: cdigit [options] [command]
 
 <span class="smali">Options:
@@ -247,15 +254,14 @@ Commands:
 				<code>CDIGIT_CLI_DEFAULT_ALGO</code> environment variable (if set).</p>
 				<h2 id="license">License</h2>
 				<p>Copyright (c) 2018 LiosK</p>
-				<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
-					you may not use this file except in compliance with the License.
-				You may obtain a copy of the License at</p>
+				<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use
+					this file except in compliance with the License. You may obtain a copy of the
+				License at</p>
 				<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
-				<p>Unless required by applicable law or agreed to in writing, software
-					distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
-					WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-					See the License for the specific language governing permissions and
-				limitations under the License.</p>
+				<p>Unless required by applicable law or agreed to in writing, software distributed
+					under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR
+					CONDITIONS OF ANY KIND, either express or implied. See the License for the
+				specific language governing permissions and limitations under the License.</p>
 				<h2 id="see-also">See Also</h2>
 				<ul>
 					<li><a href="https://github.com/LiosK/cdigit">GitHub repository</a></li>

@@ -16,9 +16,10 @@ console.log(cdigit.luhn.generate('1234'));  // '12344'
 console.log(cdigit.luhn.validate('12344')); // true
 ```
 
-Command line:
+Command-line:
 
 ```bash
+# Damm algorithm
 npx cdigit --algo damm compute 1234
 npx cdigit --algo damm generate 1234
 npx cdigit --algo damm validate 12340
@@ -41,8 +42,11 @@ npx cdigit --algo damm validate 12340
 
 ### [ISO/IEC 7064] Family
 
-ISO/IEC 7064 describes eight check digit (character) systems for numeric,
-alphabetic, or alphanumeric strings.
+ISO/IEC 7064 describes eight generic check digit (character) systems for
+numeric, alphabetic, and alphanumeric strings. ISO/IEC 7064 specifies two types
+of systems that use the same algorithm with different parameters: Pure systems
+(MOD 11-2, MOD 37-2, MOD 97-10, MOD 661-26, and MOD 1271-36) and Hybrid systems
+(MOD 11-10, MOD 27-26, and MOD 37-36).
 
 | Algorithm                 | cdigit name | Input string          | Check character(s)                  |
 |---------------------------|-------------|-----------------------|-------------------------------------|
@@ -59,28 +63,32 @@ alphabetic, or alphanumeric strings.
 
 ### [GTIN] (Global Trade Item Number) Family
 
-| Algorithm | cdigit name | Input string  | Check character(s) | Also referred to as         |
-|-----------|-------------|---------------|--------------------|-----------------------------|
-| GTIN-8    | gtin        | Numeric (0-9) | 1 digit (0-9)      | [EAN]-8                     |
-| GTIN-12   | gtin        | Numeric (0-9) | 1 digit (0-9)      | [UPC], UPC-A                |
-| GTIN-13   | gtin        | Numeric (0-9) | 1 digit (0-9)      | EAN, [JAN], [ISBN]-13, etc. |
-| GTIN-14   | gtin        | Numeric (0-9) | 1 digit (0-9)      | EAN, UCC-14                 |
+GTINs are internationally unified product identification numbers that are often
+(or historically) referred to as [UPC], [EAN], [ISBN]-13, etc. GTINs have
+several variations in length but share the identical check digit algorithm;
+therefore, `cdigit` currently provides only one generic `gtin` object for GTINs
+and other [GS1 data structures]. Note that `cdigit.gtin` does not check the
+length or semantic validity of a given GTIN string.
 
-`cdigit` currently provides only one generic `gtin` object for GTINs and other
-[GS1 data structures] as they share the same algorithm. Note that `cdigit.gtin`
-does not validate the length of a given GTIN string.
+| Algorithm | cdigit name | Input string  | Check character(s) | Also known as             |
+|-----------|-------------|---------------|--------------------|---------------------------|
+| GTIN-8    | gtin        | Numeric (0-9) | 1 digit (0-9)      | EAN-8                     |
+| GTIN-12   | gtin        | Numeric (0-9) | 1 digit (0-9)      | UPC, UPC-A                |
+| GTIN-13   | gtin        | Numeric (0-9) | 1 digit (0-9)      | EAN, [JAN], ISBN-13, etc. |
+| GTIN-14   | gtin        | Numeric (0-9) | 1 digit (0-9)      | EAN, UCC-14               |
+
 
 [GTIN]: https://www.gs1.org/standards/id-keys/gtin
-[EAN]: https://en.wikipedia.org/wiki/International_Article_Number
 [UPC]: https://en.wikipedia.org/wiki/Universal_Product_Code
-[JAN]: https://en.wikipedia.org/wiki/International_Article_Number#Japanese_Article_Number
+[EAN]: https://en.wikipedia.org/wiki/International_Article_Number
 [ISBN]: https://en.wikipedia.org/wiki/International_Standard_Book_Number
 [GS1 data structures]: https://www.gs1.org/standards/id-keys
+[JAN]: https://en.wikipedia.org/wiki/International_Article_Number#Japanese_Article_Number
 
 
 ## Usage - Node.js
 
-Load `cdigit` and access to an algorithm object by cdigit.*name* listed in
+Load `cdigit` and access to algorithm objects by cdigit.*name* listed in
 [Supported Algorithms section](#supported-algorithms).
 
 ```javascript
@@ -88,7 +96,7 @@ const cdigit = require('cdigit');
 const algo = cdigit.mod97_10;
 ```
 
-Algorithm objects implement the following methods.
+Algorithm objects implement the following methods:
 
 ### validate(num: string): boolean
 
@@ -111,17 +119,17 @@ console.log(cdigit.mod97_10.generate('1234'));  // '123482'
 
 ### compute(num: string): string
 
-Generate check digit(s) from a given source number. This returns the check
-digit(s) only.
+Generate check digit(s) from a given source number. Unlike `generate()`, this
+method returns the check digit(s) only.
 
 ```javascript
 console.log(cdigit.mod97_10.compute('1234')); // '82'
 ```
 
-See [example.js](example.js) for usage examples.
+See [example.js](https://npm.runkit.com/cdigit) for usage examples.
 
 
-## Usage - Command Line
+## Usage - Command-line
 
 ```
 Usage: cdigit [options] [command]
@@ -144,17 +152,16 @@ section](#supported-algorithms) and defaults to `luhn` or the value of
 
 Copyright (c) 2018 LiosK
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at
 
 http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
 
 
 ## See Also
