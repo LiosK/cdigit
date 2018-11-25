@@ -65,3 +65,9 @@ console.log(cdigit.mod37_36.compute('12CD'));   // '5'
 console.log(cdigit.mod37_36.generate('12CD'));  // '12CD5'
 console.log(cdigit.mod37_36.validate('12CD5')); // true
 console.log(cdigit.mod37_36.validate('12CDE')); // false
+
+// GTINs (including UPC, EAN, ISBN-13, etc.)
+console.log(cdigit.gtin.compute('01234567890'));    // '5'
+console.log(cdigit.gtin.generate('01234567890'));   // '012345678905'
+console.log(cdigit.gtin.validate('012345678905'));  // true
+console.log(cdigit.gtin.validate('012345678901'));  // false

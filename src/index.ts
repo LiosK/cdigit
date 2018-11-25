@@ -22,6 +22,9 @@ export * from './algo/mod11_10';
 export * from './algo/mod27_26';
 export * from './algo/mod37_36';
 
+// GTINs (including UPC, EAN, ISBN-13, etc.)
+export * from './algo/gtin';
+
 /** Supported cdigit names */
 export const names = [
   'luhn',
@@ -35,4 +38,5 @@ export const names = [
   'mod11_10',
   'mod27_26',
   'mod37_36',
+  'gtin',
 ];

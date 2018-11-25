@@ -75,9 +75,9 @@
 <span class="hljs-built_in">console</span>.log(cdigit.luhn.generate(<span class="hljs-string">'1234'</span>));  <span class="hljs-comment">// '12344'</span>
 <span class="hljs-built_in">console</span>.log(cdigit.luhn.validate(<span class="hljs-string">'12344'</span>)); <span class="hljs-comment">// true</span></code></pre>
 				<p>Command line:</p>
-				<pre><code class="language-bash">cdigit --algo damm compute 1234
-cdigit --algo damm generate 1234
-cdigit --algo damm validate 12340</code></pre>
+				<pre><code class="language-bash">npx cdigit --algo damm compute 1234
+npx cdigit --algo damm generate 1234
+npx cdigit --algo damm validate 12340</code></pre>
 				<h2 id="supported-algorithms">Supported Algorithms</h2>
 				<h3 id="generic-algorithms">Generic Algorithms</h3>
 				<table>
@@ -107,57 +107,113 @@ cdigit --algo damm validate 12340</code></pre>
 							<td>Numeric (0-9)</td>
 							<td>1 digit (0-9)</td>
 						</tr>
+				</tbody></table>
+				<h3 id="iso-iec-7064-family"><a href="https://www.iso.org/standard/31531.html">ISO/IEC 7064</a> Family</h3>
+				<p>ISO/IEC 7064 describes eight check digit (character) systems for numeric,
+				alphabetic, or alphanumeric strings.</p>
+				<table>
+					<thead>
 						<tr>
-							<td><a href="https://www.iso.org/standard/31531.html">ISO/IEC 7064</a>, MOD 11-2</td>
+							<th>Algorithm</th>
+							<th>cdigit name</th>
+							<th>Input string</th>
+							<th>Check character(s)</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>ISO/IEC 7064, MOD 11-2</td>
 							<td>mod11_2</td>
 							<td>Numeric (0-9)</td>
 							<td>1 digit or &#39;X&#39; (0-9X)</td>
 						</tr>
 						<tr>
-							<td><a href="https://www.iso.org/standard/31531.html">ISO/IEC 7064</a>, MOD 37-2</td>
+							<td>ISO/IEC 7064, MOD 37-2</td>
 							<td>mod37_2</td>
 							<td>Alphanumeric (0-9A-Z)</td>
 							<td>1 digit, letter, or &#39;*&#39; (0-9A-Z*)</td>
 						</tr>
 						<tr>
-							<td><a href="https://www.iso.org/standard/31531.html">ISO/IEC 7064</a>, MOD 97-10</td>
+							<td>ISO/IEC 7064, MOD 97-10</td>
 							<td>mod97_10</td>
 							<td>Numeric (0-9)</td>
 							<td>2 digits (0-9)</td>
 						</tr>
 						<tr>
-							<td><a href="https://www.iso.org/standard/31531.html">ISO/IEC 7064</a>, MOD 661-26</td>
+							<td>ISO/IEC 7064, MOD 661-26</td>
 							<td>mod661_26</td>
 							<td>Alphabetic (A-Z)</td>
 							<td>2 letters (A-Z)</td>
 						</tr>
 						<tr>
-							<td><a href="https://www.iso.org/standard/31531.html">ISO/IEC 7064</a>, MOD 1271-36</td>
+							<td>ISO/IEC 7064, MOD 1271-36</td>
 							<td>mod1271_36</td>
 							<td>Alphanumeric (0-9A-Z)</td>
 							<td>2 digits or letters (0-9A-Z)</td>
 						</tr>
 						<tr>
-							<td><a href="https://www.iso.org/standard/31531.html">ISO/IEC 7064</a>, MOD 11-10</td>
+							<td>ISO/IEC 7064, MOD 11-10</td>
 							<td>mod11_10</td>
 							<td>Numeric (0-9)</td>
 							<td>1 digit (0-9)</td>
 						</tr>
 						<tr>
-							<td><a href="https://www.iso.org/standard/31531.html">ISO/IEC 7064</a>, MOD 27-26</td>
+							<td>ISO/IEC 7064, MOD 27-26</td>
 							<td>mod27_26</td>
 							<td>Alphabetic (A-Z)</td>
 							<td>1 letter (A-Z)</td>
 						</tr>
 						<tr>
-							<td><a href="https://www.iso.org/standard/31531.html">ISO/IEC 7064</a>, MOD 37-36</td>
+							<td>ISO/IEC 7064, MOD 37-36</td>
 							<td>mod37_36</td>
 							<td>Alphanumeric (0-9A-Z)</td>
 							<td>1 digit or letter (0-9A-Z)</td>
 						</tr>
 				</tbody></table>
+				<h3 id="gtin-global-trade-item-number-family"><a href="https://www.gs1.org/standards/id-keys/gtin">GTIN</a> (Global Trade Item Number) Family</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>Algorithm</th>
+							<th>cdigit name</th>
+							<th>Input string</th>
+							<th>Check character(s)</th>
+							<th>Also referred to as</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>GTIN-8</td>
+							<td>gtin</td>
+							<td>Numeric (0-9)</td>
+							<td>1 digit (0-9)</td>
+							<td><a href="https://en.wikipedia.org/wiki/International_Article_Number">EAN</a>-8</td>
+						</tr>
+						<tr>
+							<td>GTIN-12</td>
+							<td>gtin</td>
+							<td>Numeric (0-9)</td>
+							<td>1 digit (0-9)</td>
+							<td><a href="https://en.wikipedia.org/wiki/Universal_Product_Code">UPC</a>, UPC-A</td>
+						</tr>
+						<tr>
+							<td>GTIN-13</td>
+							<td>gtin</td>
+							<td>Numeric (0-9)</td>
+							<td>1 digit (0-9)</td>
+							<td>EAN, <a href="https://en.wikipedia.org/wiki/International_Article_Number#Japanese_Article_Number">JAN</a>, <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a>-13, etc.</td>
+						</tr>
+						<tr>
+							<td>GTIN-14</td>
+							<td>gtin</td>
+							<td>Numeric (0-9)</td>
+							<td>1 digit (0-9)</td>
+							<td>EAN, UCC-14</td>
+						</tr>
+				</tbody></table>
+				<p><code>cdigit</code> currently provides only one generic <code>gtin</code> object for GTINs and other
+					<a href="https://www.gs1.org/standards/id-keys">GS1 data structures</a> as they share the same algorithm. Note that <code>cdigit.gtin</code>
+				does not validate the length of a given GTIN string.</p>
 				<h2 id="usage-node-js">Usage - Node.js</h2>
-				<p>Load <code>cdigit</code> and access to an algorithm object by cdigit.<em>name</em> as listed in
+				<p>Load <code>cdigit</code> and access to an algorithm object by cdigit.<em>name</em> listed in
 				<a href="#supported-algorithms">Supported Algorithms section</a>.</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> cdigit = <span class="hljs-built_in">require</span>(<span class="hljs-string">'cdigit'</span>);
 <span class="hljs-keyword">const</span> algo = cdigit.mod97_10;</code></pre>
@@ -179,28 +235,17 @@ cdigit --algo damm validate 12340</code></pre>
 				<h2 id="usage-command-line">Usage - Command Line</h2>
 				<pre><code><span class="hljs-attribute">Usage</span>: cdigit [options] [command]
 
-<span class="angelscript">Options:
-  -a, --algo &lt;name&gt;  specify check digit algorithm (see below)
+<span class="smali">Options:
+  -a, --algo &lt;name&gt;  specify<span class="hljs-built_in"> check </span>digit algorithm by name
   -h, --help         output usage information
 
 Commands:
-  validate &lt;<span class="hljs-built_in">string</span>&gt;  check <span class="hljs-keyword">if</span> <span class="hljs-built_in">string</span> <span class="hljs-keyword">is</span> valid
-  generate &lt;<span class="hljs-built_in">string</span>&gt;  generate valid number <span class="hljs-keyword">from</span> <span class="hljs-built_in">string</span>
-  compute &lt;<span class="hljs-built_in">string</span>&gt;   compute check digit <span class="hljs-keyword">from</span> <span class="hljs-built_in">string</span>
-
-Supported Algorithms:
-  luhn        Luhn Algorithm
-  verhoeff    Verhoeff Algorithm
-  damm        Damm Algorithm
-  mod11_2     ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">11</span><span class="hljs-number">-2</span>
-  mod37_2     ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">37</span><span class="hljs-number">-2</span>
-  mod97_10    ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">97</span><span class="hljs-number">-10</span>
-  mod661_26   ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">661</span><span class="hljs-number">-26</span>
-  mod1271_36  ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">1271</span><span class="hljs-number">-36</span>
-  mod11_10    ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">11</span><span class="hljs-number">-10</span>
-  mod27_26    ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">27</span><span class="hljs-number">-26</span>
-  mod37_36    ISO/IEC <span class="hljs-number">7064</span>, MOD <span class="hljs-number">37</span><span class="hljs-number">-36</span>
-  (--algo defaults to `luhn<span class="hljs-string">' or CDIGIT_CLI_DEFAULT_ALGO env var if set)</span></span></code></pre><h2 id="license">License</h2>
+  validate &lt;string&gt; <span class="hljs-built_in"> check </span>if string is valid
+  generate &lt;string&gt;  generate valid number from string
+  compute &lt;string&gt;   compute<span class="hljs-built_in"> check </span>digit from string</span></code></pre><p><code>-a, --algo &lt;name&gt;</code> option accepts the names listed in <a href="#supported-algorithms">Supported Algorithms
+					section</a> and defaults to <code>luhn</code> or the value of
+				<code>CDIGIT_CLI_DEFAULT_ALGO</code> environment variable (if set).</p>
+				<h2 id="license">License</h2>
 				<p>Copyright (c) 2018 LiosK</p>
 				<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
 					you may not use this file except in compliance with the License.
@@ -231,6 +276,9 @@ Supported Algorithms:
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-is-not-exported">
 						<a href="classes/damm.html" class="tsd-kind-icon">Damm</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/gtin.html" class="tsd-kind-icon">GTIN</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-not-exported">
 						<a href="classes/luhn.html" class="tsd-kind-icon">Luhn</a>
@@ -267,6 +315,9 @@ Supported Algorithms:
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#damm" class="tsd-kind-icon">damm</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#gtin" class="tsd-kind-icon">gtin</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#luhn" class="tsd-kind-icon">luhn</a>
