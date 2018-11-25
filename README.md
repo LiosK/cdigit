@@ -41,6 +41,9 @@ npx cdigit --algo damm validate 12340
 
 ### [ISO/IEC 7064] Family
 
+ISO/IEC 7064 describes eight check digit (character) systems for numeric,
+alphabetic, or alphanumeric strings.
+
 | Algorithm                 | cdigit name | Input string          | Check character(s)                  |
 |---------------------------|-------------|-----------------------|-------------------------------------|
 | ISO/IEC 7064, MOD 11-2    | mod11_2     | Numeric (0-9)         | 1 digit or 'X' (0-9X)               |
@@ -54,20 +57,25 @@ npx cdigit --algo damm validate 12340
 
 [ISO/IEC 7064]: https://www.iso.org/standard/31531.html
 
-### [GTIN] Family
+### [GTIN] (Global Trade Item Number) Family
 
-| Algorithm | cdigit name | Input string  | Check character(s) | Also referred to as     |
-|-----------|-------------|---------------|--------------------|-------------------------|
-| GTIN-8    | gtin        | Numeric (0-9) | 1 digit (0-9)      | EAN-8                   |
-| GTIN-12   | gtin        | Numeric (0-9) | 1 digit (0-9)      | UPC, UPC-A              |
-| GTIN-13   | gtin        | Numeric (0-9) | 1 digit (0-9)      | EAN, JAN, ISBN-13, etc. |
-| GTIN-14   | gtin        | Numeric (0-9) | 1 digit (0-9)      | EAN, UCC-14             |
+| Algorithm | cdigit name | Input string  | Check character(s) | Also referred to as         |
+|-----------|-------------|---------------|--------------------|-----------------------------|
+| GTIN-8    | gtin        | Numeric (0-9) | 1 digit (0-9)      | [EAN]-8                     |
+| GTIN-12   | gtin        | Numeric (0-9) | 1 digit (0-9)      | [UPC], UPC-A                |
+| GTIN-13   | gtin        | Numeric (0-9) | 1 digit (0-9)      | EAN, [JAN], [ISBN]-13, etc. |
+| GTIN-14   | gtin        | Numeric (0-9) | 1 digit (0-9)      | EAN, UCC-14                 |
 
 `cdigit` currently provides only one generic `gtin` object for GTINs and other
-GS1 data structures as they share the same algorithm. Note that `cdigit.gtin`
+[GS1 data structures] as they share the same algorithm. Note that `cdigit.gtin`
 does not validate the length of a given GTIN string.
 
-[GTIN]: https://www.gs1.org/standards/barcodes-epcrfid-id-keys/gs1-general-specifications
+[GTIN]: https://www.gs1.org/standards/id-keys/gtin
+[EAN]: https://en.wikipedia.org/wiki/International_Article_Number
+[UPC]: https://en.wikipedia.org/wiki/Universal_Product_Code
+[JAN]: https://en.wikipedia.org/wiki/International_Article_Number#Japanese_Article_Number
+[ISBN]: https://en.wikipedia.org/wiki/International_Standard_Book_Number
+[GS1 data structures]: https://www.gs1.org/standards/id-keys
 
 
 ## Usage - Node.js
