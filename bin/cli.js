@@ -5,12 +5,13 @@ const program = require('commander');
 
 // top-level options
 program
-  .option('-a, --algo <name>', 'specify check digit algorithm (see below)')
+  .option('-a, --algo <name>', 'specify check digit algorithm by name')
   .on('--help', () => {
     // custom help
     console.log('');
     console.log('Supported Algorithms:');
     const maxlen = Math.max(...cdigit.names.map(ss => ss.length));
+    console.log(`  ${'NAME'.padEnd(maxlen, ' ')}  ALGORITHM`);
     cdigit.names.forEach((name) => {
       console.log(`  ${name.padEnd(maxlen, ' ')}  ${cdigit[name].longName}`);
     });

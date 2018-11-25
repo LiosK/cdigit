@@ -80,7 +80,7 @@ does not validate the length of a given GTIN string.
 
 ## Usage - Node.js
 
-Load `cdigit` and access to an algorithm object by cdigit.*name* as listed in
+Load `cdigit` and access to an algorithm object by cdigit.*name* listed in
 [Supported Algorithms section](#supported-algorithms).
 
 ```javascript
@@ -127,30 +127,18 @@ See [example.js](example.js) for usage examples.
 Usage: cdigit [options] [command]
 
 Options:
-  -a, --algo <name>  specify check digit algorithm (see below)
+  -a, --algo <name>  specify check digit algorithm by name
   -h, --help         output usage information
 
 Commands:
   validate <string>  check if string is valid
   generate <string>  generate valid number from string
   compute <string>   compute check digit from string
-
-Supported Algorithms:
-  luhn        Luhn Algorithm
-  verhoeff    Verhoeff Algorithm
-  damm        Damm Algorithm
-  mod11_2     ISO/IEC 7064, MOD 11-2
-  mod37_2     ISO/IEC 7064, MOD 37-2
-  mod97_10    ISO/IEC 7064, MOD 97-10
-  mod661_26   ISO/IEC 7064, MOD 661-26
-  mod1271_36  ISO/IEC 7064, MOD 1271-36
-  mod11_10    ISO/IEC 7064, MOD 11-10
-  mod27_26    ISO/IEC 7064, MOD 27-26
-  mod37_36    ISO/IEC 7064, MOD 37-36
-  gtin        GTINs (including UPC, EAN, ISBN-13, etc.)
-  (--algo defaults to `luhn' or CDIGIT_CLI_DEFAULT_ALGO env var if set)
 ```
 
+`-a, --algo <name>` option accepts the names listed in [Supported Algorithms
+section](#supported-algorithms) and defaults to `luhn` or the value of
+`CDIGIT_CLI_DEFAULT_ALGO` environment variable (if set).
 
 ## License
 
