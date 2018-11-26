@@ -98,7 +98,7 @@ const algo = cdigit.mod97_10;
 
 Algorithm objects implement the following methods:
 
-### validate(num: string): boolean
+### validate(numWithCC: string): boolean
 
 Check if a given string is valid in accordance with the algorithm. The argument
 must include check digit(s) as well as the source number.
@@ -107,7 +107,7 @@ must include check digit(s) as well as the source number.
 console.log(cdigit.mod97_10.validate('123482'));  // true
 ```
 
-### generate(num: string): string
+### generate(numWithoutCC: string): string
 
 Generate a valid number string from a given source number. The generated string
 includes the check digit(s) computed and placed in accordance with the
@@ -117,7 +117,7 @@ algorithm.
 console.log(cdigit.mod97_10.generate('1234'));  // '123482'
 ```
 
-### compute(num: string): string
+### compute(numWithoutCC: string): string
 
 Generate check digit(s) from a given source number. Unlike `generate()`, this
 method returns the check digit(s) only.

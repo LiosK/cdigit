@@ -17,23 +17,27 @@ export interface Algo {
    * Generate a valid number string from a given source number. The generated
    * string includes the check digit(s) computed and placed in accordance with
    * the algorithm.
+   *
+   * @return Number with check digit(s)
    */
-  generate(num: string): string;
+  generate(numWithoutCC: string): string;
 
   /**
    * Check if a given string is valid in accordance with the algorithm. The
    * argument must include check digit(s) as well as the source number.
    */
-  validate(num: string): boolean;
+  validate(numWithCC: string): boolean;
 
   /**
-   * Generate check digit(s) from a given source number. This returns the check
-   * digit(s) only.
+   * Generate check digit(s) from a given source number. Unlike `generate()`,
+   * this method returns the check digit(s) only.
+   *
+   * @return Check digit(s)
    */
-  compute(num: string): string;
+  compute(numWithoutCC: string): string;
 
   /** Split a number into its source number and check digits. */
-  parse(num: string): [string, string];
+  parse(numWithCC: string): [string, string];
 }
 
 export const helper = {
