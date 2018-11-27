@@ -49,8 +49,12 @@ export const helper = {
   invertCharList: (alphabet: string): {[character: string]: number} => {
     if (helper._invCharListMemo[alphabet] == null) {
       helper._invCharListMemo[alphabet] = {};
-      for (let i = 0, len = alphabet.length; i < len; i += 1) {
+      const len = alphabet.length;
+      for (let i = 0; i < len; i += 1) {
         helper._invCharListMemo[alphabet][alphabet[i]] = i;
+      }
+      if (len !== Object.keys(helper._invCharListMemo[alphabet]).length) {
+        throw new Error('assertion error: chars must be unique');
       }
     }
     return helper._invCharListMemo[alphabet];
