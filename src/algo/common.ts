@@ -67,7 +67,7 @@ export const helper = {
     computePure: (
       num: string, mod: number, radix: number, hasTwoCCs: boolean, alphabet: string,
     ) => {
-      const ds = `${num}${alphabet[0].repeat(hasTwoCCs ? 2 : 1)}`;
+      const ds = `${num}${alphabet[0]}${hasTwoCCs ? alphabet[0] : ''}`;
       const overflowProtection = Math.floor(0xffffffffffff / radix);
       const charmap = helper.invertCharList(alphabet);
 
