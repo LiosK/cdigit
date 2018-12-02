@@ -14,26 +14,36 @@ export interface Algo {
   readonly longName: string;
 
   /**
-   * Generate a valid number string from a given source number. The generated
-   * string includes the check digit(s) computed and placed in accordance with
-   * the algorithm.
+   * Generate a valid number string from a given string in accordance with the
+   * algorithm. The generated string includes the original string and computed
+   * check digit(s) that are combined in the manner specified by the algorithm.
+   *
+   * @return Number with check digit(s)
    */
-  generate(num: string): string;
+  generate(numWithoutCC: string): string;
 
   /**
-   * Check if a given string is valid in accordance with the algorithm. The
-   * argument must include check digit(s) as well as the source number.
+   * Check if a given string is valid according to the algorithm. The argument
+   * must be a combined string of check digit(s) and their original number.
+   *
+   * @return True if valid
    */
-  validate(num: string): boolean;
+  validate(numWithCC: string): boolean;
 
   /**
-   * Generate check digit(s) from a given source number. This returns the check
-   * digit(s) only.
+   * Generate check digit(s) from a given number. Unlike `generate()`, this
+   * method returns the check digit(s) only.
+   *
+   * @return Check digit(s)
    */
-  compute(num: string): string;
+  compute(numWithoutCC: string): string;
 
-  /** Split a number into its source number and check digits. */
-  parse(num: string): [string, string];
+  /**
+   * Split a number into its original number and check digit(s).
+   *
+   * @return Tuple of two strings [numWithoutCC, cc]
+   */
+  parse(numWithCC: string): [string, string];
 }
 
 export const helper = {
@@ -45,8 +55,12 @@ export const helper = {
   invertCharList: (alphabet: string): {[character: string]: number} => {
     if (helper._invCharListMemo[alphabet] == null) {
       helper._invCharListMemo[alphabet] = {};
-      for (let i = 0, len = alphabet.length; i < len; i += 1) {
+      const len = alphabet.length;
+      for (let i = 0; i < len; i += 1) {
         helper._invCharListMemo[alphabet][alphabet[i]] = i;
+      }
+      if (len !== Object.keys(helper._invCharListMemo[alphabet]).length) {
+        throw new Error('assertion error: chars must be unique');
       }
     }
     return helper._invCharListMemo[alphabet];
@@ -59,7 +73,7 @@ export const helper = {
     computePure: (
       num: string, mod: number, radix: number, hasTwoCCs: boolean, alphabet: string,
     ) => {
-      const ds = `${num}${alphabet[0].repeat(hasTwoCCs ? 2 : 1)}`;
+      const ds = `${num}${alphabet[0]}${hasTwoCCs ? alphabet[0] : ''}`;
       const overflowProtection = Math.floor(0xffffffffffff / radix);
       const charmap = helper.invertCharList(alphabet);
 

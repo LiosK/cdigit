@@ -225,18 +225,18 @@ npx cdigit --algo damm validate 12340</code></pre>
 				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> cdigit = <span class="hljs-built_in">require</span>(<span class="hljs-string">'cdigit'</span>);
 <span class="hljs-keyword">const</span> algo = cdigit.mod97_10;</code></pre>
 				<p>Algorithm objects implement the following methods:</p>
-				<h3 id="validate-num-string-boolean">validate(num: string): boolean</h3>
-				<p>Check if a given string is valid in accordance with the algorithm. The argument
-				must include check digit(s) as well as the source number.</p>
+				<h3 id="validate-numwithcc-string-boolean">validate(numWithCC: string): boolean</h3>
+				<p>Check if a given string is valid according to the algorithm. The argument must
+				be a combined string of check digit(s) and their original number.</p>
 				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.validate(<span class="hljs-string">'123482'</span>));  <span class="hljs-comment">// true</span></code></pre>
-				<h3 id="generate-num-string-string">generate(num: string): string</h3>
-				<p>Generate a valid number string from a given source number. The generated string
-					includes the check digit(s) computed and placed in accordance with the
-				algorithm.</p>
+				<h3 id="generate-numwithoutcc-string-string">generate(numWithoutCC: string): string</h3>
+				<p>Generate a valid number string from a given string in accordance with the
+					algorithm. The generated string includes the original string and computed check
+				digit(s) that are combined in the manner specified by the algorithm.</p>
 				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.generate(<span class="hljs-string">'1234'</span>));  <span class="hljs-comment">// '123482'</span></code></pre>
-				<h3 id="compute-num-string-string">compute(num: string): string</h3>
-				<p>Generate check digit(s) from a given source number. Unlike <code>generate()</code>, this
-				method returns the check digit(s) only.</p>
+				<h3 id="compute-numwithoutcc-string-string">compute(numWithoutCC: string): string</h3>
+				<p>Generate check digit(s) from a given number. Unlike <code>generate()</code>, this method
+				returns the check digit(s) only.</p>
 				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.compute(<span class="hljs-string">'1234'</span>)); <span class="hljs-comment">// '82'</span></code></pre>
 				<p>See <a href="https://npm.runkit.com/cdigit">example.js</a> for usage examples.</p>
 				<h2 id="usage-command-line">Usage - Command-line</h2>
