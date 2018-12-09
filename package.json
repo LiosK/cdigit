@@ -1,6 +1,6 @@
 {
   "name": "cdigit",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "Collection of check digit algorithms implemented in JavaScript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,11 +9,12 @@
   },
   "scripts": {
     "build": "rm -rf lib && tsc",
-    "eslint": "eslint bin test",
-    "prepare": "npm run tslint && npm run build && npm run eslint && npm test",
+    "lint:es": "eslint bin test",
+    "lint:ts": "tslint -p package.json",
+    "prepare": "npm run lint:ts && npm run build && npm run lint:es && npm test",
     "test": "mocha",
-    "tslint": "tslint -p package.json",
-    "typedoc": "rm -rf docs && typedoc --out docs --mode file --gitRevision master"
+    "typedoc": "npm run typedoc:head -- --gitRevision master",
+    "typedoc:head": "rm -rf docs && typedoc --out docs --mode file"
   },
   "repository": {
     "type": "git",
@@ -68,7 +69,7 @@
     "commander": "^2.19.0"
   },
   "devDependencies": {
-    "eslint": "^5.9.0",
+    "eslint": "^5.10.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
@@ -76,8 +77,8 @@
     "mocha": "^5.2.0",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.1",
-    "tsutils": "^3.5.1",
+    "tsutils": "^3.5.2",
     "typedoc": "^0.13.0",
-    "typescript": "^3.2.1"
+    "typescript": "^3.2.2"
   }
 }
