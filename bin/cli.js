@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const cdigit = require('..');
 const program = require('commander');
+const cdigit = require('..');
 
 // top-level options
 program
