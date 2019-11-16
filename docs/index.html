@@ -64,9 +64,13 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="cdigit-check-digit-algorithms-in-js">cdigit: Check Digit Algorithms in JS</h1>
+				<a href="#cdigit-check-digit-algorithms-in-js" id="cdigit-check-digit-algorithms-in-js" style="color: inherit; text-decoration: none;">
+					<h1>cdigit: Check Digit Algorithms in JS</h1>
+				</a>
 				<p>cdigit - Collection of check digit algorithms implemented in JavaScript</p>
-				<h2 id="synopsis">Synopsis</h2>
+				<a href="#synopsis" id="synopsis" style="color: inherit; text-decoration: none;">
+					<h2>Synopsis</h2>
+				</a>
 				<p>Node.js:</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> cdigit = <span class="hljs-built_in">require</span>(<span class="hljs-string">'cdigit'</span>);
 
@@ -79,8 +83,12 @@
 npx cdigit --algo damm compute 1234
 npx cdigit --algo damm generate 1234
 npx cdigit --algo damm validate 12340</code></pre>
-				<h2 id="supported-algorithms">Supported Algorithms</h2>
-				<h3 id="generic-algorithms">Generic Algorithms</h3>
+				<a href="#supported-algorithms" id="supported-algorithms" style="color: inherit; text-decoration: none;">
+					<h2>Supported Algorithms</h2>
+				</a>
+				<a href="#generic-algorithms" id="generic-algorithms" style="color: inherit; text-decoration: none;">
+					<h3>Generic Algorithms</h3>
+				</a>
 				<table>
 					<thead>
 						<tr>
@@ -109,7 +117,9 @@ npx cdigit --algo damm validate 12340</code></pre>
 							<td>1 digit (0-9)</td>
 						</tr>
 				</tbody></table>
-				<h3 id="iso-iec-7064-family"><a href="https://www.iso.org/standard/31531.html">ISO/IEC 7064</a> Family</h3>
+				<a href="#a-hrefhttpswwwisoorgstandard31531htmlisoiec-7064a-family" id="a-hrefhttpswwwisoorgstandard31531htmlisoiec-7064a-family" style="color: inherit; text-decoration: none;">
+					<h3><a href="https://www.iso.org/standard/31531.html">ISO/IEC 7064</a> Family</h3>
+				</a>
 				<p>ISO/IEC 7064 describes eight generic check digit (character) systems for
 					numeric, alphabetic, and alphanumeric strings. ISO/IEC 7064 specifies two types
 					of systems that use the same algorithm with different parameters: Pure systems
@@ -173,7 +183,9 @@ npx cdigit --algo damm validate 12340</code></pre>
 							<td>1 digit or letter (0-9A-Z)</td>
 						</tr>
 				</tbody></table>
-				<h3 id="gtin-global-trade-item-number-family"><a href="https://www.gs1.org/standards/id-keys/gtin">GTIN</a> (Global Trade Item Number) Family</h3>
+				<a href="#a-hrefhttpswwwgs1orgstandardsid-keysgtingtina-global-trade-item-number-family" id="a-hrefhttpswwwgs1orgstandardsid-keysgtingtina-global-trade-item-number-family" style="color: inherit; text-decoration: none;">
+					<h3><a href="https://www.gs1.org/standards/id-keys/gtin">GTIN</a> (Global Trade Item Number) Family</h3>
+				</a>
 				<p>GTINs are internationally unified product identification numbers that are often
 					(or historically) referred to as <a href="https://en.wikipedia.org/wiki/Universal_Product_Code">UPC</a>, <a href="https://en.wikipedia.org/wiki/International_Article_Number">EAN</a>, <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a>-13, etc. GTINs have
 					several variations in length but share the identical check digit algorithm;
@@ -219,27 +231,37 @@ npx cdigit --algo damm validate 12340</code></pre>
 							<td>EAN, UCC-14</td>
 						</tr>
 				</tbody></table>
-				<h2 id="usage-node-js">Usage - Node.js</h2>
+				<a href="#usage---nodejs" id="usage---nodejs" style="color: inherit; text-decoration: none;">
+					<h2>Usage - Node.js</h2>
+				</a>
 				<p>Load <code>cdigit</code> and access to algorithm objects by cdigit.<em>name</em> listed in
 				<a href="#supported-algorithms">Supported Algorithms section</a>.</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> cdigit = <span class="hljs-built_in">require</span>(<span class="hljs-string">'cdigit'</span>);
 <span class="hljs-keyword">const</span> algo = cdigit.mod97_10;</code></pre>
 				<p>Algorithm objects implement the following methods:</p>
-				<h3 id="validate-numwithcc-string-boolean">validate(numWithCC: string): boolean</h3>
+				<a href="#validatenumwithcc-string-boolean" id="validatenumwithcc-string-boolean" style="color: inherit; text-decoration: none;">
+					<h3>validate(numWithCC: string): boolean</h3>
+				</a>
 				<p>Check if a given string is valid according to the algorithm. The argument must
 				be a combined string of check digit(s) and their original number.</p>
 				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.validate(<span class="hljs-string">'123482'</span>));  <span class="hljs-comment">// true</span></code></pre>
-				<h3 id="generate-numwithoutcc-string-string">generate(numWithoutCC: string): string</h3>
+				<a href="#generatenumwithoutcc-string-string" id="generatenumwithoutcc-string-string" style="color: inherit; text-decoration: none;">
+					<h3>generate(numWithoutCC: string): string</h3>
+				</a>
 				<p>Generate a valid number string from a given string in accordance with the
 					algorithm. The generated string includes the original string and computed check
 				digit(s) that are combined in the manner specified by the algorithm.</p>
 				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.generate(<span class="hljs-string">'1234'</span>));  <span class="hljs-comment">// '123482'</span></code></pre>
-				<h3 id="compute-numwithoutcc-string-string">compute(numWithoutCC: string): string</h3>
+				<a href="#computenumwithoutcc-string-string" id="computenumwithoutcc-string-string" style="color: inherit; text-decoration: none;">
+					<h3>compute(numWithoutCC: string): string</h3>
+				</a>
 				<p>Generate check digit(s) from a given number. Unlike <code>generate()</code>, this method
 				returns the check digit(s) only.</p>
 				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.compute(<span class="hljs-string">'1234'</span>)); <span class="hljs-comment">// '82'</span></code></pre>
 				<p>See <a href="https://npm.runkit.com/cdigit">example.js</a> for usage examples.</p>
-				<h2 id="usage-command-line">Usage - Command-line</h2>
+				<a href="#usage---command-line" id="usage---command-line" style="color: inherit; text-decoration: none;">
+					<h2>Usage - Command-line</h2>
+				</a>
 				<pre><code><span class="hljs-attribute">Usage</span>: cdigit [options] [command]
 
 <span class="smali">Options:
@@ -252,17 +274,25 @@ Commands:
   compute &lt;string&gt;   compute<span class="hljs-built_in"> check </span>digit from string</span></code></pre><p><code>-a, --algo &lt;name&gt;</code> option accepts the names listed in <a href="#supported-algorithms">Supported Algorithms
 					section</a> and defaults to <code>luhn</code> or the value of
 				<code>CDIGIT_CLI_DEFAULT_ALGO</code> environment variable (if set).</p>
-				<h2 id="license">License</h2>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
 				<p>Copyright (c) 2018-2019 LiosK</p>
-				<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use
-					this file except in compliance with the License. You may obtain a copy of the
-				License at</p>
-				<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
-				<p>Unless required by applicable law or agreed to in writing, software distributed
-					under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR
-					CONDITIONS OF ANY KIND, either express or implied. See the License for the
-				specific language governing permissions and limitations under the License.</p>
-				<h2 id="see-also">See Also</h2>
+				<p>Licensed under either of</p>
+				<ul>
+					<li><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></li>
+					<li><a href="http://opensource.org/licenses/MIT">MIT license</a></li>
+				</ul>
+				<p>at your option.</p>
+				<a href="#contribution" id="contribution" style="color: inherit; text-decoration: none;">
+					<h2>Contribution</h2>
+				</a>
+				<p>Unless you explicitly state otherwise, any contribution intentionally submitted
+					for inclusion in the work by you, as defined in the Apache-2.0 license, shall be
+				dual licensed as above, without any additional terms or conditions.</p>
+				<a href="#see-also" id="see-also" style="color: inherit; text-decoration: none;">
+					<h2>See Also</h2>
+				</a>
 				<ul>
 					<li><a href="https://github.com/LiosK/cdigit">GitHub repository</a></li>
 					<li><a href="https://www.npmjs.com/package/cdigit">npm package</a></li>
@@ -378,6 +408,7 @@ Commands:
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -426,7 +457,7 @@ Commands:
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
