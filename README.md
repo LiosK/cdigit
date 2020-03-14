@@ -151,7 +151,7 @@ section](#supported-algorithms) and defaults to `luhn` or the value of
 
 ## License
 
-Copyright (c) 2018-2019 LiosK
+Copyright (c) 2018-2020 LiosK
 
 Licensed under either of
 
