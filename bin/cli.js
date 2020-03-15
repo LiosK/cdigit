@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const program = require("commander");
+const { program } = require("commander");
 const cdigit = require("..");
 
 // top-level options
@@ -18,9 +18,6 @@ program
     console.log(
       "  (--algo defaults to `luhn' or CDIGIT_CLI_DEFAULT_ALGO env var if set)"
     );
-  })
-  .on("command:*", cmd => {
-    throw Error(`unknown command \`${cmd}'`);
   });
 
 // handler for subcommands
