@@ -5,19 +5,19 @@
  * @license Apache-2.0
  */
 
-import { Algo, helper } from './common';
+import { Algo, helper } from "./common";
 
 /* eslint-disable @typescript-eslint/camelcase, @typescript-eslint/class-name-casing */
 
 /** ISO/IEC 7064, MOD 37-36 implementation */
 class Mod37_36 implements Algo {
-  name = 'mod37_36';
-  longName = 'ISO/IEC 7064, MOD 37-36';
+  name = "mod37_36";
+  longName = "ISO/IEC 7064, MOD 37-36";
 
   private alphabet: string = helper.iso7064.alphanumeric.slice(0, -1);
 
   compute(num: string): string {
-    const ds = String(num).replace(/[^0-9A-Z]/g, '');
+    const ds = String(num).replace(/[^0-9A-Z]/g, "");
     return helper.iso7064.computeHybrid(ds, this.alphabet);
   }
 

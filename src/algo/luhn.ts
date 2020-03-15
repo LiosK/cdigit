@@ -1,21 +1,30 @@
 /**
  * cdigit
  *
- * @copyright 2018 LiosK
+ * @copyright 2018-2020 LiosK
  * @license Apache-2.0
  */
 
-import { Algo, helper } from './common';
+import { Algo, helper } from "./common";
 
 /** Luhn algorithm implementation */
 class Luhn implements Algo {
-  name = 'luhn';
-  longName = 'Luhn Algorithm';
+  name = "luhn";
+  longName = "Luhn Algorithm";
 
   compute(num: string): string {
-    const ds = String(num).replace(/[^0-9]/g, '');
-    const lookup: {[digit: string]: number} = {
-      0: 0, 1: 2, 2: 4, 3: 6, 4: 8, 5: 1, 6: 3, 7: 5, 8: 7, 9: 9,
+    const ds = String(num).replace(/[^0-9]/g, "");
+    const lookup: { [digit: string]: number } = {
+      0: 0,
+      1: 2,
+      2: 4,
+      3: 6,
+      4: 8,
+      5: 1,
+      6: 3,
+      7: 5,
+      8: 7,
+      9: 9
     };
 
     let sum = 0;
@@ -23,12 +32,13 @@ class Luhn implements Algo {
     for (let i = ds.length - 1; i > -1; i -= 1) {
       sum += odd ? lookup[ds[i]] : Number(ds[i]);
       odd ^= 1;
-      if (sum > 0xffffffffffff) { // ~2^48 at max
+      if (sum > 0xffffffffffff) {
+        // ~2^48 at max
         sum %= 10;
       }
     }
 
-    return String(10 - sum % 10).slice(-1);
+    return String(10 - (sum % 10)).slice(-1);
   }
 
   generate(num: string): string {

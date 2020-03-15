@@ -1,16 +1,16 @@
 /**
  * cdigit
  *
- * @copyright 2018 LiosK
+ * @copyright 2018-2020 LiosK
  * @license Apache-2.0
  */
 
-import { Algo, helper } from './common';
+import { Algo, helper } from "./common";
 
 /** Damm algorithm implementation */
 class Damm implements Algo {
-  name = 'damm';
-  longName = 'Damm Algorithm';
+  name = "damm";
+  longName = "Damm Algorithm";
 
   /** Damm operation table */
   private opTable = [
@@ -23,11 +23,11 @@ class Damm implements Algo {
     [5, 8, 6, 9, 7, 2, 0, 1, 3, 4],
     [8, 9, 4, 5, 3, 6, 2, 0, 1, 7],
     [9, 4, 3, 8, 6, 1, 7, 2, 0, 5],
-    [2, 5, 8, 1, 4, 3, 6, 7, 9, 0],
+    [2, 5, 8, 1, 4, 3, 6, 7, 9, 0]
   ];
 
   compute(num: string): string {
-    const ds = `${String(num).replace(/[^0-9]/g, '')}`;
+    const ds = `${String(num).replace(/[^0-9]/g, "")}`;
 
     let c = 0;
     for (let i = 0, len = ds.length; i < len; i += 1) {
