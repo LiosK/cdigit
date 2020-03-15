@@ -1,21 +1,21 @@
 /**
  * cdigit
  *
- * @copyright 2018 LiosK
+ * @copyright 2018-2020 LiosK
  * @license Apache-2.0
  */
 
-import { Algo, helper } from './common';
+import { Algo, helper } from "./common";
 
-/* tslint:disable:class-name variable-name */
+/* eslint-disable @typescript-eslint/camelcase, @typescript-eslint/class-name-casing */
 
 /** ISO/IEC 7064, MOD 97-10 implementation */
 class Mod97_10 implements Algo {
-  name = 'mod97_10';
-  longName = 'ISO/IEC 7064, MOD 97-10';
+  name = "mod97_10";
+  longName = "ISO/IEC 7064, MOD 97-10";
 
   compute(num: string): string {
-    const ds = `${String(num).replace(/[^0-9]/g, '')}00`;
+    const ds = `${String(num).replace(/[^0-9]/g, "")}00`;
 
     // Simplified procedure as described in ISO/IEC 7064
     let c = Number(ds.slice(0, 14)) % 97; // 10^14 < 2^48

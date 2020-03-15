@@ -1,14 +1,31 @@
 {
-  "extends": "airbnb",
+  "extends": ["eslint:recommended"],
   "overrides": [
     {
-      "files": ["bin/*.js"],
-      "rules": {
-        "no-console": "off"
+      "files": ["*.ts"],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "prettier/@typescript-eslint",
+        "plugin:prettier/recommended"
+      ],
+      "parserOptions": {
+        "project": "tsconfig.json"
       }
     },
     {
-      "files": ["test/*.js"],
+      "files": ["*.js"],
+      "extends": ["plugin:prettier/recommended"],
+      "parserOptions": {
+        "ecmaVersion": 2015
+      },
+      "env": {
+        "node": true
+      }
+    },
+    {
+      "files": ["test/**"],
       "env": {
         "mocha": true
       }

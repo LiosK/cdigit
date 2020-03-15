@@ -1,20 +1,24 @@
-const common = require('./common');
-const algo = require('..').mod27_26;
+const common = require("./common");
+const algo = require("..").mod27_26;
 
 describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings
   const valid = [
-    ['JEJLMGJS', 'JEJLMGJ', 'S'],
-    ['MUFEMSTCATLITB', 'MUFEMSTCATLIT', 'B'],
-    ['VAQKBDHZQDYVZIATTNETJULCDAVRMQIEKIBDD', 'VAQKBDHZQDYVZIATTNETJULCDAVRMQIEKIBD', 'D'],
-    ['OWNYDSZNWIBFVBRWRAU', 'OWNYDSZNWIBFVBRWRA', 'U'],
+    ["JEJLMGJS", "JEJLMGJ", "S"],
+    ["MUFEMSTCATLITB", "MUFEMSTCATLIT", "B"],
+    [
+      "VAQKBDHZQDYVZIATTNETJULCDAVRMQIEKIBDD",
+      "VAQKBDHZQDYVZIATTNETJULCDAVRMQIEKIBD",
+      "D"
+    ],
+    ["OWNYDSZNWIBFVBRWRAU", "OWNYDSZNWIBFVBRWRA", "U"]
   ];
 
   const invalid = [
-    'JEJLMGJX',
-    'MUFEMSTCATLITH',
-    'VAQKBDHZQDYVZIATTNETJULCDAVRMQIEKIBDR',
-    'OWNYDSZNWIBFVBRWRAS',
+    "JEJLMGJX",
+    "MUFEMSTCATLITH",
+    "VAQKBDHZQDYVZIATTNETJULCDAVRMQIEKIBDR",
+    "OWNYDSZNWIBFVBRWRAS"
   ];
   // }}}
 

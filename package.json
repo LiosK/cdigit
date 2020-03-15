@@ -1,6 +1,6 @@
 {
   "name": "cdigit",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "description": "Collection of check digit algorithms implemented in JavaScript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,9 +9,8 @@
   },
   "scripts": {
     "build": "rm -rf lib && tsc",
-    "lint:es": "eslint bin test",
-    "lint:ts": "tslint -p package.json",
-    "prepare": "npm run lint:ts && npm run build && npm run lint:es && npm test",
+    "lint": "eslint --ext .js,.ts example.js bin src test",
+    "prepare": "npm run lint && npm run build && npm test",
     "test": "mocha",
     "typedoc": "npm run typedoc:head -- --gitRevision master",
     "typedoc:head": "rm -rf docs && typedoc --out docs --mode file"
@@ -66,20 +65,18 @@
   },
   "tonicExampleFilename": "example.js",
   "dependencies": {
-    "commander": "^4.0.1"
+    "commander": "^5.0.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
     "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.1.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "mocha": "^6.2.2",
-    "tslint": "^5.20.1",
-    "tslint-config-airbnb": "^5.11.2",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "mocha": "^7.1.0",
+    "prettier": "^1.19.1",
     "tsutils": "^3.17.1",
-    "typedoc": "^0.15.8",
+    "typedoc": "^0.16.11",
     "typescript": "^3.8.3"
   }
 }

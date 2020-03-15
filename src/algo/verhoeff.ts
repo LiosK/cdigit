@@ -1,11 +1,11 @@
 /**
  * cdigit
  *
- * @copyright 2018 LiosK
+ * @copyright 2018-2020 LiosK
  * @license Apache-2.0
  */
 
-import { Algo, helper } from './common';
+import { Algo, helper } from "./common";
 
 /**
  * Verhoeff algorithm implementation
@@ -19,8 +19,8 @@ import { Algo, helper } from './common';
  * from left to right.
  */
 class Verhoeff implements Algo {
-  name = 'verhoeff';
-  longName = 'Verhoeff Algorithm';
+  name = "verhoeff";
+  longName = "Verhoeff Algorithm";
 
   /** Verhoeff multiplication table */
   private d = [
@@ -33,7 +33,7 @@ class Verhoeff implements Algo {
     [6, 5, 9, 8, 7, 1, 0, 4, 3, 2],
     [7, 6, 5, 9, 8, 2, 1, 0, 4, 3],
     [8, 7, 6, 5, 9, 3, 2, 1, 0, 4],
-    [9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
+    [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
   ];
 
   /** Verhoeff permutation table */
@@ -45,14 +45,14 @@ class Verhoeff implements Algo {
     [9, 4, 5, 3, 1, 2, 6, 8, 7, 0],
     [4, 2, 8, 6, 5, 7, 3, 9, 0, 1],
     [2, 7, 9, 3, 8, 0, 6, 4, 1, 5],
-    [7, 0, 4, 6, 9, 1, 3, 2, 5, 8],
+    [7, 0, 4, 6, 9, 1, 3, 2, 5, 8]
   ];
 
   /** Verhoeff inverse table */
-  private inv = ['0', '4', '3', '2', '1', '5', '6', '7', '8', '9'];
+  private inv = ["0", "4", "3", "2", "1", "5", "6", "7", "8", "9"];
 
   compute(num: string): string {
-    const ds = `${String(num).replace(/[^0-9]/g, '')}0`;
+    const ds = `${String(num).replace(/[^0-9]/g, "")}0`;
 
     let c = 0;
     for (let i = 0, len = ds.length; i < len; i += 1) {
