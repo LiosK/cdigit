@@ -1,7 +1,7 @@
 /**
  * cdigit
  *
- * @copyright 2018 LiosK
+ * @copyright 2018-2020 LiosK
  * @license Apache-2.0
  */
 
@@ -72,7 +72,7 @@ export const helper = {
     /** Implement ISO 7064 pure system recursive method. */
     computePure: (
       num: string, mod: number, radix: number, hasTwoCCs: boolean, alphabet: string,
-    ) => {
+    ): string => {
       const ds = `${num}${alphabet[0]}${hasTwoCCs ? alphabet[0] : ''}`;
       const overflowProtection = Math.floor(0xffffffffffff / radix);
       const charmap = helper.invertCharList(alphabet);
@@ -92,7 +92,7 @@ export const helper = {
       return alphabet[c];
     },
     /** Implement ISO 7064 hybrid system recursive method. */
-    computeHybrid: (ds: string, alphabet: string) => {
+    computeHybrid: (ds: string, alphabet: string): string => {
       const mod = alphabet.length;
       const charmap = helper.invertCharList(alphabet);
 

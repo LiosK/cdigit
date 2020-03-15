@@ -1,13 +1,13 @@
 /**
  * cdigit
  *
- * @copyright 2018 LiosK
+ * @copyright 2018-2020 LiosK
  * @license Apache-2.0
  */
 
 import { Algo, helper } from './common';
 
-/* tslint:disable:class-name variable-name */
+/* eslint-disable @typescript-eslint/camelcase, @typescript-eslint/class-name-casing */
 
 /** ISO/IEC 7064, MOD 37-36 implementation */
 class Mod37_36 implements Algo {
