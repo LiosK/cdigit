@@ -1,6 +1,6 @@
 {
   "name": "cdigit",
-  "version": "2.5.0-rc0",
+  "version": "2.5.0-rc1",
   "description": "Collection of check digit algorithms implemented in JavaScript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "rm -rf lib && tsc",
-    "lint": "eslint --ext .ts src && eslint --ext .js bin test",
+    "lint": "eslint --ext .js,.ts example.js bin src test",
     "prepare": "npm run lint && npm run build && npm test",
     "test": "mocha",
     "typedoc": "npm run typedoc:head -- --gitRevision master",

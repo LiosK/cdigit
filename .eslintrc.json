@@ -1,9 +1,9 @@
 {
+  "extends": ["eslint:recommended"],
   "overrides": [
     {
-      "files": ["src/**"],
+      "files": ["*.ts"],
       "extends": [
-        "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
@@ -16,10 +16,7 @@
     },
     {
       "files": ["*.js"],
-      "extends": [
-        "eslint:recommended",
-        "plugin:prettier/recommended"
-      ],
+      "extends": ["plugin:prettier/recommended"],
       "parserOptions": {
         "ecmaVersion": 2015
       },

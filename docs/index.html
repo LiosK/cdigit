@@ -72,12 +72,12 @@
 					<h2>Synopsis</h2>
 				</a>
 				<p>Node.js:</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> cdigit = <span class="hljs-built_in">require</span>(<span class="hljs-string">'cdigit'</span>);
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> cdigit = <span class="hljs-built_in">require</span>(<span class="hljs-string">"cdigit"</span>);
 
 <span class="hljs-comment">// Luhn (a.k.a. Mod 10) algorithm</span>
-<span class="hljs-built_in">console</span>.log(cdigit.luhn.compute(<span class="hljs-string">'1234'</span>));   <span class="hljs-comment">// '4'</span>
-<span class="hljs-built_in">console</span>.log(cdigit.luhn.generate(<span class="hljs-string">'1234'</span>));  <span class="hljs-comment">// '12344'</span>
-<span class="hljs-built_in">console</span>.log(cdigit.luhn.validate(<span class="hljs-string">'12344'</span>)); <span class="hljs-comment">// true</span></code></pre>
+<span class="hljs-built_in">console</span>.log(cdigit.luhn.compute(<span class="hljs-string">"1234"</span>));   <span class="hljs-comment">// "4"</span>
+<span class="hljs-built_in">console</span>.log(cdigit.luhn.generate(<span class="hljs-string">"1234"</span>));  <span class="hljs-comment">// "12344"</span>
+<span class="hljs-built_in">console</span>.log(cdigit.luhn.validate(<span class="hljs-string">"12344"</span>)); <span class="hljs-comment">// true</span></code></pre>
 				<p>Command-line:</p>
 				<pre><code class="language-bash"><span class="hljs-comment"># Damm algorithm</span>
 npx cdigit --algo damm compute 1234
@@ -236,7 +236,7 @@ npx cdigit --algo damm validate 12340</code></pre>
 				</a>
 				<p>Load <code>cdigit</code> and access to algorithm objects by cdigit.<em>name</em> listed in
 				<a href="#supported-algorithms">Supported Algorithms section</a>.</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> cdigit = <span class="hljs-built_in">require</span>(<span class="hljs-string">'cdigit'</span>);
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> cdigit = <span class="hljs-built_in">require</span>(<span class="hljs-string">"cdigit"</span>);
 <span class="hljs-keyword">const</span> algo = cdigit.mod97_10;</code></pre>
 				<p>Algorithm objects implement the following methods:</p>
 				<a href="#validatenumwithcc-string-boolean" id="validatenumwithcc-string-boolean" style="color: inherit; text-decoration: none;">
@@ -244,20 +244,20 @@ npx cdigit --algo damm validate 12340</code></pre>
 				</a>
 				<p>Check if a given string is valid according to the algorithm. The argument must
 				be a combined string of check digit(s) and their original number.</p>
-				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.validate(<span class="hljs-string">'123482'</span>));  <span class="hljs-comment">// true</span></code></pre>
+				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.validate(<span class="hljs-string">"123482"</span>)); <span class="hljs-comment">// true</span></code></pre>
 				<a href="#generatenumwithoutcc-string-string" id="generatenumwithoutcc-string-string" style="color: inherit; text-decoration: none;">
 					<h3>generate(numWithoutCC: string): string</h3>
 				</a>
 				<p>Generate a valid number string from a given string in accordance with the
 					algorithm. The generated string includes the original string and computed check
 				digit(s) that are combined in the manner specified by the algorithm.</p>
-				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.generate(<span class="hljs-string">'1234'</span>));  <span class="hljs-comment">// '123482'</span></code></pre>
+				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.generate(<span class="hljs-string">"1234"</span>)); <span class="hljs-comment">// "123482"</span></code></pre>
 				<a href="#computenumwithoutcc-string-string" id="computenumwithoutcc-string-string" style="color: inherit; text-decoration: none;">
 					<h3>compute(numWithoutCC: string): string</h3>
 				</a>
 				<p>Generate check digit(s) from a given number. Unlike <code>generate()</code>, this method
 				returns the check digit(s) only.</p>
-				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.compute(<span class="hljs-string">'1234'</span>)); <span class="hljs-comment">// '82'</span></code></pre>
+				<pre><code class="language-javascript"><span class="hljs-built_in">console</span>.log(cdigit.mod97_10.compute(<span class="hljs-string">"1234"</span>)); <span class="hljs-comment">// "82"</span></code></pre>
 				<p>See <a href="https://npm.runkit.com/cdigit">example.js</a> for usage examples.</p>
 				<a href="#usage---command-line" id="usage---command-line" style="color: inherit; text-decoration: none;">
 					<h2>Usage - Command-line</h2>

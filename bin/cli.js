@@ -16,7 +16,7 @@ program
       console.log(`  ${name.padEnd(maxlen, " ")}  ${cdigit[name].longName}`);
     });
     console.log(
-      "  (--algo defaults to `luhn' or CDIGIT_CLI_DEFAULT_ALGO env var if set)"
+      "  (--algo defaults to 'luhn' or CDIGIT_CLI_DEFAULT_ALGO env var if set)"
     );
   });
 
@@ -30,7 +30,7 @@ const handler = (str, cmd) => {
   }
 
   if (!cdigit.names.includes(algo)) {
-    throw Error(`unknown algorithm \`${algo}'`);
+    throw Error(`unknown algorithm '${algo}'`);
   }
 
   const result = cdigit[algo][cmd.name()](str);
@@ -60,11 +60,6 @@ program
 // execute
 try {
   program.parse(process.argv);
-
-  if (program.args.length === 0) {
-    process.exitCode = 1;
-    program.help();
-  }
 } catch (err) {
   process.exitCode = 1;
   console.error(`error: ${err.message}`);
