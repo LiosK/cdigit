@@ -24,7 +24,7 @@ class Luhn implements Algo {
       6: 3,
       7: 5,
       8: 7,
-      9: 9
+      9: 9,
     };
 
     let sum = 0;

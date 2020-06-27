@@ -10,9 +10,9 @@ program
     // custom help
     console.log("");
     console.log("Supported Algorithms:");
-    const maxlen = Math.max(...cdigit.names.map(ss => ss.length));
+    const maxlen = Math.max(...cdigit.names.map((ss) => ss.length));
     console.log(`  ${"NAME".padEnd(maxlen, " ")}  ALGORITHM`);
-    cdigit.names.forEach(name => {
+    cdigit.names.forEach((name) => {
       console.log(`  ${name.padEnd(maxlen, " ")}  ${cdigit[name].longName}`);
     });
     console.log(

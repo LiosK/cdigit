@@ -7,8 +7,6 @@
 
 import { Algo, helper } from "./common";
 
-/* eslint-disable @typescript-eslint/camelcase, @typescript-eslint/class-name-casing */
-
 /** ISO/IEC 7064, MOD 11-2 implementation */
 class Mod11_2 implements Algo {
   name = "mod11_2";

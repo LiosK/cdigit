@@ -11,13 +11,13 @@ describe("cdigit.names", () => {
   });
 
   it("enumerates algorithm names correctly", () => {
-    cdigit.names.forEach(name => {
+    cdigit.names.forEach((name) => {
       assert.equal(typeof cdigit[name], "object", "typeof cdigit[name]");
     });
   });
 
   it("is consistent with Algo#name", () => {
-    cdigit.names.forEach(name => {
+    cdigit.names.forEach((name) => {
       assert.equal(name, cdigit[name].name, "name === cdigit[name].name");
     });
   });

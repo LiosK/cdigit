@@ -65,7 +65,7 @@ module.exports = {
         });
       });
       it("returns false if a number is invalid", () => {
-        invalidStrings.forEach(num => {
+        invalidStrings.forEach((num) => {
           assert.ok(!algo.validate(num), `validate(${num})`);
         });
       });
@@ -88,5 +88,5 @@ module.exports = {
         });
       });
     });
-  }
+  },
 };
