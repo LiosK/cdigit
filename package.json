@@ -1,6 +1,6 @@
 {
   "name": "cdigit",
-  "version": "2.5.5",
+  "version": "2.5.6",
   "description": "Collection of check digit algorithms implemented in JavaScript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -73,8 +73,8 @@
     "eslint": "^7.7.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "mocha": "^8.1.1",
-    "prettier": "^2.1.0",
+    "mocha": "^8.1.2",
+    "prettier": "^2.1.1",
     "tsutils": "^3.17.1",
     "typedoc": "^0.18.0",
     "typescript": "^4.0.2"
