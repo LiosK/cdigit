@@ -164,4 +164,3 @@ dual licensed as above, without any additional terms or conditions.
 
 - [GitHub repository](https://github.com/LiosK/cdigit)
 - [npm package](https://www.npmjs.com/package/cdigit)
-- [typedoc-generated documentation (experimental)](https://liosk.github.io/cdigit/)
