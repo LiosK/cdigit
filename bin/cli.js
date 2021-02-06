@@ -21,10 +21,10 @@ program
   });
 
 // handler for subcommands
-const handler = (str, cmd) => {
+const handler = (str, opts, cmd) => {
   let algo = "luhn";
-  if (typeof cmd.parent.algo === "string") {
-    ({ algo } = cmd.parent);
+  if (typeof opts.algo === "string") {
+    ({ algo } = opts);
   } else if (typeof process.env.CDIGIT_CLI_DEFAULT_ALGO === "string") {
     algo = process.env.CDIGIT_CLI_DEFAULT_ALGO;
   }
