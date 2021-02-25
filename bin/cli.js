@@ -22,6 +22,7 @@ program
 
 // handler for subcommands
 const handler = (str, opts, cmd) => {
+  opts = program.opts(); // XXX
   let algo = "luhn";
   if (typeof opts.algo === "string") {
     ({ algo } = opts);
