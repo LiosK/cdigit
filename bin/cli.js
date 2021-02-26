@@ -1,31 +1,35 @@
 #!/usr/bin/env node
 
+const { EOL } = require("os");
 const { program } = require("commander");
 const cdigit = require("..");
 
 // top-level options
 program
   .option("-a, --algo <name>", "specify check digit algorithm by name")
-  .on("--help", () => {
-    // custom help
-    console.log("");
-    console.log("Supported Algorithms:");
-    const maxlen = Math.max(...cdigit.names.map((ss) => ss.length));
-    console.log(`  ${"NAME".padEnd(maxlen, " ")}  ALGORITHM`);
-    cdigit.names.forEach((name) => {
-      console.log(`  ${name.padEnd(maxlen, " ")}  ${cdigit[name].longName}`);
-    });
-    console.log(
-      "  (--algo defaults to 'luhn' or CDIGIT_CLI_DEFAULT_ALGO env var if set)"
-    );
-  });
+  .addHelpText(
+    "after",
+    (() => {
+      const lines = [""];
+      lines.push("Supported Algorithms:");
+      const maxlen = Math.max(...cdigit.names.map((ss) => ss.length));
+      lines.push(`  ${"NAME".padEnd(maxlen, " ")}  ALGORITHM`);
+      cdigit.names.forEach((name) => {
+        lines.push(`  ${name.padEnd(maxlen, " ")}  ${cdigit[name].longName}`);
+      });
+      lines.push(
+        "  (--algo defaults to 'luhn' or CDIGIT_CLI_DEFAULT_ALGO env var if set)"
+      );
+      return lines.join(EOL);
+    })()
+  );
 
 // handler for subcommands
 const handler = (str, opts, cmd) => {
-  opts = program.opts(); // XXX
+  const topOpts = program.opts();
   let algo = "luhn";
-  if (typeof opts.algo === "string") {
-    ({ algo } = opts);
+  if (typeof topOpts.algo === "string") {
+    algo = topOpts.algo;
   } else if (typeof process.env.CDIGIT_CLI_DEFAULT_ALGO === "string") {
     algo = process.env.CDIGIT_CLI_DEFAULT_ALGO;
   }
