@@ -1,27 +1,20 @@
 {
+  "root": true,
   "extends": ["eslint:recommended"],
   "overrides": [
     {
       "files": ["*.ts"],
-      "extends": [
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "prettier/@typescript-eslint",
-        "plugin:prettier/recommended"
-      ],
-      "parserOptions": {
-        "project": "tsconfig.json"
-      }
+      "extends": ["plugin:@typescript-eslint/recommended"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"]
     },
     {
       "files": ["*.js"],
-      "extends": ["plugin:prettier/recommended"],
-      "parserOptions": {
-        "ecmaVersion": 2015
-      },
       "env": {
         "node": true
+      },
+      "parserOptions": {
+        "ecmaVersion": 2015
       }
     },
     {

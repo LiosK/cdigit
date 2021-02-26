@@ -1,6 +1,6 @@
 {
   "name": "cdigit",
-  "version": "2.6.3",
+  "version": "2.6.4",
   "description": "Collection of check digit algorithms implemented in JavaScript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,7 +9,8 @@
   },
   "scripts": {
     "build": "rm -rf lib && tsc",
-    "lint": "eslint --ext .js,.ts example.js bin src test",
+    "lint": "eslint example.js bin src test",
+    "prelint": "prettier -c README.md example.js bin src test",
     "prepare": "npm run lint && npm run build && npm test",
     "test": "mocha"
   },
@@ -69,11 +70,12 @@
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
     "eslint": "^7.20.0",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-prettier": "^3.3.1",
     "mocha": "^8.3.0",
     "prettier": "^2.2.1",
     "tsutils": "^3.20.0",
     "typescript": "^4.2.2"
+  },
+  "prettier": {
+    "embeddedLanguageFormatting": "off"
   }
 }
