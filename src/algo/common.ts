@@ -1,8 +1,8 @@
 /**
  * cdigit
  *
- * @copyright 2018-2020 LiosK
- * @license Apache-2.0
+ * @copyright 2018-2021 LiosK
+ * @license (MIT OR Apache-2.0)
  */
 
 /** Common interface for check digit algorithm implementations. */
