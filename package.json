@@ -1,6 +1,6 @@
 {
   "name": "cdigit",
-  "version": "2.6.6",
+  "version": "2.6.7",
   "description": "Collection of check digit algorithms implemented in JavaScript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -64,13 +64,13 @@
   },
   "tonicExampleFilename": "example.js",
   "dependencies": {
-    "commander": "^7.1.0"
+    "commander": "^7.2.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.17.0",
-    "@typescript-eslint/parser": "^4.17.0",
-    "eslint": "^7.21.0",
-    "mocha": "^8.3.1",
+    "@typescript-eslint/eslint-plugin": "^4.20.0",
+    "@typescript-eslint/parser": "^4.20.0",
+    "eslint": "^7.23.0",
+    "mocha": "^8.3.2",
     "prettier": "^2.2.1",
     "tsutils": "^3.21.0",
     "typescript": "^4.2.3"
