@@ -2,21 +2,12 @@
   "compilerOptions": {
     "target": "es2015",
     "module": "commonjs",
-    "outDir": "lib",
-    "rootDir": "src",
-
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-
     "declaration": true,
-    "declarationMap": false,
-    "sourceMap": false,
-    "removeComments": false,
-
+    "outDir": "lib",
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "skipLibCheck": true
   }
 }
