@@ -1,5 +1,8 @@
 # cdigit: Check Digit Algorithms in JS
 
+[![npm](https://img.shields.io/npm/v/cdigit)](https://www.npmjs.com/package/cdigit)
+[![License](https://img.shields.io/npm/l/cdigit)](#license)
+
 cdigit - Collection of check digit algorithms implemented in JavaScript
 
 ## Synopsis
@@ -159,8 +162,3 @@ at your option.
 Unless you explicitly state otherwise, any contribution intentionally submitted
 for inclusion in the work by you, as defined in the Apache-2.0 license, shall be
 dual licensed as above, without any additional terms or conditions.
-
-## See Also
-
-- [GitHub repository](https://github.com/LiosK/cdigit)
-- [npm package](https://www.npmjs.com/package/cdigit)
