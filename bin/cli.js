@@ -35,7 +35,7 @@ const handler = (str, opts, cmd) => {
   }
 
   if (!cdigit.names.includes(algo)) {
-    throw Error(`unknown algorithm '${algo}'`);
+    cmd.error(`error: unknown algorithm '${algo}'`);
   }
 
   const result = cdigit[algo][cmd.name()](str);
@@ -63,9 +63,4 @@ program
   .action(handler);
 
 // execute
-try {
-  program.parse(process.argv);
-} catch (err) {
-  process.exitCode = 1;
-  console.error(`error: ${err.message}`);
-}
+program.parse();
