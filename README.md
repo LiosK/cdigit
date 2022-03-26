@@ -18,6 +18,17 @@ console.log(cdigit.luhn.generate("1234"));  // "12344"
 console.log(cdigit.luhn.validate("12344")); // true
 ```
 
+ESM:
+
+```javascript
+import { luhn } from 'cdigit'
+
+// Luhn (a.k.a. Mod 10) algorithm
+console.log(luhn.compute("1234"));   // "4"
+console.log(luhn.generate("1234"));  // "12344"
+console.log(luhn.validate("12344")); // true
+```
+
 Command-line:
 
 ```bash
