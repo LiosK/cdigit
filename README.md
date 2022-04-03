@@ -10,12 +10,12 @@ cdigit - Collection of check digit algorithms implemented in JavaScript
 Node.js:
 
 ```javascript
-const cdigit = require("cdigit");
+const { luhn } = require("cdigit");
 
 // Luhn (a.k.a. Mod 10) algorithm
-console.log(cdigit.luhn.compute("1234"));   // "4"
-console.log(cdigit.luhn.generate("1234"));  // "12344"
-console.log(cdigit.luhn.validate("12344")); // true
+console.log(luhn.compute("1234")); // "4"
+console.log(luhn.generate("1234")); // "12344"
+console.log(luhn.validate("12344")); // true
 ```
 
 Command-line:
@@ -87,12 +87,11 @@ length or semantic validity of a given GTIN string.
 
 ## Usage - Node.js
 
-Load `cdigit` and access to algorithm objects by cdigit._name_ listed in
+Load algorithm objects using the cdigit names listed in
 [Supported Algorithms section](#supported-algorithms).
 
 ```javascript
-const cdigit = require("cdigit");
-const algo = cdigit.mod97_10;
+const { mod97_10 } = require("cdigit");
 ```
 
 Algorithm objects implement the following methods:
@@ -103,7 +102,7 @@ Check if a given string is valid according to the algorithm. The argument must
 be a combined string of check digit(s) and their original number.
 
 ```javascript
-console.log(cdigit.mod97_10.validate("123482")); // true
+console.log(mod97_10.validate("123482")); // true
 ```
 
 ### generate(numWithoutCC: string): string
@@ -113,7 +112,7 @@ algorithm. The generated string includes the original string and computed check
 digit(s) that are combined in the manner specified by the algorithm.
 
 ```javascript
-console.log(cdigit.mod97_10.generate("1234")); // "123482"
+console.log(mod97_10.generate("1234")); // "123482"
 ```
 
 ### compute(numWithoutCC: string): string
@@ -122,7 +121,7 @@ Generate check digit(s) from a given number. Unlike `generate()`, this method
 returns the check digit(s) only.
 
 ```javascript
-console.log(cdigit.mod97_10.compute("1234")); // "82"
+console.log(mod97_10.compute("1234")); // "82"
 ```
 
 See [example.js](https://npm.runkit.com/cdigit) for usage examples.
