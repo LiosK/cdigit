@@ -1,6 +1,6 @@
-const assert = require("assert").strict;
-const common = require("./common");
-const algo = require("..").luhn;
+import { strict as assert } from "node:assert";
+import { common } from "./common.js";
+import { luhn as algo } from "cdigit";
 
 describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings

@@ -2,8 +2,9 @@
   "name": "cdigit",
   "version": "3.1.3",
   "description": "Collection of check digit algorithms implemented in JavaScript",
+  "type": "module",
   "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "types": "./lib/index.d.ts",
   "exports": "./lib/index.js",
   "sideEffects": false,
   "bin": {

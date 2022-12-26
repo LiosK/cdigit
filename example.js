@@ -1,4 +1,4 @@
-const {
+import {
   luhn,
   verhoeff,
   damm,
@@ -11,7 +11,7 @@ const {
   mod27_26,
   mod37_36,
   gtin,
-} = require("cdigit");
+} from "cdigit";
 
 // Luhn algorithm
 console.log(luhn.compute("1234")); // "4"

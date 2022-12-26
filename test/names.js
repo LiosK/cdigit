@@ -1,5 +1,5 @@
-const assert = require("assert").strict;
-const cdigit = require("..");
+import { strict as assert } from "node:assert";
+import * as cdigit from "cdigit";
 
 describe("cdigit.names", () => {
   it("is defined", () => {

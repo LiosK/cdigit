@@ -1,5 +1,5 @@
-const common = require("./common");
-const algo = require("..").damm;
+import { common } from "./common.js";
+import { damm as algo } from "cdigit";
 
 describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings

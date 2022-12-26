@@ -5,7 +5,7 @@
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common";
+import { Algo, helper } from "./common.js";
 
 /** ISO/IEC 7064, MOD 11-2 implementation */
 class Mod11_2 implements Algo {

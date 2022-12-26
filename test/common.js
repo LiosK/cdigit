@@ -1,6 +1,6 @@
-const assert = require("assert").strict;
+import { strict as assert } from "node:assert";
 
-module.exports = {
+export const common = {
   /**
    * Execute common tests on an Algo instance
    * @param {Algo} algo

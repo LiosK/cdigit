@@ -1,5 +1,5 @@
-const common = require("./common");
-const algo = require("..").gtin;
+import { common } from "./common.js";
+import { gtin as algo } from "cdigit";
 
 describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings

@@ -10,7 +10,7 @@ cdigit - Collection of check digit algorithms implemented in JavaScript
 Node.js:
 
 ```javascript
-const { luhn } = require("cdigit");
+import { luhn } from "cdigit";
 
 // Luhn (a.k.a. Mod 10) algorithm
 console.log(luhn.compute("1234")); // "4"
@@ -91,7 +91,7 @@ Load algorithm objects using the cdigit names listed in
 [Supported Algorithms section](#supported-algorithms).
 
 ```javascript
-const { mod97_10 } = require("cdigit");
+import { mod97_10 } from "cdigit";
 ```
 
 Algorithm objects implement the following methods:

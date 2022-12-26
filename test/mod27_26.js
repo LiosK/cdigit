@@ -1,5 +1,5 @@
-const common = require("./common");
-const algo = require("..").mod27_26;
+import { common } from "./common.js";
+import { mod27_26 as algo } from "cdigit";
 
 describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings

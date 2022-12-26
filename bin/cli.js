@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const { EOL } = require("os");
-const { program } = require("commander");
-const cdigit = require("..");
+import { EOL } from "node:os";
+import { program } from "commander";
+import * as cdigit from "cdigit";
 
 // top-level options
 program
