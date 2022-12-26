@@ -7,7 +7,6 @@
 
 import { Algo, helper } from "./common.js";
 
-/** Damm algorithm implementation */
 class Damm implements Algo {
   name = "damm";
   longName = "Damm Algorithm";
@@ -51,4 +50,5 @@ class Damm implements Algo {
   }
 }
 
-export const damm = new Damm();
+/** Damm algorithm implementation */
+export const damm: Algo = new Damm();

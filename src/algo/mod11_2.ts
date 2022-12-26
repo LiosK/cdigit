@@ -7,7 +7,6 @@
 
 import { Algo, helper } from "./common.js";
 
-/** ISO/IEC 7064, MOD 11-2 implementation */
 class Mod11_2 implements Algo {
   name = "mod11_2";
   longName = "ISO/IEC 7064, MOD 11-2";
@@ -33,4 +32,5 @@ class Mod11_2 implements Algo {
   }
 }
 
-export const mod11_2 = new Mod11_2();
+/** ISO/IEC 7064, MOD 11-2 implementation */
+export const mod11_2: Algo = new Mod11_2();

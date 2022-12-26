@@ -7,7 +7,6 @@
 
 import { Algo, helper } from "./common.js";
 
-/** Luhn algorithm implementation */
 class Luhn implements Algo {
   name = "luhn";
   longName = "Luhn Algorithm";
@@ -55,4 +54,5 @@ class Luhn implements Algo {
   }
 }
 
-export const luhn = new Luhn();
+/** Luhn algorithm implementation */
+export const luhn: Algo = new Luhn();
