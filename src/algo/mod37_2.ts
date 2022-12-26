@@ -5,10 +5,10 @@
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common";
+import { CdigitAlgo, helper } from "./common";
 
 /** ISO/IEC 7064, MOD 37-2 implementation */
-class Mod37_2 implements Algo {
+class Mod37_2 implements CdigitAlgo {
   name = "mod37_2";
   longName = "ISO/IEC 7064, MOD 37-2";
 

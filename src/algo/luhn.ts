@@ -5,10 +5,10 @@
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common";
+import { CdigitAlgo, helper } from "./common";
 
 /** Luhn algorithm implementation */
-class Luhn implements Algo {
+class Luhn implements CdigitAlgo {
   name = "luhn";
   longName = "Luhn Algorithm";
 

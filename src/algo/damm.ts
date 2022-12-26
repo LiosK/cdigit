@@ -5,10 +5,10 @@
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common";
+import { CdigitAlgo, helper } from "./common";
 
 /** Damm algorithm implementation */
-class Damm implements Algo {
+class Damm implements CdigitAlgo {
   name = "damm";
   longName = "Damm Algorithm";
 

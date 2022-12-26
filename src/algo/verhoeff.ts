@@ -5,7 +5,7 @@
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common";
+import { CdigitAlgo, helper } from "./common";
 
 /**
  * Verhoeff algorithm implementation
@@ -18,7 +18,7 @@ import { Algo, helper } from "./common";
  * string before calling this class' methods if you need to interpret a string
  * from left to right.
  */
-class Verhoeff implements Algo {
+class Verhoeff implements CdigitAlgo {
   name = "verhoeff";
   longName = "Verhoeff Algorithm";
 

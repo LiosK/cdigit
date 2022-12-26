@@ -5,7 +5,7 @@
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common";
+import { CdigitAlgo, helper } from "./common";
 
 /**
  * Standard check digit algorithm for GS1 data structures (including GTIN)
@@ -14,7 +14,7 @@ import { Algo, helper } from "./common";
  * is not recommended to use numbers longer than 18 digits because GS1 General
  * Specifications do not explicitly specify an algorithm for them.
  */
-class GTIN implements Algo {
+class GTIN implements CdigitAlgo {
   name = "gtin";
   longName = "GTINs (including UPC, EAN, ISBN-13, etc.)";
 
