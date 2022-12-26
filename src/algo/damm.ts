@@ -7,7 +7,6 @@
 
 import { CdigitAlgo, helper } from "./common";
 
-/** Damm algorithm implementation */
 class Damm implements CdigitAlgo {
   name = "damm";
   longName = "Damm Algorithm";
@@ -51,4 +50,5 @@ class Damm implements CdigitAlgo {
   }
 }
 
+/** Damm algorithm implementation */
 export const damm: CdigitAlgo = new Damm();

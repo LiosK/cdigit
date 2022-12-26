@@ -7,7 +7,6 @@
 
 import { CdigitAlgo, helper } from "./common";
 
-/** ISO/IEC 7064, MOD 37-36 implementation */
 class Mod37_36 implements CdigitAlgo {
   name = "mod37_36";
   longName = "ISO/IEC 7064, MOD 37-36";
@@ -33,4 +32,5 @@ class Mod37_36 implements CdigitAlgo {
   }
 }
 
+/** ISO/IEC 7064, MOD 37-36 implementation */
 export const mod37_36: CdigitAlgo = new Mod37_36();

@@ -7,7 +7,6 @@
 
 import { CdigitAlgo, helper } from "./common";
 
-/** Luhn algorithm implementation */
 class Luhn implements CdigitAlgo {
   name = "luhn";
   longName = "Luhn Algorithm";
@@ -55,4 +54,5 @@ class Luhn implements CdigitAlgo {
   }
 }
 
+/** Luhn algorithm implementation */
 export const luhn: CdigitAlgo = new Luhn();
