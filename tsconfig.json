@@ -2,8 +2,10 @@
   "compilerOptions": {
     "target": "es2015",
     "module": "commonjs",
+    "moduleResolution": "node",
+    "typeRoots": [],
     "declaration": true,
-    "outDir": "lib",
+    "outDir": "./lib/",
     "isolatedModules": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
