@@ -71,7 +71,7 @@
   },
   "tonicExampleFilename": "example.js",
   "dependencies": {
-    "commander": "^9.1.0"
+    "commander": "^9.4.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.47.0",
