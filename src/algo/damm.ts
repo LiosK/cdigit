@@ -26,7 +26,7 @@ class Damm implements CdigitAlgo {
   ];
 
   compute(num: string): string {
-    const ds = `${String(num).replace(/[^0-9]/g, "")}`;
+    const ds = String(num).replace(/[^0-9]/g, "");
 
     let c = 0;
     for (let i = 0, len = ds.length; i < len; i += 1) {
