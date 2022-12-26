@@ -18,11 +18,9 @@
   "scripts": {
     "build": "tsc",
     "doc": "typedoc ./src/index.ts --gitRevision \"v$npm_package_version\"",
-    "lint": "eslint example.js bin src test",
     "prebuild": "rm -rf ./lib",
     "predoc": "rm -rf ./docs",
-    "prelint": "prettier -c README.md example.js bin src test",
-    "prepare": "npm run lint && npm run build && npm run doc && npm run test",
+    "prepare": "npm run build && npm run doc && npm run test",
     "test": "mocha"
   },
   "repository": {
@@ -78,11 +76,7 @@
     "commander": "^9.4.1"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.47.0",
-    "@typescript-eslint/parser": "^5.47.0",
-    "eslint": "^8.30.0",
     "mocha": "^10.2.0",
-    "prettier": "^2.8.1",
     "typedoc": "^0.23.23",
     "typescript": "^4.9.4"
   }
