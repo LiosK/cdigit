@@ -71,7 +71,7 @@
     "lib": "lib",
     "test": "test"
   },
-  "tonicExampleFilename": "example.js",
+  "runkitExampleFilename": "example.js",
   "dependencies": {
     "commander": "^9.4.1"
   },
