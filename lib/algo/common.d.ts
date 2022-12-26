@@ -1,11 +1,11 @@
 /**
  * cdigit
  *
- * @copyright 2018-2021 LiosK
+ * @copyright 2018-2022 LiosK
  * @license (MIT OR Apache-2.0)
  */
 /** Common interface for check digit algorithm implementations. */
-export interface Algo {
+export interface CdigitAlgo {
     /** cdigit name of the algorithm */
     readonly name: string;
     /** Human-readable name of the algorithm */
