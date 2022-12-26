@@ -55,4 +55,4 @@ class Luhn implements CdigitAlgo {
   }
 }
 
-export const luhn = new Luhn();
+export const luhn: CdigitAlgo = new Luhn();

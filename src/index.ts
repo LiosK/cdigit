@@ -5,6 +5,8 @@
  * @license (MIT OR Apache-2.0)
  */
 
+export type { CdigitAlgo } from "./algo/common";
+
 // Popular generic algorithms
 export * from "./algo/luhn";
 export * from "./algo/verhoeff";

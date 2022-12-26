@@ -49,4 +49,4 @@ class GTIN implements CdigitAlgo {
   }
 }
 
-export const gtin = new GTIN();
+export const gtin: CdigitAlgo = new GTIN();

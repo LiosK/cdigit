@@ -33,4 +33,4 @@ class Mod37_2 implements CdigitAlgo {
   }
 }
 
-export const mod37_2 = new Mod37_2();
+export const mod37_2: CdigitAlgo = new Mod37_2();

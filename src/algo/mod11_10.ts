@@ -33,4 +33,4 @@ class Mod11_10 implements CdigitAlgo {
   }
 }
 
-export const mod11_10 = new Mod11_10();
+export const mod11_10: CdigitAlgo = new Mod11_10();

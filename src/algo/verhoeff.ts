@@ -76,4 +76,4 @@ class Verhoeff implements CdigitAlgo {
   }
 }
 
-export const verhoeff = new Verhoeff();
+export const verhoeff: CdigitAlgo = new Verhoeff();

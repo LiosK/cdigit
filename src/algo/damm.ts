@@ -51,4 +51,4 @@ class Damm implements CdigitAlgo {
   }
 }
 
-export const damm = new Damm();
+export const damm: CdigitAlgo = new Damm();

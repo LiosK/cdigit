@@ -38,4 +38,4 @@ class Mod97_10 implements CdigitAlgo {
   }
 }
 
-export const mod97_10 = new Mod97_10();
+export const mod97_10: CdigitAlgo = new Mod97_10();
