@@ -6,7 +6,7 @@
  */
 
 /** Common interface for check digit algorithm implementations. */
-export interface Algo {
+export interface CdigitAlgo {
   /** cdigit name of the algorithm */
   readonly name: string;
 

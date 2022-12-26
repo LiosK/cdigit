@@ -16,7 +16,7 @@ describe("cdigit.names", () => {
     });
   });
 
-  it("is consistent with Algo#name", () => {
+  it("is consistent with CdigitAlgo#name", () => {
     cdigit.names.forEach((name) => {
       assert.equal(name, cdigit[name].name, "name === cdigit[name].name");
     });

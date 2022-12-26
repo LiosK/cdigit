@@ -5,9 +5,9 @@
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common.js";
+import { CdigitAlgo, helper } from "./common.js";
 
-class Damm implements Algo {
+class Damm implements CdigitAlgo {
   name = "damm";
   longName = "Damm Algorithm";
 
@@ -51,4 +51,4 @@ class Damm implements Algo {
 }
 
 /** Damm algorithm implementation */
-export const damm: Algo = new Damm();
+export const damm: CdigitAlgo = new Damm();

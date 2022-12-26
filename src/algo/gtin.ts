@@ -5,9 +5,9 @@
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common.js";
+import { CdigitAlgo, helper } from "./common.js";
 
-class GTIN implements Algo {
+class GTIN implements CdigitAlgo {
   name = "gtin";
   longName = "GTINs (including UPC, EAN, ISBN-13, etc.)";
 
@@ -49,4 +49,4 @@ class GTIN implements Algo {
  * is not recommended to use numbers longer than 18 digits because GS1 General
  * Specifications do not explicitly specify an algorithm for them.
  */
-export const gtin: Algo = new GTIN();
+export const gtin: CdigitAlgo = new GTIN();

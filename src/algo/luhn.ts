@@ -5,9 +5,9 @@
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common.js";
+import { CdigitAlgo, helper } from "./common.js";
 
-class Luhn implements Algo {
+class Luhn implements CdigitAlgo {
   name = "luhn";
   longName = "Luhn Algorithm";
 
@@ -55,4 +55,4 @@ class Luhn implements Algo {
 }
 
 /** Luhn algorithm implementation */
-export const luhn: Algo = new Luhn();
+export const luhn: CdigitAlgo = new Luhn();

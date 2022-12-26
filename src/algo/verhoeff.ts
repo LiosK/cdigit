@@ -5,9 +5,9 @@
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common.js";
+import { CdigitAlgo, helper } from "./common.js";
 
-class Verhoeff implements Algo {
+class Verhoeff implements CdigitAlgo {
   name = "verhoeff";
   longName = "Verhoeff Algorithm";
 
@@ -76,4 +76,4 @@ class Verhoeff implements Algo {
  * string before calling this class' methods if you need to interpret a string
  * from left to right.
  */
-export const verhoeff: Algo = new Verhoeff();
+export const verhoeff: CdigitAlgo = new Verhoeff();

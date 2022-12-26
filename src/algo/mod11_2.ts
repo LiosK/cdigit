@@ -5,9 +5,9 @@
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common.js";
+import { CdigitAlgo, helper } from "./common.js";
 
-class Mod11_2 implements Algo {
+class Mod11_2 implements CdigitAlgo {
   name = "mod11_2";
   longName = "ISO/IEC 7064, MOD 11-2";
 
@@ -33,4 +33,4 @@ class Mod11_2 implements Algo {
 }
 
 /** ISO/IEC 7064, MOD 11-2 implementation */
-export const mod11_2: Algo = new Mod11_2();
+export const mod11_2: CdigitAlgo = new Mod11_2();

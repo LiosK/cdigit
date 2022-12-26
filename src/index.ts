@@ -5,7 +5,7 @@
  * @license (MIT OR Apache-2.0)
  */
 
-export type { Algo } from "./algo/common.js";
+export type { CdigitAlgo } from "./algo/common.js";
 
 // Popular generic algorithms
 export * from "./algo/luhn.js";

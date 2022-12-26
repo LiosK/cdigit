@@ -11,13 +11,13 @@ export const assert = {
 
 export const common = {
   /**
-   * Execute common tests on an Algo instance
-   * @param {Algo} algo
+   * Execute common tests on an CdigitAlgo instance
+   * @param {CdigitAlgo} algo
    * @param {[validString, sourceString, checkCharacter][]} validCases
    * @param {invalidString[]} invalidStrings
    */
   testAlgo: (algo, validCases, invalidStrings) => {
-    describe("Algo type", () => {
+    describe("CdigitAlgo type", () => {
       it("implements name", () => {
         assert.equal(typeof algo.name, "string", "typeof algo.name");
       });
