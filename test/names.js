@@ -1,5 +1,5 @@
-import { strict as assert } from "node:assert";
-import * as cdigit from "cdigit";
+import { assert } from "./common.js";
+import * as cdigit from "../lib/index.js";
 
 describe("cdigit.names", () => {
   it("is defined", () => {

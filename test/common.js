@@ -1,4 +1,13 @@
-import { strict as assert } from "node:assert";
+export const assert = {
+  ok: (expression, message = "") => {
+    if (!expression) {
+      throw new Error("Assertion failed" + (message ? ": " + message : ""));
+    }
+  },
+  equal: (actual, expected, message = "") => {
+    assert.ok(actual === expected, message);
+  },
+};
 
 export const common = {
   /**
@@ -48,11 +57,9 @@ export const common = {
       it("generates a valid number that parse() can parse", () => {
         // eslint-disable-next-line no-unused-vars
         validCases.forEach(([num, src, cc]) => {
-          assert.deepEqual(
-            algo.parse(algo.generate(src)),
-            [src, cc],
-            `parse(generate(${src}))`
-          );
+          const actual = algo.parse(algo.generate(src));
+          assert.equal(actual[0], src, `parse(generate(${src}))`);
+          assert.equal(actual[1], cc, `parse(generate(${src}))`);
         });
       });
     });
@@ -84,7 +91,9 @@ export const common = {
       it("extracts the source number and check digit(s)", () => {
         // eslint-disable-next-line no-unused-vars
         validCases.forEach(([num, src, cc]) => {
-          assert.deepEqual(algo.parse(num), [src, cc], `parse(${num})`);
+          const actual = algo.parse(num);
+          assert.equal(actual[0], src, `parse(${num})`);
+          assert.equal(actual[1], cc, `parse(${num})`);
         });
       });
     });

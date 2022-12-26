@@ -1,5 +1,5 @@
 import { common } from "./common.js";
-import { verhoeff as algo } from "cdigit";
+import { verhoeff as algo } from "../lib/index.js";
 
 describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings

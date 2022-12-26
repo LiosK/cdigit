@@ -1,6 +1,5 @@
-import { strict as assert } from "node:assert";
-import { common } from "./common.js";
-import { luhn as algo } from "cdigit";
+import { common, assert } from "./common.js";
+import { luhn as algo } from "../lib/index.js";
 
 describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings

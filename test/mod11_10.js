@@ -1,5 +1,5 @@
 import { common } from "./common.js";
-import { mod11_10 as algo } from "cdigit";
+import { mod11_10 as algo } from "../lib/index.js";
 
 describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings

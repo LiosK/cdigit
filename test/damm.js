@@ -1,5 +1,5 @@
 import { common } from "./common.js";
-import { damm as algo } from "cdigit";
+import { damm as algo } from "../lib/index.js";
 
 describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings

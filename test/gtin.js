@@ -1,5 +1,5 @@
 import { common } from "./common.js";
-import { gtin as algo } from "cdigit";
+import { gtin as algo } from "../lib/index.js";
 
 describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings
