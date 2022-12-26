@@ -1,9 +1,10 @@
 /**
  * cdigit
  *
- * @copyright 2018-2021 LiosK
+ * @copyright 2018-2022 LiosK
  * @license (MIT OR Apache-2.0)
  */
+export type { CdigitAlgo } from "./algo/common";
 export * from "./algo/luhn";
 export * from "./algo/verhoeff";
 export * from "./algo/damm";

@@ -1,10 +1,10 @@
 /**
  * cdigit
  *
- * @copyright 2018-2021 LiosK
+ * @copyright 2018-2022 LiosK
  * @license (MIT OR Apache-2.0)
  */
-import { Algo } from "./common";
+import { CdigitAlgo } from "./common";
 /**
  * Verhoeff algorithm implementation
  *
@@ -16,19 +16,4 @@ import { Algo } from "./common";
  * string before calling this class' methods if you need to interpret a string
  * from left to right.
  */
-declare class Verhoeff implements Algo {
-    name: string;
-    longName: string;
-    /** Verhoeff multiplication table */
-    private d;
-    /** Verhoeff permutation table */
-    private p;
-    /** Verhoeff inverse table */
-    private inv;
-    compute(num: string): string;
-    generate(num: string): string;
-    validate(num: string): boolean;
-    parse(num: string): [string, string];
-}
-export declare const verhoeff: Verhoeff;
-export {};
+export declare const verhoeff: CdigitAlgo;

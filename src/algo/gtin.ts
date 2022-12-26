@@ -1,20 +1,13 @@
 /**
  * cdigit
  *
- * @copyright 2018-2021 LiosK
+ * @copyright 2018-2022 LiosK
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common";
+import { CdigitAlgo, helper } from "./common";
 
-/**
- * Standard check digit algorithm for GS1 data structures (including GTIN)
- *
- * Note: This implementation does not check the length of a number; however, it
- * is not recommended to use numbers longer than 18 digits because GS1 General
- * Specifications do not explicitly specify an algorithm for them.
- */
-class GTIN implements Algo {
+class GTIN implements CdigitAlgo {
   name = "gtin";
   longName = "GTINs (including UPC, EAN, ISBN-13, etc.)";
 
@@ -49,4 +42,11 @@ class GTIN implements Algo {
   }
 }
 
-export const gtin = new GTIN();
+/**
+ * Standard check digit algorithm for GS1 data structures (including GTIN)
+ *
+ * Note: This implementation does not check the length of a number; however, it
+ * is not recommended to use numbers longer than 18 digits because GS1 General
+ * Specifications do not explicitly specify an algorithm for them.
+ */
+export const gtin: CdigitAlgo = new GTIN();

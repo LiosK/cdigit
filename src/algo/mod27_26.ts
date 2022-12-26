@@ -1,14 +1,13 @@
 /**
  * cdigit
  *
- * @copyright 2018-2021 LiosK
+ * @copyright 2018-2022 LiosK
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common";
+import { CdigitAlgo, helper } from "./common";
 
-/** ISO/IEC 7064, MOD 27-26 implementation */
-class Mod27_26 implements Algo {
+class Mod27_26 implements CdigitAlgo {
   name = "mod27_26";
   longName = "ISO/IEC 7064, MOD 27-26";
 
@@ -33,4 +32,5 @@ class Mod27_26 implements Algo {
   }
 }
 
-export const mod27_26 = new Mod27_26();
+/** ISO/IEC 7064, MOD 27-26 implementation */
+export const mod27_26: CdigitAlgo = new Mod27_26();

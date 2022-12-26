@@ -1,9 +1,9 @@
 {
   "name": "cdigit",
-  "version": "3.1.3",
+  "version": "3.1.4",
   "description": "Collection of check digit algorithms implemented in JavaScript",
   "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "types": "./lib/index.d.ts",
   "exports": "./lib/index.js",
   "sideEffects": false,
   "bin": {
@@ -16,9 +16,11 @@
   ],
   "scripts": {
     "build": "rm -rf lib && tsc",
+    "doc": "typedoc ./src/index.ts --gitRevision \"v$npm_package_version\"",
     "lint": "eslint example.js bin src test",
+    "predoc": "rm -rf ./docs",
     "prelint": "prettier -c README.md example.js bin src test",
-    "prepare": "npm run lint && npm run build && npm test",
+    "prepare": "npm run lint && npm run build && npm run doc && npm run test",
     "test": "mocha"
   },
   "repository": {
@@ -79,6 +81,7 @@
     "eslint": "^8.30.0",
     "mocha": "^10.2.0",
     "prettier": "^2.8.1",
+    "typedoc": "^0.23.23",
     "typescript": "^4.9.4"
   }
 }

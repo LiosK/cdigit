@@ -1,24 +1,13 @@
 /**
  * cdigit
  *
- * @copyright 2018-2021 LiosK
+ * @copyright 2018-2022 LiosK
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common";
+import { CdigitAlgo, helper } from "./common";
 
-/**
- * Verhoeff algorithm implementation
- *
- * Note: There is not a firm consensus on the direction (left to right or right
- * to left) in which a Verhoeff calculator scans numeric text to construct an
- * input digit sequence. This implementation is hard coded to read a string from
- * right to left and append the check digit at the rightmost position, which is
- * a consistent behavior with other popular implementations. Reverse the input
- * string before calling this class' methods if you need to interpret a string
- * from left to right.
- */
-class Verhoeff implements Algo {
+class Verhoeff implements CdigitAlgo {
   name = "verhoeff";
   longName = "Verhoeff Algorithm";
 
@@ -76,4 +65,15 @@ class Verhoeff implements Algo {
   }
 }
 
-export const verhoeff = new Verhoeff();
+/**
+ * Verhoeff algorithm implementation
+ *
+ * Note: There is not a firm consensus on the direction (left to right or right
+ * to left) in which a Verhoeff calculator scans numeric text to construct an
+ * input digit sequence. This implementation is hard coded to read a string from
+ * right to left and append the check digit at the rightmost position, which is
+ * a consistent behavior with other popular implementations. Reverse the input
+ * string before calling this class' methods if you need to interpret a string
+ * from left to right.
+ */
+export const verhoeff: CdigitAlgo = new Verhoeff();

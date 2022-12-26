@@ -1,14 +1,13 @@
 /**
  * cdigit
  *
- * @copyright 2018-2021 LiosK
+ * @copyright 2018-2022 LiosK
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common";
+import { CdigitAlgo, helper } from "./common";
 
-/** Damm algorithm implementation */
-class Damm implements Algo {
+class Damm implements CdigitAlgo {
   name = "damm";
   longName = "Damm Algorithm";
 
@@ -51,4 +50,5 @@ class Damm implements Algo {
   }
 }
 
-export const damm = new Damm();
+/** Damm algorithm implementation */
+export const damm: CdigitAlgo = new Damm();
