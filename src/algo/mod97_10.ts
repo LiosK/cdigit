@@ -11,8 +11,8 @@ class Mod97_10 implements CdigitAlgo {
   name = "mod97_10";
   longName = "ISO/IEC 7064, MOD 97-10";
 
-  compute(num: string): string {
-    const ds = `${String(num).replace(/[^0-9]/g, "")}00`;
+  compute(s: string): string {
+    const ds = `${String(s).replace(/[^0-9]/g, "")}00`;
 
     // Simplified procedure as described in ISO/IEC 7064
     let c = Number(ds.slice(0, 14)) % 97; // 10^14 < 2^48
@@ -23,17 +23,17 @@ class Mod97_10 implements CdigitAlgo {
     return `0${(98 - c) % 97}`.slice(-2);
   }
 
-  generate(num: string): string {
-    return `${num}${this.compute(num)}`;
+  generate(s: string): string {
+    return `${s}${this.compute(s)}`;
   }
 
-  validate(num: string): boolean {
-    const [src, cc] = this.parse(num);
+  validate(s: string): boolean {
+    const [src, cc] = this.parse(s);
     return this.compute(src) === cc;
   }
 
-  parse(num: string): [string, string] {
-    const ds = String(num);
+  parse(s: string): [string, string] {
+    const ds = String(s);
     return [ds.slice(0, -2), ds.slice(-2)];
   }
 }

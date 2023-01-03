@@ -7,41 +7,45 @@
 
 /** Common interface for check digit algorithm implementations. */
 export interface CdigitAlgo {
-  /** cdigit name of the algorithm */
+  /** `cdigit` name of the algorithm */
   readonly name: string;
 
   /** Human-readable name of the algorithm */
   readonly longName: string;
 
   /**
-   * Generate a valid number string from a given string in accordance with the
-   * algorithm. The generated string includes the original string and computed
-   * check digit(s) that are combined in the manner specified by the algorithm.
+   * Generates the protected string from the argument using the algorithm. The
+   * generated string consists of the original bare string and computed check
+   * character(s), which are combined in accordance with the algorithm.
    *
-   * @return Number with check digit(s)
+   * @param strWithoutCheckChars - String without check character(s)
+   * @returns String with check character(s)
    */
-  generate(numWithoutCC: string): string;
+  generate(strWithoutCheckChars: string): string;
 
   /**
-   * Check if a given string is valid according to the algorithm. The argument
-   * must be a combined string of check digit(s) and their original number.
+   * Checks if a protected string is valid per the algorithm.
    *
-   * @return True if valid
+   * @param strWithCheckChars - String with check character(s)
+   * @returns True if the argument is valid
    */
-  validate(numWithCC: string): boolean;
+  validate(strWithCheckChars: string): boolean;
 
   /**
-   * Generate check digit(s) from a given number. Unlike `generate()`, this
-   * method returns the check digit(s) only.
+   * Generates the check character(s) from the argument using the algorithm.
+   * Unlike `generate()`, this method returns the check character(s) only.
    *
-   * @return Check digit(s)
+   * @param strWithoutCheckChars - String without check character(s)
+   * @returns Check character(s)
    */
-  compute(numWithoutCC: string): string;
+  compute(strWithoutCheckChars: string): string;
 
   /**
-   * Split a number into its original number and check digit(s).
+   * Splits a protected string into the pair of original bare string and check
+   * character(s).
    *
-   * @return Tuple of two strings [numWithoutCC, cc]
+   * @param strWithCheckChars - String with check character(s)
+   * @returns Tuple of [string without check character(s), check character(s)]
    */
-  parse(numWithCC: string): [string, string];
+  parse(strWithCheckChars: string): [string, string];
 }

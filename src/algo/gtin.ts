@@ -11,8 +11,8 @@ class GTIN implements CdigitAlgo {
   name = "gtin";
   longName = "GTINs (including UPC, EAN, ISBN-13, etc.)";
 
-  compute(num: string): string {
-    const ds = String(num).replace(/[^0-9]/g, "");
+  compute(s: string): string {
+    const ds = String(s).replace(/[^0-9]/g, "");
 
     let sum = 0;
     let odd = 1;
@@ -28,17 +28,17 @@ class GTIN implements CdigitAlgo {
     return String(10 - (sum % 10)).slice(-1);
   }
 
-  generate(num: string): string {
-    return `${num}${this.compute(num)}`;
+  generate(s: string): string {
+    return `${s}${this.compute(s)}`;
   }
 
-  validate(num: string): boolean {
-    const [src, cc] = this.parse(num);
+  validate(s: string): boolean {
+    const [src, cc] = this.parse(s);
     return this.compute(src) === cc;
   }
 
-  parse(num: string): [string, string] {
-    const ds = String(num);
+  parse(s: string): [string, string] {
+    const ds = String(s);
     return [ds.slice(0, -1), ds.slice(-1)];
   }
 }

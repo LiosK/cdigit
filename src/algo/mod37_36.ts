@@ -14,22 +14,22 @@ class Mod37_36 implements CdigitAlgo {
 
   private readonly alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-  compute(num: string): string {
-    const ds = String(num).replace(/[^0-9A-Z]/g, "");
+  compute(s: string): string {
+    const ds = String(s).replace(/[^0-9A-Z]/g, "");
     return computeHybrid(ds, this.alphabet);
   }
 
-  generate(num: string): string {
-    return `${num}${this.compute(num)}`;
+  generate(s: string): string {
+    return `${s}${this.compute(s)}`;
   }
 
-  validate(num: string): boolean {
-    const [src, cc] = this.parse(num);
+  validate(s: string): boolean {
+    const [src, cc] = this.parse(s);
     return this.compute(src) === cc;
   }
 
-  parse(num: string): [string, string] {
-    const ds = String(num);
+  parse(s: string): [string, string] {
+    const ds = String(s);
     return [ds.slice(0, -1), ds.slice(-1)];
   }
 }
