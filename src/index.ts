@@ -1,11 +1,11 @@
 /**
  * cdigit
  *
- * @copyright 2018-2022 LiosK
+ * @copyright 2018-2023 LiosK
  * @license (MIT OR Apache-2.0)
  */
 
-export type { CdigitAlgo } from "./algo/common.js";
+export type { CdigitAlgo } from "./type.js";
 
 // Popular generic algorithms
 export * from "./algo/luhn.js";

@@ -1,21 +1,22 @@
 /**
  * cdigit
  *
- * @copyright 2018-2022 LiosK
+ * @copyright 2018-2023 LiosK
  * @license (MIT OR Apache-2.0)
  */
 
-import { CdigitAlgo, helper } from "./common.js";
+import type { CdigitAlgo } from "../type.js";
+import { computeHybrid } from "./iso7064.js";
 
 class Mod37_36 implements CdigitAlgo {
   name = "mod37_36";
   longName = "ISO/IEC 7064, MOD 37-36";
 
-  private alphabet: string = helper.iso7064.alphanumeric.slice(0, -1);
+  private readonly alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   compute(num: string): string {
     const ds = String(num).replace(/[^0-9A-Z]/g, "");
-    return helper.iso7064.computeHybrid(ds, this.alphabet);
+    return computeHybrid(ds, this.alphabet);
   }
 
   generate(num: string): string {
@@ -28,7 +29,8 @@ class Mod37_36 implements CdigitAlgo {
   }
 
   parse(num: string): [string, string] {
-    return helper.parseTail(num, 1);
+    const ds = String(num);
+    return [ds.slice(0, -1), ds.slice(-1)];
   }
 }
 
