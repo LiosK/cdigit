@@ -1,11 +1,11 @@
 /**
  * cdigit
  *
- * @copyright 2018-2022 LiosK
+ * @copyright 2018-2023 LiosK
  * @license (MIT OR Apache-2.0)
  */
 
-import { CdigitAlgo, helper } from "./common";
+import type { CdigitAlgo } from "../type";
 
 class Luhn implements CdigitAlgo {
   name = "luhn";
@@ -50,7 +50,8 @@ class Luhn implements CdigitAlgo {
   }
 
   parse(num: string): [string, string] {
-    return helper.parseTail(num, 1);
+    const ds = String(num);
+    return [ds.slice(0, -1), ds.slice(-1)];
   }
 }
 

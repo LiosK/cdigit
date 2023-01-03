@@ -1,11 +1,11 @@
 /**
  * cdigit
  *
- * @copyright 2018-2022 LiosK
+ * @copyright 2018-2023 LiosK
  * @license (MIT OR Apache-2.0)
  */
 
-import { CdigitAlgo, helper } from "./common";
+import type { CdigitAlgo } from "../type";
 
 class Mod97_10 implements CdigitAlgo {
   name = "mod97_10";
@@ -33,7 +33,8 @@ class Mod97_10 implements CdigitAlgo {
   }
 
   parse(num: string): [string, string] {
-    return helper.parseTail(num, 2);
+    const ds = String(num);
+    return [ds.slice(0, -2), ds.slice(-2)];
   }
 }
 
