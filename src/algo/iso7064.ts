@@ -25,13 +25,13 @@ const invertCharList = (alphabet: string): { [character: string]: number } => {
 
 /** Implement ISO 7064 pure system recursive method. */
 export const computePure = (
-  num: string,
+  s: string,
   mod: number,
   radix: number,
   hasTwoCCs: boolean,
   alphabet: string
 ): string => {
-  const ds = `${num}${alphabet[0]}${hasTwoCCs ? alphabet[0] : ""}`;
+  const ds = `${s}${alphabet[0]}${hasTwoCCs ? alphabet[0] : ""}`;
   const overflowProtection = Math.floor(0xffffffffffff / radix);
   const charmap = invertCharList(alphabet);
 

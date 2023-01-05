@@ -54,12 +54,12 @@ program
 
 program
   .command("generate <string>")
-  .description("generate valid number from string")
+  .description("append check character(s) to string")
   .action(handler);
 
 program
   .command("compute <string>")
-  .description("compute check digit from string")
+  .description("print check character(s) computed from string")
   .action(handler);
 
 // execute
