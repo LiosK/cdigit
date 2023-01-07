@@ -10,21 +10,33 @@ import type { CdigitAlgo } from "../type";
 class GTIN implements CdigitAlgo {
   constructor(readonly name: string, readonly longName: string) {}
 
-  compute(s: string): string {
-    const ds = String(s).replace(/[^0-9]/g, "");
+  computeFromNumVals(ns: number[]): number[] {
+    if (ns.some((e) => e < 0 || e > 9 || !Number.isInteger(e))) {
+      throw new SyntaxError("invalid numerical value detected");
+    }
 
     let sum = 0;
     let odd = 1;
-    for (let i = ds.length - 1; i > -1; i -= 1) {
-      sum += Number(ds[i]) * (odd ? 3 : 1);
-      odd ^= 1;
-      if (sum > 0xffffffffffff) {
+    for (let i = ns.length - 1; i >= 0; i -= 1) {
+      if (sum > 0xffff_ffff_ffff) {
         // ~2^48 at max
         sum %= 10;
       }
+      sum += ns[i] * (odd ? 3 : 1);
+      odd ^= 1;
     }
+    return [(10 - (sum % 10)) % 10];
+  }
 
-    return String(10 - (sum % 10)).slice(-1);
+  compute(s: string): string {
+    const ds = String(s).replace(/[^0-9]/g, "");
+    const ns = [...ds].map(Number);
+    return String(this.computeFromNumVals(ns)[0]);
+  }
+
+  parse(s: string): [string, string] {
+    const ds = String(s);
+    return [ds.slice(0, -1), ds.slice(-1)];
   }
 
   generate(s: string): string {
@@ -32,13 +44,8 @@ class GTIN implements CdigitAlgo {
   }
 
   validate(s: string): boolean {
-    const [src, cc] = this.parse(s);
-    return this.compute(src) === cc;
-  }
-
-  parse(s: string): [string, string] {
-    const ds = String(s);
-    return [ds.slice(0, -1), ds.slice(-1)];
+    const [bare, cc] = this.parse(s);
+    return this.compute(bare) === cc;
   }
 }
 

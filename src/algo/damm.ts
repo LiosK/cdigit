@@ -11,7 +11,7 @@ class Damm implements CdigitAlgo {
   constructor(readonly name: string, readonly longName: string) {}
 
   /** Damm operation table */
-  private opTable = [
+  private readonly opTable = [
     [0, 3, 1, 7, 5, 9, 8, 6, 4, 2],
     [7, 0, 9, 2, 1, 5, 4, 8, 6, 3],
     [4, 2, 0, 6, 8, 7, 1, 3, 5, 9],
@@ -24,15 +24,23 @@ class Damm implements CdigitAlgo {
     [2, 5, 8, 1, 4, 3, 6, 7, 9, 0],
   ];
 
-  compute(s: string): string {
-    const ds = String(s).replace(/[^0-9]/g, "");
-
-    let c = 0;
-    for (let i = 0, len = ds.length; i < len; i += 1) {
-      c = this.opTable[c][Number(ds[i])];
+  computeFromNumVals(ns: number[]): number[] {
+    if (ns.some((e) => e < 0 || e > 9 || !Number.isInteger(e))) {
+      throw new SyntaxError("invalid numerical value detected");
     }
 
-    return String(c);
+    return [ns.reduce((c, e) => this.opTable[c][e], 0)];
+  }
+
+  compute(s: string): string {
+    const ds = String(s).replace(/[^0-9]/g, "");
+    const ns = [...ds].map(Number);
+    return String(this.computeFromNumVals(ns)[0]);
+  }
+
+  parse(s: string): [string, string] {
+    const ds = String(s);
+    return [ds.slice(0, -1), ds.slice(-1)];
   }
 
   generate(s: string): string {
@@ -40,13 +48,8 @@ class Damm implements CdigitAlgo {
   }
 
   validate(s: string): boolean {
-    const [src, cc] = this.parse(s);
-    return this.compute(src) === cc;
-  }
-
-  parse(s: string): [string, string] {
-    const ds = String(s);
-    return [ds.slice(0, -1), ds.slice(-1)];
+    const [bare, cc] = this.parse(s);
+    return this.compute(bare) === cc;
   }
 }
 

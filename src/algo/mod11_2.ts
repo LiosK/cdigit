@@ -6,16 +6,31 @@
  */
 
 import type { CdigitAlgo } from "../type";
-import { computePure } from "./iso7064";
+import { decodeString, computePure } from "./iso7064";
 
 class Mod11_2 implements CdigitAlgo {
   constructor(readonly name: string, readonly longName: string) {}
 
   private readonly alphabet = "0123456789X";
 
+  computeFromNumVals(ns: number[]): number[] {
+    if (ns.some((e) => e < 0 || e > 9 || !Number.isInteger(e))) {
+      throw new SyntaxError("invalid numerical value detected");
+    }
+
+    return computePure(ns, 11, 2, false);
+  }
+
   compute(s: string): string {
     const ds = String(s).replace(/[^0-9]/g, "");
-    return computePure(ds, 11, 2, false, this.alphabet);
+    const ns = decodeString(ds, this.alphabet);
+    const cc = this.computeFromNumVals(ns);
+    return this.alphabet[cc[0]];
+  }
+
+  parse(s: string): [string, string] {
+    const ds = String(s);
+    return [ds.slice(0, -1), ds.slice(-1)];
   }
 
   generate(s: string): string {
@@ -23,13 +38,8 @@ class Mod11_2 implements CdigitAlgo {
   }
 
   validate(s: string): boolean {
-    const [src, cc] = this.parse(s);
-    return this.compute(src) === cc;
-  }
-
-  parse(s: string): [string, string] {
-    const ds = String(s);
-    return [ds.slice(0, -1), ds.slice(-1)];
+    const [bare, cc] = this.parse(s);
+    return this.compute(bare) === cc;
   }
 }
 

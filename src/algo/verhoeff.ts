@@ -11,7 +11,7 @@ class Verhoeff implements CdigitAlgo {
   constructor(readonly name: string, readonly longName: string) {}
 
   /** Verhoeff multiplication table */
-  private d = [
+  private readonly d = [
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
     [2, 3, 4, 0, 1, 7, 8, 9, 5, 6],
@@ -25,7 +25,7 @@ class Verhoeff implements CdigitAlgo {
   ];
 
   /** Verhoeff permutation table */
-  private p = [
+  private readonly p = [
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     [1, 5, 7, 6, 2, 8, 3, 0, 9, 4],
     [5, 8, 0, 3, 7, 9, 6, 1, 4, 2],
@@ -37,17 +37,30 @@ class Verhoeff implements CdigitAlgo {
   ];
 
   /** Verhoeff inverse table */
-  private inv = ["0", "4", "3", "2", "1", "5", "6", "7", "8", "9"];
+  private readonly inv = [0, 4, 3, 2, 1, 5, 6, 7, 8, 9];
 
-  compute(s: string): string {
-    const ds = `${String(s).replace(/[^0-9]/g, "")}0`;
-
-    let c = 0;
-    for (let i = 0, len = ds.length; i < len; i += 1) {
-      c = this.d[c][this.p[i & 7][Number(ds[len - i - 1])]];
+  computeFromNumVals(ns: number[]): number[] {
+    if (ns.some((e) => e < 0 || e > 9 || !Number.isInteger(e))) {
+      throw new SyntaxError("invalid numerical value detected");
     }
 
-    return this.inv[c];
+    // as if: `ns.push(0); let c = 0;` and finished first loop where i == 0
+    let c = this.d[0][this.p[0][0]];
+    for (let i = 1, len = ns.length; i <= len; i += 1) {
+      c = this.d[c][this.p[i & 7][ns[len - i]]];
+    }
+    return [this.inv[c]];
+  }
+
+  compute(s: string): string {
+    const ds = String(s).replace(/[^0-9]/g, "");
+    const ns = [...ds].map(Number);
+    return String(this.computeFromNumVals(ns)[0]);
+  }
+
+  parse(s: string): [string, string] {
+    const ds = String(s);
+    return [ds.slice(0, -1), ds.slice(-1)];
   }
 
   generate(s: string): string {
@@ -55,13 +68,8 @@ class Verhoeff implements CdigitAlgo {
   }
 
   validate(s: string): boolean {
-    const [src, cc] = this.parse(s);
-    return this.compute(src) === cc;
-  }
-
-  parse(s: string): [string, string] {
-    const ds = String(s);
-    return [ds.slice(0, -1), ds.slice(-1)];
+    const [bare, cc] = this.parse(s);
+    return this.compute(bare) === cc;
   }
 }
 
