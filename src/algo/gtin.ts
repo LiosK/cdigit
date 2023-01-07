@@ -8,8 +8,7 @@
 import type { CdigitAlgo } from "../type";
 
 class GTIN implements CdigitAlgo {
-  name = "gtin";
-  longName = "GTINs (including UPC, EAN, ISBN-13, etc.)";
+  constructor(readonly name: string, readonly longName: string) {}
 
   compute(s: string): string {
     const ds = String(s).replace(/[^0-9]/g, "");
@@ -50,4 +49,7 @@ class GTIN implements CdigitAlgo {
  * is not recommended to use numbers longer than 18 digits because GS1 General
  * Specifications do not explicitly specify an algorithm for them.
  */
-export const gtin: CdigitAlgo = new GTIN();
+export const gtin: CdigitAlgo = new GTIN(
+  "gtin",
+  "GTINs (including UPC, EAN, ISBN-13, etc.)"
+);

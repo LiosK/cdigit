@@ -8,8 +8,7 @@
 import type { CdigitAlgo } from "../type";
 
 class Mod97_10 implements CdigitAlgo {
-  name = "mod97_10";
-  longName = "ISO/IEC 7064, MOD 97-10";
+  constructor(readonly name: string, readonly longName: string) {}
 
   compute(s: string): string {
     const ds = `${String(s).replace(/[^0-9]/g, "")}00`;
@@ -39,4 +38,7 @@ class Mod97_10 implements CdigitAlgo {
 }
 
 /** ISO/IEC 7064, MOD 97-10 implementation */
-export const mod97_10: CdigitAlgo = new Mod97_10();
+export const mod97_10: CdigitAlgo = new Mod97_10(
+  "mod97_10",
+  "ISO/IEC 7064, MOD 97-10"
+);

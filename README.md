@@ -47,7 +47,7 @@ ISO/IEC 7064 describes eight generic check digit (character) systems for
 numeric, alphabetic, and alphanumeric strings. ISO/IEC 7064 specifies two types
 of systems that use the same algorithm with different parameters: Pure systems
 (MOD 11-2, MOD 37-2, MOD 97-10, MOD 661-26, and MOD 1271-36) and Hybrid systems
-(MOD 11-10, MOD 27-26, and MOD 37-36).
+(MOD 11,10, MOD 27,26, and MOD 37,36).
 
 | Algorithm                 | cdigit name | Input string          | Check character(s)                  |
 | ------------------------- | ----------- | --------------------- | ----------------------------------- |
@@ -56,9 +56,9 @@ of systems that use the same algorithm with different parameters: Pure systems
 | ISO/IEC 7064, MOD 97-10   | mod97_10    | Numeric (0-9)         | 2 digits (0-9)                      |
 | ISO/IEC 7064, MOD 661-26  | mod661_26   | Alphabetic (A-Z)      | 2 letters (A-Z)                     |
 | ISO/IEC 7064, MOD 1271-36 | mod1271_36  | Alphanumeric (0-9A-Z) | 2 digits or letters (0-9A-Z)        |
-| ISO/IEC 7064, MOD 11-10   | mod11_10    | Numeric (0-9)         | 1 digit (0-9)                       |
-| ISO/IEC 7064, MOD 27-26   | mod27_26    | Alphabetic (A-Z)      | 1 letter (A-Z)                      |
-| ISO/IEC 7064, MOD 37-36   | mod37_36    | Alphanumeric (0-9A-Z) | 1 digit or letter (0-9A-Z)          |
+| ISO/IEC 7064, MOD 11,10   | mod11_10    | Numeric (0-9)         | 1 digit (0-9)                       |
+| ISO/IEC 7064, MOD 27,26   | mod27_26    | Alphabetic (A-Z)      | 1 letter (A-Z)                      |
+| ISO/IEC 7064, MOD 37,36   | mod37_36    | Alphanumeric (0-9A-Z) | 1 digit or letter (0-9A-Z)          |
 
 [iso/iec 7064]: https://www.iso.org/standard/31531.html
 

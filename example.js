@@ -61,19 +61,19 @@ console.log(mod1271_36.generate("12CD")); // "12CDJU"
 console.log(mod1271_36.validate("12CDJU")); // true
 console.log(mod1271_36.validate("12CD56")); // false
 
-// ISO/IEC 7064, MOD 11-10 algorithm
+// ISO/IEC 7064, MOD 11,10 algorithm
 console.log(mod11_10.compute("1234")); // "0"
 console.log(mod11_10.generate("1234")); // "12340"
 console.log(mod11_10.validate("12340")); // true
 console.log(mod11_10.validate("12345")); // false
 
-// ISO/IEC 7064, MOD 27-26 algorithm
+// ISO/IEC 7064, MOD 27,26 algorithm
 console.log(mod27_26.compute("ABCD")); // "R"
 console.log(mod27_26.generate("ABCD")); // "ABCDR"
 console.log(mod27_26.validate("ABCDR")); // true
 console.log(mod27_26.validate("ABCDE")); // false
 
-// ISO/IEC 7064, MOD 37-36 algorithm
+// ISO/IEC 7064, MOD 37,36 algorithm
 console.log(mod37_36.compute("12CD")); // "5"
 console.log(mod37_36.generate("12CD")); // "12CD5"
 console.log(mod37_36.validate("12CD5")); // true
