@@ -5,39 +5,43 @@
  * @license (MIT OR Apache-2.0)
  */
 
-const invertCharListMemo: {
+const charMapMemo: {
   [alphabet: string]: { [character: string]: number };
 } = {};
 
-const invertCharList = (alphabet: string): { [character: string]: number } => {
-  if (invertCharListMemo[alphabet] == null) {
-    invertCharListMemo[alphabet] = {};
-    const len = alphabet.length;
-    for (let i = 0; i < len; i += 1) {
-      invertCharListMemo[alphabet][alphabet[i]] = i;
-    }
-    if (len !== Object.keys(invertCharListMemo[alphabet]).length) {
-      throw new Error("assertion error: chars must be unique");
+const getCharMap = (alphabet: string): { [character: string]: number } => {
+  if (charMapMemo[alphabet] == null) {
+    charMapMemo[alphabet] = {};
+    for (let i = 0; i < alphabet.length; i += 1) {
+      const c = alphabet[i];
+      if (charMapMemo[alphabet][c] == null) {
+        charMapMemo[alphabet][c] = i;
+      } else {
+        throw new Error("assertion error: chars must be unique");
+      }
     }
   }
-  return invertCharListMemo[alphabet];
+  return charMapMemo[alphabet];
+};
+
+/** Converts a string into the numerical value array. */
+export const decodeString = (s: string, alphabet: string): number[] => {
+  const charMap = getCharMap(alphabet);
+  return [...s].map((e) => charMap[e]);
 };
 
 /** Implement ISO 7064 pure system recursive method. */
 export const computePure = (
-  s: string,
+  ns: number[],
   mod: number,
   radix: number,
-  hasTwoCCs: boolean,
-  alphabet: string
-): string => {
-  const ds = `${s}${alphabet[0]}${hasTwoCCs ? alphabet[0] : ""}`;
+  hasTwoCCs: boolean
+): number[] => {
   const overflowProtection = Math.floor(0xffffffffffff / radix);
-  const charmap = invertCharList(alphabet);
 
   let c = 0;
-  for (let i = 0, len = ds.length; i < len; i += 1) {
-    c = c * radix + charmap[ds[i]];
+  for (const e of hasTwoCCs ? [...ns, 0, 0] : [...ns, 0]) {
+    c = c * radix + e;
     if (c > overflowProtection) {
       c %= mod;
     }
@@ -45,22 +49,19 @@ export const computePure = (
   c = (mod + 1 - (c % mod)) % mod;
 
   if (hasTwoCCs) {
-    return `${alphabet[Math.floor(c / radix)]}${alphabet[c % radix]}`;
+    return [Math.floor(c / radix), c % radix];
   }
-  return alphabet[c];
+  return [c];
 };
 
 /** Implement ISO 7064 hybrid system recursive method. */
-export const computeHybrid = (ds: string, alphabet: string): string => {
-  const mod = alphabet.length;
-  const charmap = invertCharList(alphabet);
-
+export const computeHybrid = (ns: number[], mod: number): number[] => {
   let c = mod;
-  for (let i = 0, len = ds.length; i < len; i += 1) {
-    c = (c % (mod + 1)) + charmap[ds[i]];
+  for (const e of ns) {
+    c = (c % (mod + 1)) + e;
     c = (c % mod || mod) * 2;
   }
   c %= mod + 1;
 
-  return alphabet[(mod + 1 - c) % mod];
+  return [(mod + 1 - c) % mod];
 };

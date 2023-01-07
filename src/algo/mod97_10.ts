@@ -6,20 +6,31 @@
  */
 
 import type { CdigitAlgo } from "../type.js";
+import { decodeString, computePure } from "./iso7064.js";
 
 class Mod97_10 implements CdigitAlgo {
   constructor(readonly name: string, readonly longName: string) {}
 
-  compute(s: string): string {
-    const ds = `${String(s).replace(/[^0-9]/g, "")}00`;
+  private readonly alphabet = "0123456789";
 
-    // Simplified procedure as described in ISO/IEC 7064
-    let c = Number(ds.slice(0, 14)) % 97; // 10^14 < 2^48
-    for (let i = 14, len = ds.length; i < len; i += 12) {
-      c = Number(String(c) + ds.slice(i, i + 12)) % 97;
+  computeFromNumVals(ns: number[]): number[] {
+    if (ns.some((e) => e < 0 || e > 9 || !Number.isInteger(e))) {
+      throw new SyntaxError("invalid numerical value detected");
     }
 
-    return `0${(98 - c) % 97}`.slice(-2);
+    return computePure(ns, 97, 10, true);
+  }
+
+  compute(s: string): string {
+    const ds = String(s).replace(/[^0-9]/g, "");
+    const ns = decodeString(ds, this.alphabet);
+    const cc = this.computeFromNumVals(ns);
+    return `${this.alphabet[cc[0]]}${this.alphabet[cc[1]]}`;
+  }
+
+  parse(s: string): [string, string] {
+    const ds = String(s);
+    return [ds.slice(0, -2), ds.slice(-2)];
   }
 
   generate(s: string): string {
@@ -27,13 +38,8 @@ class Mod97_10 implements CdigitAlgo {
   }
 
   validate(s: string): boolean {
-    const [src, cc] = this.parse(s);
-    return this.compute(src) === cc;
-  }
-
-  parse(s: string): [string, string] {
-    const ds = String(s);
-    return [ds.slice(0, -2), ds.slice(-2)];
+    const [bare, cc] = this.parse(s);
+    return this.compute(bare) === cc;
   }
 }
 

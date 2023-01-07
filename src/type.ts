@@ -41,6 +41,20 @@ export interface CdigitAlgo {
   compute(strWithoutCheckChars: string): string;
 
   /**
+   * Generates the check character(s) from the argument using the algorithm.
+   * This method is an alphabet-independent equivalent of `compute()`, where the
+   * return value and argument are both represented as arrays of each digit's
+   * numerical value.
+   *
+   * @param numValsWithoutCheckChars - String without check character(s) decoded
+   * to an array of numerical values
+   * @returns Check character(s) decoded to an array of numerical values
+   * @throws `SyntaxError` if the argument contains an invalid numerical value.
+   * @internal
+   */
+  computeFromNumVals(numValsWithoutCheckChars: number[]): number[];
+
+  /**
    * Splits a protected string into the pair of original bare string and check
    * character(s).
    *

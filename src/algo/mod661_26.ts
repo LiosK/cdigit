@@ -6,16 +6,31 @@
  */
 
 import type { CdigitAlgo } from "../type.js";
-import { computePure } from "./iso7064.js";
+import { decodeString, computePure } from "./iso7064.js";
 
 class Mod661_26 implements CdigitAlgo {
   constructor(readonly name: string, readonly longName: string) {}
 
   private readonly alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+  computeFromNumVals(ns: number[]): number[] {
+    if (ns.some((e) => e < 0 || e > 25 || !Number.isInteger(e))) {
+      throw new SyntaxError("invalid numerical value detected");
+    }
+
+    return computePure(ns, 661, 26, true);
+  }
+
   compute(s: string): string {
     const ds = String(s).replace(/[^A-Z]/g, "");
-    return computePure(ds, 661, 26, true, this.alphabet);
+    const ns = decodeString(ds, this.alphabet);
+    const cc = this.computeFromNumVals(ns);
+    return `${this.alphabet[cc[0]]}${this.alphabet[cc[1]]}`;
+  }
+
+  parse(s: string): [string, string] {
+    const ds = String(s);
+    return [ds.slice(0, -2), ds.slice(-2)];
   }
 
   generate(s: string): string {
@@ -23,13 +38,8 @@ class Mod661_26 implements CdigitAlgo {
   }
 
   validate(s: string): boolean {
-    const [src, cc] = this.parse(s);
-    return this.compute(src) === cc;
-  }
-
-  parse(s: string): [string, string] {
-    const ds = String(s);
-    return [ds.slice(0, -2), ds.slice(-2)];
+    const [bare, cc] = this.parse(s);
+    return this.compute(bare) === cc;
   }
 }
 
