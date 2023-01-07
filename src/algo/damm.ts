@@ -8,8 +8,7 @@
 import type { CdigitAlgo } from "../type.js";
 
 class Damm implements CdigitAlgo {
-  name = "damm";
-  longName = "Damm Algorithm";
+  constructor(readonly name: string, readonly longName: string) {}
 
   /** Damm operation table */
   private opTable = [
@@ -52,4 +51,4 @@ class Damm implements CdigitAlgo {
 }
 
 /** Damm algorithm implementation */
-export const damm: CdigitAlgo = new Damm();
+export const damm: CdigitAlgo = new Damm("damm", "Damm Algorithm");

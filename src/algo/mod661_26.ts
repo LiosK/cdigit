@@ -9,8 +9,7 @@ import type { CdigitAlgo } from "../type.js";
 import { computePure } from "./iso7064.js";
 
 class Mod661_26 implements CdigitAlgo {
-  name = "mod661_26";
-  longName = "ISO/IEC 7064, MOD 661-26";
+  constructor(readonly name: string, readonly longName: string) {}
 
   private readonly alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -35,4 +34,7 @@ class Mod661_26 implements CdigitAlgo {
 }
 
 /** ISO/IEC 7064, MOD 661-26 implementation */
-export const mod661_26: CdigitAlgo = new Mod661_26();
+export const mod661_26: CdigitAlgo = new Mod661_26(
+  "mod661_26",
+  "ISO/IEC 7064, MOD 661-26"
+);

@@ -8,8 +8,7 @@
 import type { CdigitAlgo } from "../type.js";
 
 class Luhn implements CdigitAlgo {
-  name = "luhn";
-  longName = "Luhn Algorithm";
+  constructor(readonly name: string, readonly longName: string) {}
 
   compute(s: string): string {
     const ds = String(s).replace(/[^0-9]/g, "");
@@ -56,4 +55,4 @@ class Luhn implements CdigitAlgo {
 }
 
 /** Luhn algorithm implementation */
-export const luhn: CdigitAlgo = new Luhn();
+export const luhn: CdigitAlgo = new Luhn("luhn", "Luhn Algorithm");

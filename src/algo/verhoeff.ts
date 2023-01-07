@@ -8,8 +8,7 @@
 import type { CdigitAlgo } from "../type.js";
 
 class Verhoeff implements CdigitAlgo {
-  name = "verhoeff";
-  longName = "Verhoeff Algorithm";
+  constructor(readonly name: string, readonly longName: string) {}
 
   /** Verhoeff multiplication table */
   private d = [
@@ -77,4 +76,7 @@ class Verhoeff implements CdigitAlgo {
  * string before calling this class' methods if you need to interpret a string
  * from left to right.
  */
-export const verhoeff: CdigitAlgo = new Verhoeff();
+export const verhoeff: CdigitAlgo = new Verhoeff(
+  "verhoeff",
+  "Verhoeff Algorithm"
+);
