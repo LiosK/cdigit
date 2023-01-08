@@ -48,14 +48,12 @@ export const common = {
 
     describe("generate()", () => {
       it("generates a valid number", () => {
-        // eslint-disable-next-line no-unused-vars
-        validCases.forEach(([num, src, cc]) => {
+        validCases.forEach(([num, src]) => {
           assert.equal(algo.generate(src), num, `generate(${src})`);
         });
       });
       it("generates a valid number that validate() accepts", () => {
-        // eslint-disable-next-line no-unused-vars
-        validCases.forEach(([num, src, cc]) => {
+        validCases.forEach(([, src]) => {
           assert.ok(
             algo.validate(algo.generate(src)),
             `validate(generate(${src}))`
@@ -63,8 +61,7 @@ export const common = {
         });
       });
       it("generates a valid number that parse() can parse", () => {
-        // eslint-disable-next-line no-unused-vars
-        validCases.forEach(([num, src, cc]) => {
+        validCases.forEach(([, src, cc]) => {
           const actual = algo.parse(algo.generate(src));
           const message = `parse(generate(${src}))`;
           assert.equal(actual.length, 2, message);
@@ -76,8 +73,7 @@ export const common = {
 
     describe("validate()", () => {
       it("returns true if a number is valid", () => {
-        // eslint-disable-next-line no-unused-vars
-        validCases.forEach(([num, src, cc]) => {
+        validCases.forEach(([num]) => {
           assert.ok(algo.validate(num), `validate(${num})`);
         });
       });
@@ -90,8 +86,7 @@ export const common = {
 
     describe("compute()", () => {
       it("computes correct check digit(s)", () => {
-        // eslint-disable-next-line no-unused-vars
-        validCases.forEach(([num, src, cc]) => {
+        validCases.forEach(([, src, cc]) => {
           assert.equal(algo.compute(src), cc, `compute(${src})`);
         });
       });
@@ -113,7 +108,6 @@ export const common = {
 
     describe("parse()", () => {
       it("extracts the source number and check digit(s)", () => {
-        // eslint-disable-next-line no-unused-vars
         validCases.forEach(([num, src, cc]) => {
           const actual = algo.parse(num);
           const message = `parse(${num})`;
