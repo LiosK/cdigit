@@ -50,7 +50,11 @@ class Pure implements CdigitAlgo {
       this.flavor === "EXTRA_CHAR"
         ? this.alphabet.length - 1
         : this.alphabet.length;
-    if (ns.some((e) => e < 0 || e >= maxNumVal || !Number.isInteger(e))) {
+    if (ns.length === 0) {
+      throw new SyntaxError("string to be protected is empty");
+    } else if (
+      ns.some((e) => e < 0 || e >= maxNumVal || !Number.isInteger(e))
+    ) {
       throw new SyntaxError("invalid numerical value detected");
     }
 
@@ -118,7 +122,9 @@ class Hybrid implements CdigitAlgo {
 
   computeFromNumVals(ns: number[]): number[] {
     const mod = this.alphabet.length;
-    if (ns.some((e) => e < 0 || e >= mod || !Number.isInteger(e))) {
+    if (ns.length === 0) {
+      throw new SyntaxError("string to be protected is empty");
+    } else if (ns.some((e) => e < 0 || e >= mod || !Number.isInteger(e))) {
       throw new SyntaxError("invalid numerical value detected");
     }
 

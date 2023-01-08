@@ -40,7 +40,9 @@ class Verhoeff implements CdigitAlgo {
   private readonly inv = [0, 4, 3, 2, 1, 5, 6, 7, 8, 9];
 
   computeFromNumVals(ns: number[]): number[] {
-    if (ns.some((e) => e < 0 || e > 9 || !Number.isInteger(e))) {
+    if (ns.length === 0) {
+      throw new SyntaxError("string to be protected is empty");
+    } else if (ns.some((e) => e < 0 || e > 9 || !Number.isInteger(e))) {
       throw new SyntaxError("invalid numerical value detected");
     }
 

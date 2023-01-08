@@ -25,7 +25,9 @@ class Damm implements CdigitAlgo {
   ];
 
   computeFromNumVals(ns: number[]): number[] {
-    if (ns.some((e) => e < 0 || e > 9 || !Number.isInteger(e))) {
+    if (ns.length === 0) {
+      throw new SyntaxError("string to be protected is empty");
+    } else if (ns.some((e) => e < 0 || e > 9 || !Number.isInteger(e))) {
       throw new SyntaxError("invalid numerical value detected");
     }
 
