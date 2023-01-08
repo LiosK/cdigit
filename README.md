@@ -123,6 +123,17 @@ Generates the check character(s) from the argument using the algorithm. Unlike
 console.log(mod97_10.compute("1234")); // "82"
 ```
 
+### computeFromNumVals(numValsWithoutCheckChars: number[]): number[]
+
+Generates the check character(s) from the argument using the algorithm. This
+method is an alphabet-independent equivalent of `compute()`, where the return
+value and argument are both represented as arrays of each digit's numerical
+value.
+
+```javascript
+console.log(mod97_10.computeFromNumVals([1, 2, 3, 4])); // [8, 2]
+```
+
 See [example.js](https://npm.runkit.com/cdigit) for usage examples.
 
 ## Usage - Command-line
