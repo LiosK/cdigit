@@ -50,7 +50,6 @@ export interface CdigitAlgo {
    * to an array of numerical values
    * @returns Check character(s) decoded to an array of numerical values
    * @throws `SyntaxError` if the argument contains an invalid numerical value.
-   * @internal
    */
   computeFromNumVals(numValsWithoutCheckChars: number[]): number[];
 
