@@ -6,8 +6,9 @@ module.exports = {
    * @param {CdigitAlgo} algo
    * @param {[validString, sourceString, checkCharacter][]} validCases
    * @param {invalidString[]} invalidStrings
+   * @param {[sourceNumVals, checkCharacterNumVals][]} numValCases
    */
-  testAlgo: (algo, validCases, invalidStrings) => {
+  testAlgo: (algo, validCases, invalidStrings, numValCases) => {
     describe("CdigitAlgo type", () => {
       it("implements name", () => {
         assert.equal(typeof algo.name, "string", "typeof algo.name");
@@ -23,6 +24,13 @@ module.exports = {
       });
       it("implements compute()", () => {
         assert.equal(typeof algo.compute, "function", "typeof algo.compute");
+      });
+      it("implements computeFromNumVals()", () => {
+        assert.equal(
+          typeof algo.computeFromNumVals,
+          "function",
+          "typeof algo.computeFromNumVals"
+        );
       });
       it("implements parse()", () => {
         assert.equal(typeof algo.parse, "function", "typeof algo.parse");
@@ -76,6 +84,18 @@ module.exports = {
         // eslint-disable-next-line no-unused-vars
         validCases.forEach(([num, src, cc]) => {
           assert.equal(algo.compute(src), cc, `compute(${src})`);
+        });
+      });
+    });
+
+    describe("computeFromNumVals()", () => {
+      it("computes correct check digit(s) from numerical values", () => {
+        numValCases.forEach(([src, cc]) => {
+          assert.deepEqual(
+            algo.computeFromNumVals(src),
+            cc,
+            `computeFromNumVals([${src.join(", ")}])`
+          );
         });
       });
     });
