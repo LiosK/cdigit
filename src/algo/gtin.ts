@@ -35,8 +35,12 @@ class GTIN implements CdigitAlgo {
   }
 
   parse(s: string): [string, string] {
-    const ds = String(s);
-    return [ds.slice(0, -1), ds.slice(-1)];
+    const m = String(s).match(/^(.*)([0-9])$/s);
+    if (m != null) {
+      return [m[1], m[2]];
+    } else {
+      throw new SyntaxError("could not find check character(s)");
+    }
   }
 
   generate(s: string): string {

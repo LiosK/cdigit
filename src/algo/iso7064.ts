@@ -88,10 +88,14 @@ class Pure implements CdigitAlgo {
   }
 
   parse(s: string): [string, string] {
-    const ds = String(s);
-    return this.flavor === "TWO_CCS"
-      ? [ds.slice(0, -2), ds.slice(-2)]
-      : [ds.slice(0, -1), ds.slice(-1)];
+    const charMap = getCharMap(this.alphabet);
+    const n = this.flavor === "TWO_CCS" ? 2 : 1;
+    const cc = s.slice(-n);
+    if (cc.length === n && [...cc].every((c) => charMap[c] != null)) {
+      return [s.slice(0, -n), cc];
+    } else {
+      throw new SyntaxError("could not find check character(s)");
+    }
   }
 
   generate(s: string): string {
@@ -142,8 +146,13 @@ class Hybrid implements CdigitAlgo {
   }
 
   parse(s: string): [string, string] {
-    const ds = String(s);
-    return [ds.slice(0, -1), ds.slice(-1)];
+    const charMap = getCharMap(this.alphabet);
+    const cc = s.slice(-1);
+    if (cc.length === 1 && charMap[cc] != null) {
+      return [s.slice(0, -1), cc];
+    } else {
+      throw new SyntaxError("could not find check character(s)");
+    }
   }
 
   generate(s: string): string {

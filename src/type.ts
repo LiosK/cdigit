@@ -28,6 +28,7 @@ export interface CdigitAlgo {
    *
    * @param strWithCheckChars - String with check character(s)
    * @returns True if the argument is valid
+   * @throws `SyntaxError` if the argument does not contain check character(s).
    */
   validate(strWithCheckChars: string): boolean;
 
@@ -59,6 +60,7 @@ export interface CdigitAlgo {
    *
    * @param strWithCheckChars - String with check character(s)
    * @returns Tuple of [string without check character(s), check character(s)]
+   * @throws `SyntaxError` if the argument does not contain check character(s).
    */
   parse(strWithCheckChars: string): [string, string];
 }
