@@ -557,7 +557,15 @@ describe(`${algo.longName} (${algo.name})`, () => {
   ];
   // }}}
 
-  common.testAlgo(algo, valid, invalid);
+  const charMap = Object.fromEntries([..."0123456789"].map((c, i) => [c, i]));
+  const numVals = valid.map(([, src, cc]) => {
+    return [
+      [...src.replace(/[^0-9]/g, "")].map((c) => charMap[c]),
+      [...cc].map((c) => charMap[c]),
+    ];
+  });
+
+  common.testAlgo(algo, valid, invalid, numVals);
 });
 
 // vim: fdm=marker fmr&

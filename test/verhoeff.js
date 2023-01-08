@@ -1700,7 +1700,11 @@ describe(`${algo.longName} (${algo.name})`, () => {
   ];
   // }}}
 
-  common.testAlgo(algo, valid, invalid);
+  const numVals = valid.map(([, src, cc]) => {
+    return [[...src.replace(/[^0-9]/g, "")].map(Number), [Number(cc)]];
+  });
+
+  common.testAlgo(algo, valid, invalid, numVals);
 });
 
 // vim: fdm=marker fmr&
