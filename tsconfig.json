@@ -6,7 +6,6 @@
     "typeRoots": [],
     "declaration": true,
     "outDir": "./lib/",
-    "stripInternal": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
