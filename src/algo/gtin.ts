@@ -1,44 +1,51 @@
 /**
  * cdigit
  *
- * @copyright 2018-2022 LiosK
+ * @copyright 2018-2023 LiosK
  * @license (MIT OR Apache-2.0)
  */
 
-import { CdigitAlgo, helper } from "./common";
+import type { CdigitAlgo } from "../type";
 
 class GTIN implements CdigitAlgo {
-  name = "gtin";
-  longName = "GTINs (including UPC, EAN, ISBN-13, etc.)";
+  constructor(readonly name: string, readonly longName: string) {}
 
-  compute(num: string): string {
-    const ds = String(num).replace(/[^0-9]/g, "");
+  computeFromNumVals(ns: number[]): number[] {
+    if (ns.some((e) => e < 0 || e > 9 || !Number.isInteger(e))) {
+      throw new SyntaxError("invalid numerical value detected");
+    }
 
     let sum = 0;
     let odd = 1;
-    for (let i = ds.length - 1; i > -1; i -= 1) {
-      sum += Number(ds[i]) * (odd ? 3 : 1);
-      odd ^= 1;
-      if (sum > 0xffffffffffff) {
+    for (let i = ns.length - 1; i >= 0; i -= 1) {
+      if (sum > 0xffff_ffff_ffff) {
         // ~2^48 at max
         sum %= 10;
       }
+      sum += ns[i] * (odd ? 3 : 1);
+      odd ^= 1;
     }
-
-    return String(10 - (sum % 10)).slice(-1);
+    return [(10 - (sum % 10)) % 10];
   }
 
-  generate(num: string): string {
-    return `${num}${this.compute(num)}`;
+  compute(s: string): string {
+    const ds = String(s).replace(/[^0-9]/g, "");
+    const ns = [...ds].map(Number);
+    return String(this.computeFromNumVals(ns)[0]);
   }
 
-  validate(num: string): boolean {
-    const [src, cc] = this.parse(num);
-    return this.compute(src) === cc;
+  parse(s: string): [string, string] {
+    const ds = String(s);
+    return [ds.slice(0, -1), ds.slice(-1)];
   }
 
-  parse(num: string): [string, string] {
-    return helper.parseTail(num, 1);
+  generate(s: string): string {
+    return `${s}${this.compute(s)}`;
+  }
+
+  validate(s: string): boolean {
+    const [bare, cc] = this.parse(s);
+    return this.compute(bare) === cc;
   }
 }
 
@@ -49,4 +56,7 @@ class GTIN implements CdigitAlgo {
  * is not recommended to use numbers longer than 18 digits because GS1 General
  * Specifications do not explicitly specify an algorithm for them.
  */
-export const gtin: CdigitAlgo = new GTIN();
+export const gtin: CdigitAlgo = new GTIN(
+  "gtin",
+  "GTINs (including UPC, EAN, ISBN-13, etc.)"
+);

@@ -23,7 +23,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">CdigitAlgo</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.1.4/src/algo/common.ts#L9">algo/common.ts:9</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.2.0/src/type.ts#L9">type.ts:9</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -37,6 +37,7 @@
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Methods</h3>
 <div class="tsd-index-list"><a href="CdigitAlgo.html#compute" class="tsd-index-link tsd-kind-method tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="#FF4DB8" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12" id="icon-2048-path"></rect><path d="M9.162 16V7.24H10.578L11.514 10.072C11.602 10.328 11.674 10.584 11.73 10.84C11.794 11.088 11.842 11.28 11.874 11.416C11.906 11.28 11.954 11.088 12.018 10.84C12.082 10.584 12.154 10.324 12.234 10.06L13.122 7.24H14.538V16H13.482V12.82C13.482 12.468 13.49 12.068 13.506 11.62C13.53 11.172 13.558 10.716 13.59 10.252C13.622 9.78 13.654 9.332 13.686 8.908C13.726 8.476 13.762 8.1 13.794 7.78L12.366 12.16H11.334L9.894 7.78C9.934 8.092 9.97 8.456 10.002 8.872C10.042 9.28 10.078 9.716 10.11 10.18C10.142 10.636 10.166 11.092 10.182 11.548C10.206 12.004 10.218 12.428 10.218 12.82V16H9.162Z" fill="var(--color-text)" id="icon-2048-text"></path></svg><span>compute</span></a>
+<a href="CdigitAlgo.html#computeFromNumVals" class="tsd-index-link tsd-kind-method tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>compute<wbr/>From<wbr/>Num<wbr/>Vals</span></a>
 <a href="CdigitAlgo.html#generate" class="tsd-index-link tsd-kind-method tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>generate</span></a>
 <a href="CdigitAlgo.html#parse" class="tsd-index-link tsd-kind-method tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>parse</span></a>
 <a href="CdigitAlgo.html#validate" class="tsd-index-link tsd-kind-method tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg><span>validate</span></a>
@@ -49,88 +50,121 @@
 <div class="tsd-comment tsd-typography"><p>Human-readable name of the algorithm</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.1.4/src/algo/common.ts#L14">algo/common.ts:14</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.2.0/src/type.ts#L14">type.ts:14</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="name" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>name</span><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-<div class="tsd-comment tsd-typography"><p>cdigit name of the algorithm</p>
+<div class="tsd-comment tsd-typography"><p><code>cdigit</code> name of the algorithm</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.1.4/src/algo/common.ts#L11">algo/common.ts:11</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.2.0/src/type.ts#L11">type.ts:11</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface"><a id="compute" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>compute</span><a href="#compute" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-<li class="tsd-signature tsd-anchor-link" id="compute.compute-1">compute<span class="tsd-signature-symbol">(</span>numWithoutCC<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#compute.compute-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="compute.compute-1">compute<span class="tsd-signature-symbol">(</span>strWithoutCheckChars<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#compute.compute-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Generate check digit(s) from a given number. Unlike <code>generate()</code>, this
-method returns the check digit(s) only.</p>
+<div class="tsd-comment tsd-typography"><p>Generates the check character(s) from the argument using the algorithm.
+Unlike <code>generate()</code>, this method returns the check character(s) only.</p>
 
-<h3>Returns</h3><p>Check digit(s)</p>
+<h3>Returns</h3><p>Check character(s)</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5>numWithoutCC: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h5>strWithoutCheckChars: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>String without check character(s)</p>
+</div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.1.4/src/algo/common.ts#L39">algo/common.ts:39</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.2.0/src/type.ts#L41">type.ts:41</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface"><a id="computeFromNumVals" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>compute<wbr/>From<wbr/>Num<wbr/>Vals</span><a href="#computeFromNumVals" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+<li class="tsd-signature tsd-anchor-link" id="computeFromNumVals.computeFromNumVals-1">compute<wbr/>From<wbr/>Num<wbr/>Vals<span class="tsd-signature-symbol">(</span>numValsWithoutCheckChars<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><a href="#computeFromNumVals.computeFromNumVals-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Generates the check character(s) from the argument using the algorithm.
+This method is an alphabet-independent equivalent of <code>compute()</code>, where the
+return value and argument are both represented as arrays of each digit&#39;s
+numerical value.</p>
+
+<h3>Returns</h3><p>Check character(s) decoded to an array of numerical values</p>
+
+<h3>Throws</h3><p><code>SyntaxError</code> if the argument contains an invalid numerical value.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5>numValsWithoutCheckChars: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5>
+<div class="tsd-comment tsd-typography"><p>String without check character(s) decoded
+to an array of numerical values</p>
+</div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.2.0/src/type.ts#L54">type.ts:54</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface"><a id="generate" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>generate</span><a href="#generate" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-<li class="tsd-signature tsd-anchor-link" id="generate.generate-1">generate<span class="tsd-signature-symbol">(</span>numWithoutCC<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#generate.generate-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="generate.generate-1">generate<span class="tsd-signature-symbol">(</span>strWithoutCheckChars<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#generate.generate-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Generate a valid number string from a given string in accordance with the
-algorithm. The generated string includes the original string and computed
-check digit(s) that are combined in the manner specified by the algorithm.</p>
+<div class="tsd-comment tsd-typography"><p>Generates the protected string from the argument using the algorithm. The
+generated string consists of the original bare string and computed check
+character(s), which are combined in accordance with the algorithm.</p>
 
-<h3>Returns</h3><p>Number with check digit(s)</p>
+<h3>Returns</h3><p>String with check character(s)</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5>numWithoutCC: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h5>strWithoutCheckChars: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>String without check character(s)</p>
+</div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.1.4/src/algo/common.ts#L23">algo/common.ts:23</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.2.0/src/type.ts#L24">type.ts:24</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface"><a id="parse" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>parse</span><a href="#parse" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-<li class="tsd-signature tsd-anchor-link" id="parse.parse-1">parse<span class="tsd-signature-symbol">(</span>numWithCC<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span><a href="#parse.parse-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="parse.parse-1">parse<span class="tsd-signature-symbol">(</span>strWithCheckChars<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span><a href="#parse.parse-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Split a number into its original number and check digit(s).</p>
+<div class="tsd-comment tsd-typography"><p>Splits a protected string into the pair of original bare string and check
+character(s).</p>
 
-<h3>Returns</h3><p>Tuple of two strings [numWithoutCC, cc]</p>
+<h3>Returns</h3><p>Tuple of [string without check character(s), check character(s)]</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5>numWithCC: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h5>strWithCheckChars: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>String with check character(s)</p>
+</div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.1.4/src/algo/common.ts#L46">algo/common.ts:46</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.2.0/src/type.ts#L63">type.ts:63</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface"><a id="validate" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>validate</span><a href="#validate" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-<li class="tsd-signature tsd-anchor-link" id="validate.validate-1">validate<span class="tsd-signature-symbol">(</span>numWithCC<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><a href="#validate.validate-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="validate.validate-1">validate<span class="tsd-signature-symbol">(</span>strWithCheckChars<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><a href="#validate.validate-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Check if a given string is valid according to the algorithm. The argument
-must be a combined string of check digit(s) and their original number.</p>
+<div class="tsd-comment tsd-typography"><p>Checks if a protected string is valid per the algorithm.</p>
 
-<h3>Returns</h3><p>True if valid</p>
+<h3>Returns</h3><p>True if the argument is valid</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5>numWithCC: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h5>strWithCheckChars: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>String with check character(s)</p>
+</div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.1.4/src/algo/common.ts#L31">algo/common.ts:31</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v3.2.0/src/type.ts#L32">type.ts:32</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
@@ -159,6 +193,7 @@ must be a combined string of check digit(s) and their original number.</p>
 <li class="tsd-kind-property tsd-parent-kind-interface"><a href="CdigitAlgo.html#longName" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>long<wbr/>Name</a></li>
 <li class="tsd-kind-property tsd-parent-kind-interface"><a href="CdigitAlgo.html#name" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>name</a></li>
 <li class="tsd-kind-method tsd-parent-kind-interface"><a href="CdigitAlgo.html#compute" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>compute</a></li>
+<li class="tsd-kind-method tsd-parent-kind-interface"><a href="CdigitAlgo.html#computeFromNumVals" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>compute<wbr/>From<wbr/>Num<wbr/>Vals</a></li>
 <li class="tsd-kind-method tsd-parent-kind-interface"><a href="CdigitAlgo.html#generate" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>generate</a></li>
 <li class="tsd-kind-method tsd-parent-kind-interface"><a href="CdigitAlgo.html#parse" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>parse</a></li>
 <li class="tsd-kind-method tsd-parent-kind-interface"><a href="CdigitAlgo.html#validate" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-2048-path"></use><use href="#icon-2048-text"></use></svg>validate</a></li></ul></li></ul></nav></div></div>

@@ -1,10 +1,10 @@
 /**
  * cdigit
  *
- * @copyright 2018-2022 LiosK
+ * @copyright 2018-2023 LiosK
  * @license (MIT OR Apache-2.0)
  */
-import { CdigitAlgo } from "./common";
+import type { CdigitAlgo } from "../type";
 /**
  * Verhoeff algorithm implementation
  *

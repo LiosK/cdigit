@@ -27,7 +27,7 @@
 <pre><code class="language-javascript"><span class="hl-0">const</span><span class="hl-1"> { </span><span class="hl-2">luhn</span><span class="hl-1"> } = </span><span class="hl-3">require</span><span class="hl-1">(</span><span class="hl-4">&quot;cdigit&quot;</span><span class="hl-1">);</span><br/><br/><span class="hl-5">// Luhn (a.k.a. Mod 10) algorithm</span><br/><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-3">log</span><span class="hl-1">(</span><span class="hl-6">luhn</span><span class="hl-1">.</span><span class="hl-3">compute</span><span class="hl-1">(</span><span class="hl-4">&quot;1234&quot;</span><span class="hl-1">)); </span><span class="hl-5">// &quot;4&quot;</span><br/><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-3">log</span><span class="hl-1">(</span><span class="hl-6">luhn</span><span class="hl-1">.</span><span class="hl-3">generate</span><span class="hl-1">(</span><span class="hl-4">&quot;1234&quot;</span><span class="hl-1">)); </span><span class="hl-5">// &quot;12344&quot;</span><br/><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-3">log</span><span class="hl-1">(</span><span class="hl-6">luhn</span><span class="hl-1">.</span><span class="hl-3">validate</span><span class="hl-1">(</span><span class="hl-4">&quot;12344&quot;</span><span class="hl-1">)); </span><span class="hl-5">// true</span>
 </code></pre>
 <p>Command-line:</p>
-<pre><code class="language-bash"><span class="hl-5"># Damm algorithm</span><br/><span class="hl-1">npx cdigit --algo damm compute 1234</span><br/><span class="hl-1">npx cdigit --algo damm generate 1234</span><br/><span class="hl-1">npx cdigit --algo damm validate 12340</span>
+<pre><code class="language-bash"><span class="hl-5"># Damm algorithm</span><br/><span class="hl-1">npx </span><span class="hl-4">cdigit</span><span class="hl-1"> </span><span class="hl-4">--algo</span><span class="hl-1"> </span><span class="hl-4">damm</span><span class="hl-1"> </span><span class="hl-4">compute</span><span class="hl-1"> </span><span class="hl-7">1234</span><br/><span class="hl-1">npx </span><span class="hl-4">cdigit</span><span class="hl-1"> </span><span class="hl-4">--algo</span><span class="hl-1"> </span><span class="hl-4">damm</span><span class="hl-1"> </span><span class="hl-4">generate</span><span class="hl-1"> </span><span class="hl-7">1234</span><br/><span class="hl-1">npx </span><span class="hl-4">cdigit</span><span class="hl-1"> </span><span class="hl-4">--algo</span><span class="hl-1"> </span><span class="hl-4">damm</span><span class="hl-1"> </span><span class="hl-4">validate</span><span class="hl-1"> </span><span class="hl-7">12340</span>
 </code></pre>
 
 <a href="#supported-algorithms" id="supported-algorithms" style="color: inherit; text-decoration: none;">
@@ -73,7 +73,7 @@
 numeric, alphabetic, and alphanumeric strings. ISO/IEC 7064 specifies two types
 of systems that use the same algorithm with different parameters: Pure systems
 (MOD 11-2, MOD 37-2, MOD 97-10, MOD 661-26, and MOD 1271-36) and Hybrid systems
-(MOD 11-10, MOD 27-26, and MOD 37-36).</p>
+(MOD 11,10, MOD 27,26, and MOD 37,36).</p>
 <table>
 <thead>
 <tr>
@@ -114,19 +114,19 @@ of systems that use the same algorithm with different parameters: Pure systems
 <td>2 digits or letters (0-9A-Z)</td>
 </tr>
 <tr>
-<td>ISO/IEC 7064, MOD 11-10</td>
+<td>ISO/IEC 7064, MOD 11,10</td>
 <td>mod11_10</td>
 <td>Numeric (0-9)</td>
 <td>1 digit (0-9)</td>
 </tr>
 <tr>
-<td>ISO/IEC 7064, MOD 27-26</td>
+<td>ISO/IEC 7064, MOD 27,26</td>
 <td>mod27_26</td>
 <td>Alphabetic (A-Z)</td>
 <td>1 letter (A-Z)</td>
 </tr>
 <tr>
-<td>ISO/IEC 7064, MOD 37-36</td>
+<td>ISO/IEC 7064, MOD 37,36</td>
 <td>mod37_36</td>
 <td>Alphanumeric (0-9A-Z)</td>
 <td>1 digit or letter (0-9A-Z)</td>
@@ -140,7 +140,7 @@ of systems that use the same algorithm with different parameters: Pure systems
 (or historically) referred to as <a href="https://en.wikipedia.org/wiki/Universal_Product_Code">UPC</a>, <a href="https://en.wikipedia.org/wiki/International_Article_Number">EAN</a>, <a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number">ISBN</a>-13, etc. GTINs have
 several variations in length but share the identical check digit algorithm;
 therefore, <code>cdigit</code> currently provides only one generic <code>gtin</code> object for GTINs
-and other <a href="https://www.gs1.org/standards/id-keys">GS1 data structures</a>. Note that <code>cdigit.gtin</code> does not check the
+and other <a href="https://www.gs1.org/standards/id-keys">GS1 data structures</a>. Note that the <code>gtin</code> object does not check the
 length or semantic validity of a given GTIN string.</p>
 <table>
 <thead>
@@ -191,28 +191,27 @@ length or semantic validity of a given GTIN string.</p>
 </code></pre>
 <p>Algorithm objects implement the following methods:</p>
 
-<a href="#validatenumwithcc-string-boolean" id="validatenumwithcc-string-boolean" style="color: inherit; text-decoration: none;">
-  <h3>validate(numWithCC: string): boolean</h3>
+<a href="#validatestrwithcheckchars-string-boolean" id="validatestrwithcheckchars-string-boolean" style="color: inherit; text-decoration: none;">
+  <h3>validate(strWithCheckChars: string): boolean</h3>
 </a>
-<p>Check if a given string is valid according to the algorithm. The argument must
-be a combined string of check digit(s) and their original number.</p>
+<p>Checks if a protected string is valid per the algorithm.</p>
 <pre><code class="language-javascript"><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-3">log</span><span class="hl-1">(</span><span class="hl-6">mod97_10</span><span class="hl-1">.</span><span class="hl-3">validate</span><span class="hl-1">(</span><span class="hl-4">&quot;123482&quot;</span><span class="hl-1">)); </span><span class="hl-5">// true</span>
 </code></pre>
 
-<a href="#generatenumwithoutcc-string-string" id="generatenumwithoutcc-string-string" style="color: inherit; text-decoration: none;">
-  <h3>generate(numWithoutCC: string): string</h3>
+<a href="#generatestrwithoutcheckchars-string-string" id="generatestrwithoutcheckchars-string-string" style="color: inherit; text-decoration: none;">
+  <h3>generate(strWithoutCheckChars: string): string</h3>
 </a>
-<p>Generate a valid number string from a given string in accordance with the
-algorithm. The generated string includes the original string and computed check
-digit(s) that are combined in the manner specified by the algorithm.</p>
+<p>Generates the protected string from the argument using the algorithm. The
+generated string consists of the original bare string and computed check
+character(s), which are combined in accordance with the algorithm.</p>
 <pre><code class="language-javascript"><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-3">log</span><span class="hl-1">(</span><span class="hl-6">mod97_10</span><span class="hl-1">.</span><span class="hl-3">generate</span><span class="hl-1">(</span><span class="hl-4">&quot;1234&quot;</span><span class="hl-1">)); </span><span class="hl-5">// &quot;123482&quot;</span>
 </code></pre>
 
-<a href="#computenumwithoutcc-string-string" id="computenumwithoutcc-string-string" style="color: inherit; text-decoration: none;">
-  <h3>compute(numWithoutCC: string): string</h3>
+<a href="#computestrwithoutcheckchars-string-string" id="computestrwithoutcheckchars-string-string" style="color: inherit; text-decoration: none;">
+  <h3>compute(strWithoutCheckChars: string): string</h3>
 </a>
-<p>Generate check digit(s) from a given number. Unlike <code>generate()</code>, this method
-returns the check digit(s) only.</p>
+<p>Generates the check character(s) from the argument using the algorithm. Unlike
+<code>generate()</code>, this method returns the check character(s) only.</p>
 <pre><code class="language-javascript"><span class="hl-6">console</span><span class="hl-1">.</span><span class="hl-3">log</span><span class="hl-1">(</span><span class="hl-6">mod97_10</span><span class="hl-1">.</span><span class="hl-3">compute</span><span class="hl-1">(</span><span class="hl-4">&quot;1234&quot;</span><span class="hl-1">)); </span><span class="hl-5">// &quot;82&quot;</span>
 </code></pre>
 <p>See <a href="https://npm.runkit.com/cdigit">example.js</a> for usage examples.</p>
@@ -220,7 +219,7 @@ returns the check digit(s) only.</p>
 <a href="#usage---command-line" id="usage---command-line" style="color: inherit; text-decoration: none;">
   <h2>Usage - Command-line</h2>
 </a>
-<pre><code><span class="hl-7">Usage</span><span class="hl-1">: </span><span class="hl-6">cdigit</span><span class="hl-1"> [</span><span class="hl-6">options</span><span class="hl-1">] [</span><span class="hl-6">command</span><span class="hl-1">]</span><br/><br/><span class="hl-7">Options</span><span class="hl-1">:</span><br/><span class="hl-1">  -</span><span class="hl-6">a</span><span class="hl-1">, --</span><span class="hl-6">algo</span><span class="hl-1"> &lt;</span><span class="hl-6">name</span><span class="hl-1">&gt;  </span><span class="hl-6">specify</span><span class="hl-1"> </span><span class="hl-6">check</span><span class="hl-1"> </span><span class="hl-6">digit</span><span class="hl-1"> </span><span class="hl-6">algorithm</span><span class="hl-1"> </span><span class="hl-6">by</span><span class="hl-1"> </span><span class="hl-6">name</span><br/><span class="hl-1">  -</span><span class="hl-6">h</span><span class="hl-1">, --</span><span class="hl-6">help</span><span class="hl-1">         </span><span class="hl-6">output</span><span class="hl-1"> </span><span class="hl-6">usage</span><span class="hl-1"> </span><span class="hl-6">information</span><br/><br/><span class="hl-7">Commands</span><span class="hl-1">:</span><br/><span class="hl-1">  </span><span class="hl-6">validate</span><span class="hl-1"> &lt;</span><span class="hl-6">string</span><span class="hl-1">&gt;  </span><span class="hl-6">check</span><span class="hl-1"> </span><span class="hl-8">if</span><span class="hl-1"> </span><span class="hl-6">string</span><span class="hl-1"> </span><span class="hl-6">is</span><span class="hl-1"> </span><span class="hl-6">valid</span><br/><span class="hl-1">  </span><span class="hl-6">generate</span><span class="hl-1"> &lt;</span><span class="hl-6">string</span><span class="hl-1">&gt;  </span><span class="hl-6">generate</span><span class="hl-1"> </span><span class="hl-6">valid</span><span class="hl-1"> </span><span class="hl-6">number</span><span class="hl-1"> </span><span class="hl-6">from</span><span class="hl-1"> </span><span class="hl-6">string</span><br/><span class="hl-1">  </span><span class="hl-6">compute</span><span class="hl-1"> &lt;</span><span class="hl-6">string</span><span class="hl-1">&gt;   </span><span class="hl-6">compute</span><span class="hl-1"> </span><span class="hl-6">check</span><span class="hl-1"> </span><span class="hl-6">digit</span><span class="hl-1"> </span><span class="hl-6">from</span><span class="hl-1"> </span><span class="hl-6">string</span>
+<pre><code><span class="hl-8">Usage</span><span class="hl-1">: </span><span class="hl-6">cdigit</span><span class="hl-1"> [</span><span class="hl-6">options</span><span class="hl-1">] [</span><span class="hl-6">command</span><span class="hl-1">]</span><br/><br/><span class="hl-8">Options</span><span class="hl-1">:</span><br/><span class="hl-1">  -</span><span class="hl-6">a</span><span class="hl-1">, --</span><span class="hl-6">algo</span><span class="hl-1"> &lt;</span><span class="hl-6">name</span><span class="hl-1">&gt;  </span><span class="hl-6">specify</span><span class="hl-1"> </span><span class="hl-6">check</span><span class="hl-1"> </span><span class="hl-6">digit</span><span class="hl-1"> </span><span class="hl-6">algorithm</span><span class="hl-1"> </span><span class="hl-6">by</span><span class="hl-1"> </span><span class="hl-6">name</span><br/><span class="hl-1">  -</span><span class="hl-6">h</span><span class="hl-1">, --</span><span class="hl-6">help</span><span class="hl-1">         </span><span class="hl-6">display</span><span class="hl-1"> </span><span class="hl-6">help</span><span class="hl-1"> </span><span class="hl-6">for</span><span class="hl-1"> </span><span class="hl-6">command</span><br/><br/><span class="hl-8">Commands</span><span class="hl-1">:</span><br/><span class="hl-1">  </span><span class="hl-6">validate</span><span class="hl-1"> &lt;</span><span class="hl-6">string</span><span class="hl-1">&gt;  </span><span class="hl-6">check</span><span class="hl-1"> </span><span class="hl-9">if</span><span class="hl-1"> </span><span class="hl-6">string</span><span class="hl-1"> </span><span class="hl-6">is</span><span class="hl-1"> </span><span class="hl-6">valid</span><br/><span class="hl-1">  </span><span class="hl-6">generate</span><span class="hl-1"> &lt;</span><span class="hl-6">string</span><span class="hl-1">&gt;  </span><span class="hl-6">append</span><span class="hl-1"> </span><span class="hl-6">check</span><span class="hl-1"> </span><span class="hl-3">character</span><span class="hl-1">(</span><span class="hl-6">s</span><span class="hl-1">) </span><span class="hl-6">to</span><span class="hl-1"> </span><span class="hl-6">string</span><br/><span class="hl-1">  </span><span class="hl-6">compute</span><span class="hl-1"> &lt;</span><span class="hl-6">string</span><span class="hl-1">&gt;   </span><span class="hl-6">print</span><span class="hl-1"> </span><span class="hl-6">check</span><span class="hl-1"> </span><span class="hl-3">character</span><span class="hl-1">(</span><span class="hl-6">s</span><span class="hl-1">) </span><span class="hl-6">computed</span><span class="hl-1"> </span><span class="hl-6">from</span><span class="hl-1"> </span><span class="hl-6">string</span>
 </code></pre>
 <p><code>-a, --algo &lt;name&gt;</code> option accepts the names listed in <a href="#supported-algorithms">Supported Algorithms
 section</a> and defaults to <code>luhn</code> or the value of
@@ -229,7 +228,7 @@ section</a> and defaults to <code>luhn</code> or the value of
 <a href="#license" id="license" style="color: inherit; text-decoration: none;">
   <h2>License</h2>
 </a>
-<p>Copyright (c) 2018-2022 LiosK</p>
+<p>Copyright (c) 2018-2023 LiosK</p>
 <p>Licensed under either of</p>
 <ul>
 <li><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></li>

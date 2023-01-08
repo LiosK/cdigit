@@ -6,8 +6,9 @@ module.exports = {
    * @param {CdigitAlgo} algo
    * @param {[validString, sourceString, checkCharacter][]} validCases
    * @param {invalidString[]} invalidStrings
+   * @param {[sourceNumVals, checkCharacterNumVals][]} numValCases
    */
-  testAlgo: (algo, validCases, invalidStrings) => {
+  testAlgo: (algo, validCases, invalidStrings, numValCases) => {
     describe("CdigitAlgo type", () => {
       it("implements name", () => {
         assert.equal(typeof algo.name, "string", "typeof algo.name");
@@ -24,6 +25,13 @@ module.exports = {
       it("implements compute()", () => {
         assert.equal(typeof algo.compute, "function", "typeof algo.compute");
       });
+      it("implements computeFromNumVals()", () => {
+        assert.equal(
+          typeof algo.computeFromNumVals,
+          "function",
+          "typeof algo.computeFromNumVals"
+        );
+      });
       it("implements parse()", () => {
         assert.equal(typeof algo.parse, "function", "typeof algo.parse");
       });
@@ -31,14 +39,12 @@ module.exports = {
 
     describe("generate()", () => {
       it("generates a valid number", () => {
-        // eslint-disable-next-line no-unused-vars
-        validCases.forEach(([num, src, cc]) => {
+        validCases.forEach(([num, src]) => {
           assert.equal(algo.generate(src), num, `generate(${src})`);
         });
       });
       it("generates a valid number that validate() accepts", () => {
-        // eslint-disable-next-line no-unused-vars
-        validCases.forEach(([num, src, cc]) => {
+        validCases.forEach(([, src]) => {
           assert.ok(
             algo.validate(algo.generate(src)),
             `validate(generate(${src}))`
@@ -46,8 +52,7 @@ module.exports = {
         });
       });
       it("generates a valid number that parse() can parse", () => {
-        // eslint-disable-next-line no-unused-vars
-        validCases.forEach(([num, src, cc]) => {
+        validCases.forEach(([, src, cc]) => {
           assert.deepEqual(
             algo.parse(algo.generate(src)),
             [src, cc],
@@ -59,8 +64,7 @@ module.exports = {
 
     describe("validate()", () => {
       it("returns true if a number is valid", () => {
-        // eslint-disable-next-line no-unused-vars
-        validCases.forEach(([num, src, cc]) => {
+        validCases.forEach(([num]) => {
           assert.ok(algo.validate(num), `validate(${num})`);
         });
       });
@@ -73,16 +77,26 @@ module.exports = {
 
     describe("compute()", () => {
       it("computes correct check digit(s)", () => {
-        // eslint-disable-next-line no-unused-vars
-        validCases.forEach(([num, src, cc]) => {
+        validCases.forEach(([, src, cc]) => {
           assert.equal(algo.compute(src), cc, `compute(${src})`);
+        });
+      });
+    });
+
+    describe("computeFromNumVals()", () => {
+      it("computes correct check digit(s) from numerical values", () => {
+        numValCases.forEach(([src, cc]) => {
+          assert.deepEqual(
+            algo.computeFromNumVals(src),
+            cc,
+            `computeFromNumVals([${src.join(", ")}])`
+          );
         });
       });
     });
 
     describe("parse()", () => {
       it("extracts the source number and check digit(s)", () => {
-        // eslint-disable-next-line no-unused-vars
         validCases.forEach(([num, src, cc]) => {
           assert.deepEqual(algo.parse(num), [src, cc], `parse(${num})`);
         });

@@ -47,7 +47,7 @@ ISO/IEC 7064 describes eight generic check digit (character) systems for
 numeric, alphabetic, and alphanumeric strings. ISO/IEC 7064 specifies two types
 of systems that use the same algorithm with different parameters: Pure systems
 (MOD 11-2, MOD 37-2, MOD 97-10, MOD 661-26, and MOD 1271-36) and Hybrid systems
-(MOD 11-10, MOD 27-26, and MOD 37-36).
+(MOD 11,10, MOD 27,26, and MOD 37,36).
 
 | Algorithm                 | cdigit name | Input string          | Check character(s)                  |
 | ------------------------- | ----------- | --------------------- | ----------------------------------- |
@@ -56,9 +56,9 @@ of systems that use the same algorithm with different parameters: Pure systems
 | ISO/IEC 7064, MOD 97-10   | mod97_10    | Numeric (0-9)         | 2 digits (0-9)                      |
 | ISO/IEC 7064, MOD 661-26  | mod661_26   | Alphabetic (A-Z)      | 2 letters (A-Z)                     |
 | ISO/IEC 7064, MOD 1271-36 | mod1271_36  | Alphanumeric (0-9A-Z) | 2 digits or letters (0-9A-Z)        |
-| ISO/IEC 7064, MOD 11-10   | mod11_10    | Numeric (0-9)         | 1 digit (0-9)                       |
-| ISO/IEC 7064, MOD 27-26   | mod27_26    | Alphabetic (A-Z)      | 1 letter (A-Z)                      |
-| ISO/IEC 7064, MOD 37-36   | mod37_36    | Alphanumeric (0-9A-Z) | 1 digit or letter (0-9A-Z)          |
+| ISO/IEC 7064, MOD 11,10   | mod11_10    | Numeric (0-9)         | 1 digit (0-9)                       |
+| ISO/IEC 7064, MOD 27,26   | mod27_26    | Alphabetic (A-Z)      | 1 letter (A-Z)                      |
+| ISO/IEC 7064, MOD 37,36   | mod37_36    | Alphanumeric (0-9A-Z) | 1 digit or letter (0-9A-Z)          |
 
 [iso/iec 7064]: https://www.iso.org/standard/31531.html
 
@@ -68,7 +68,7 @@ GTINs are internationally unified product identification numbers that are often
 (or historically) referred to as [UPC], [EAN], [ISBN]-13, etc. GTINs have
 several variations in length but share the identical check digit algorithm;
 therefore, `cdigit` currently provides only one generic `gtin` object for GTINs
-and other [GS1 data structures]. Note that `cdigit.gtin` does not check the
+and other [GS1 data structures]. Note that the `gtin` object does not check the
 length or semantic validity of a given GTIN string.
 
 | Algorithm | cdigit name | Input string  | Check character(s) | Also known as             |
@@ -96,29 +96,28 @@ const { mod97_10 } = require("cdigit");
 
 Algorithm objects implement the following methods:
 
-### validate(numWithCC: string): boolean
+### validate(strWithCheckChars: string): boolean
 
-Check if a given string is valid according to the algorithm. The argument must
-be a combined string of check digit(s) and their original number.
+Checks if a protected string is valid per the algorithm.
 
 ```javascript
 console.log(mod97_10.validate("123482")); // true
 ```
 
-### generate(numWithoutCC: string): string
+### generate(strWithoutCheckChars: string): string
 
-Generate a valid number string from a given string in accordance with the
-algorithm. The generated string includes the original string and computed check
-digit(s) that are combined in the manner specified by the algorithm.
+Generates the protected string from the argument using the algorithm. The
+generated string consists of the original bare string and computed check
+character(s), which are combined in accordance with the algorithm.
 
 ```javascript
 console.log(mod97_10.generate("1234")); // "123482"
 ```
 
-### compute(numWithoutCC: string): string
+### compute(strWithoutCheckChars: string): string
 
-Generate check digit(s) from a given number. Unlike `generate()`, this method
-returns the check digit(s) only.
+Generates the check character(s) from the argument using the algorithm. Unlike
+`generate()`, this method returns the check character(s) only.
 
 ```javascript
 console.log(mod97_10.compute("1234")); // "82"
@@ -133,12 +132,12 @@ Usage: cdigit [options] [command]
 
 Options:
   -a, --algo <name>  specify check digit algorithm by name
-  -h, --help         output usage information
+  -h, --help         display help for command
 
 Commands:
   validate <string>  check if string is valid
-  generate <string>  generate valid number from string
-  compute <string>   compute check digit from string
+  generate <string>  append check character(s) to string
+  compute <string>   print check character(s) computed from string
 ```
 
 `-a, --algo <name>` option accepts the names listed in [Supported Algorithms
@@ -147,7 +146,7 @@ section](#supported-algorithms) and defaults to `luhn` or the value of
 
 ## License
 
-Copyright (c) 2018-2022 LiosK
+Copyright (c) 2018-2023 LiosK
 
 Licensed under either of
 
