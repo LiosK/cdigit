@@ -7,6 +7,17 @@ export const assert = {
   equal: (actual, expected, message = "") => {
     assert.ok(actual === expected, message);
   },
+  throws: (fn, error, message = "") => {
+    let caught = undefined;
+    try {
+      fn();
+    } catch (err) {
+      if (err instanceof error) {
+        caught = err;
+      }
+    }
+    assert.ok(caught !== undefined, message);
+  },
 };
 
 export const common = {
@@ -69,6 +80,17 @@ export const common = {
           assert.equal(actual[1], cc, message);
         });
       });
+      it("throws SyntaxError on empty-ish input string", () => {
+        for (const e of ["", "        "]) {
+          assert.throws(
+            () => {
+              algo.generate(e);
+            },
+            SyntaxError,
+            `generate("${e}")`
+          );
+        }
+      });
     });
 
     describe("validate()", () => {
@@ -82,6 +104,17 @@ export const common = {
           assert.ok(!algo.validate(num), `validate(${num})`);
         });
       });
+      it("throws SyntaxError on empty-ish input string", () => {
+        for (const e of ["", "        "]) {
+          assert.throws(
+            () => {
+              algo.validate(e);
+            },
+            SyntaxError,
+            `validate("${e}")`
+          );
+        }
+      });
     });
 
     describe("compute()", () => {
@@ -89,6 +122,17 @@ export const common = {
         validCases.forEach(([, src, cc]) => {
           assert.equal(algo.compute(src), cc, `compute(${src})`);
         });
+      });
+      it("throws SyntaxError on empty-ish input string", () => {
+        for (const e of ["", "        "]) {
+          assert.throws(
+            () => {
+              algo.compute(e);
+            },
+            SyntaxError,
+            `compute("${e}")`
+          );
+        }
       });
     });
 
@@ -104,6 +148,15 @@ export const common = {
           );
         });
       });
+      it("throws SyntaxError on empty input array", () => {
+        assert.throws(
+          () => {
+            algo.computeFromNumVals([]);
+          },
+          SyntaxError,
+          "computeFromNumVals([])"
+        );
+      });
     });
 
     describe("parse()", () => {
@@ -115,6 +168,17 @@ export const common = {
           assert.equal(actual[0], src, message);
           assert.equal(actual[1], cc, message);
         });
+      });
+      it("throws SyntaxError on empty-ish input string", () => {
+        for (const e of ["", "        "]) {
+          assert.throws(
+            () => {
+              algo.parse(e);
+            },
+            SyntaxError,
+            `parse("${e}")`
+          );
+        }
       });
     });
   },
