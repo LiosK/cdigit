@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const { EOL } = require("os");
-const { program } = require("commander");
-const cdigit = require("..");
+import { EOL } from "node:os";
+import { program } from "commander";
+import * as cdigit from "cdigit";
 
 // top-level options
 program
@@ -38,7 +38,16 @@ const handler = (str, opts, cmd) => {
     cmd.error(`error: unknown algorithm '${algo}'`);
   }
 
-  const result = cdigit[algo][cmd.name()](str);
+  let result;
+  try {
+    result = cdigit[algo][cmd.name()](str);
+  } catch (err) {
+    if (err instanceof SyntaxError) {
+      cmd.error(`error: ${err.message}`);
+    } else {
+      throw err;
+    }
+  }
   if (cmd.name() === "validate") {
     process.exitCode = result ? 0 : 1;
     console.log(`${result ? "OK" : "NG"}: ${str}`);
@@ -54,12 +63,12 @@ program
 
 program
   .command("generate <string>")
-  .description("generate valid number from string")
+  .description("append check character(s) to string")
   .action(handler);
 
 program
   .command("compute <string>")
-  .description("compute check digit from string")
+  .description("print check character(s) computed from string")
   .action(handler);
 
 // execute

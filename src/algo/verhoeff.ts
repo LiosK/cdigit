@@ -1,29 +1,17 @@
 /**
  * cdigit
  *
- * @copyright 2018-2021 LiosK
+ * @copyright 2018-2023 LiosK
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common";
+import type { CdigitAlgo } from "../type.js";
 
-/**
- * Verhoeff algorithm implementation
- *
- * Note: There is not a firm consensus on the direction (left to right or right
- * to left) in which a Verhoeff calculator scans numeric text to construct an
- * input digit sequence. This implementation is hard coded to read a string from
- * right to left and append the check digit at the rightmost position, which is
- * a consistent behavior with other popular implementations. Reverse the input
- * string before calling this class' methods if you need to interpret a string
- * from left to right.
- */
-class Verhoeff implements Algo {
-  name = "verhoeff";
-  longName = "Verhoeff Algorithm";
+class Verhoeff implements CdigitAlgo {
+  constructor(readonly name: string, readonly longName: string) {}
 
   /** Verhoeff multiplication table */
-  private d = [
+  private readonly d = [
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
     [2, 3, 4, 0, 1, 7, 8, 9, 5, 6],
@@ -37,7 +25,7 @@ class Verhoeff implements Algo {
   ];
 
   /** Verhoeff permutation table */
-  private p = [
+  private readonly p = [
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     [1, 5, 7, 6, 2, 8, 3, 0, 9, 4],
     [5, 8, 0, 3, 7, 9, 6, 1, 4, 2],
@@ -49,31 +37,60 @@ class Verhoeff implements Algo {
   ];
 
   /** Verhoeff inverse table */
-  private inv = ["0", "4", "3", "2", "1", "5", "6", "7", "8", "9"];
+  private readonly inv = [0, 4, 3, 2, 1, 5, 6, 7, 8, 9];
 
-  compute(num: string): string {
-    const ds = `${String(num).replace(/[^0-9]/g, "")}0`;
-
-    let c = 0;
-    for (let i = 0, len = ds.length; i < len; i += 1) {
-      c = this.d[c][this.p[i & 7][Number(ds[len - i - 1])]];
+  computeFromNumVals(ns: number[]): number[] {
+    if (ns.length === 0) {
+      throw new SyntaxError("string to be protected is empty");
+    } else if (ns.some((e) => e < 0 || e > 9 || !Number.isInteger(e))) {
+      throw new SyntaxError("invalid numerical value detected");
     }
 
-    return this.inv[c];
+    // as if: `ns.push(0); let c = 0;` and finished first loop where i == 0
+    let c = this.d[0][this.p[0][0]];
+    for (let i = 1, len = ns.length; i <= len; i += 1) {
+      c = this.d[c][this.p[i & 7][ns[len - i]]];
+    }
+    return [this.inv[c]];
   }
 
-  generate(num: string): string {
-    return `${num}${this.compute(num)}`;
+  compute(s: string): string {
+    const ds = String(s).replace(/[^0-9]/g, "");
+    const ns = [...ds].map(Number);
+    return String(this.computeFromNumVals(ns)[0]);
   }
 
-  validate(num: string): boolean {
-    const [src, cc] = this.parse(num);
-    return this.compute(src) === cc;
+  parse(s: string): [string, string] {
+    const m = String(s).match(/^(.*)([0-9])$/s);
+    if (m != null) {
+      return [m[1], m[2]];
+    } else {
+      throw new SyntaxError("could not find check character(s)");
+    }
   }
 
-  parse(num: string): [string, string] {
-    return helper.parseTail(num, 1);
+  generate(s: string): string {
+    return `${s}${this.compute(s)}`;
+  }
+
+  validate(s: string): boolean {
+    const [bare, cc] = this.parse(s);
+    return this.compute(bare) === cc;
   }
 }
 
-export const verhoeff = new Verhoeff();
+/**
+ * Verhoeff algorithm implementation
+ *
+ * Note: There is not a firm consensus on the direction (left to right or right
+ * to left) in which a Verhoeff calculator scans numeric text to construct an
+ * input digit sequence. This implementation is hard coded to read a string from
+ * right to left and append the check digit at the rightmost position, which is
+ * a consistent behavior with other popular implementations. Reverse the input
+ * string before calling this class' methods if you need to interpret a string
+ * from left to right.
+ */
+export const verhoeff: CdigitAlgo = new Verhoeff(
+  "verhoeff",
+  "Verhoeff Algorithm"
+);

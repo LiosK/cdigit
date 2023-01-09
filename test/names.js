@@ -1,5 +1,5 @@
-const assert = require("assert").strict;
-const cdigit = require("..");
+import { assert } from "./common.js";
+import * as cdigit from "../lib/index.js";
 
 describe("cdigit.names", () => {
   it("is defined", () => {
@@ -16,7 +16,7 @@ describe("cdigit.names", () => {
     });
   });
 
-  it("is consistent with Algo#name", () => {
+  it("is consistent with CdigitAlgo#name", () => {
     cdigit.names.forEach((name) => {
       assert.equal(name, cdigit[name].name, "name === cdigit[name].name");
     });

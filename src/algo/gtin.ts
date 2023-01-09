@@ -1,11 +1,59 @@
 /**
  * cdigit
  *
- * @copyright 2018-2021 LiosK
+ * @copyright 2018-2023 LiosK
  * @license (MIT OR Apache-2.0)
  */
 
-import { Algo, helper } from "./common";
+import type { CdigitAlgo } from "../type.js";
+
+class GTIN implements CdigitAlgo {
+  constructor(readonly name: string, readonly longName: string) {}
+
+  computeFromNumVals(ns: number[]): number[] {
+    if (ns.length === 0) {
+      throw new SyntaxError("string to be protected is empty");
+    } else if (ns.some((e) => e < 0 || e > 9 || !Number.isInteger(e))) {
+      throw new SyntaxError("invalid numerical value detected");
+    }
+
+    let sum = 0;
+    let odd = 1;
+    for (let i = ns.length - 1; i >= 0; i -= 1) {
+      if (sum > 0xffff_ffff_ffff) {
+        // ~2^48 at max
+        sum %= 10;
+      }
+      sum += ns[i] * (odd ? 3 : 1);
+      odd ^= 1;
+    }
+    return [(10 - (sum % 10)) % 10];
+  }
+
+  compute(s: string): string {
+    const ds = String(s).replace(/[^0-9]/g, "");
+    const ns = [...ds].map(Number);
+    return String(this.computeFromNumVals(ns)[0]);
+  }
+
+  parse(s: string): [string, string] {
+    const m = String(s).match(/^(.*)([0-9])$/s);
+    if (m != null) {
+      return [m[1], m[2]];
+    } else {
+      throw new SyntaxError("could not find check character(s)");
+    }
+  }
+
+  generate(s: string): string {
+    return `${s}${this.compute(s)}`;
+  }
+
+  validate(s: string): boolean {
+    const [bare, cc] = this.parse(s);
+    return this.compute(bare) === cc;
+  }
+}
 
 /**
  * Standard check digit algorithm for GS1 data structures (including GTIN)
@@ -14,39 +62,7 @@ import { Algo, helper } from "./common";
  * is not recommended to use numbers longer than 18 digits because GS1 General
  * Specifications do not explicitly specify an algorithm for them.
  */
-class GTIN implements Algo {
-  name = "gtin";
-  longName = "GTINs (including UPC, EAN, ISBN-13, etc.)";
-
-  compute(num: string): string {
-    const ds = String(num).replace(/[^0-9]/g, "");
-
-    let sum = 0;
-    let odd = 1;
-    for (let i = ds.length - 1; i > -1; i -= 1) {
-      sum += Number(ds[i]) * (odd ? 3 : 1);
-      odd ^= 1;
-      if (sum > 0xffffffffffff) {
-        // ~2^48 at max
-        sum %= 10;
-      }
-    }
-
-    return String(10 - (sum % 10)).slice(-1);
-  }
-
-  generate(num: string): string {
-    return `${num}${this.compute(num)}`;
-  }
-
-  validate(num: string): boolean {
-    const [src, cc] = this.parse(num);
-    return this.compute(src) === cc;
-  }
-
-  parse(num: string): [string, string] {
-    return helper.parseTail(num, 1);
-  }
-}
-
-export const gtin = new GTIN();
+export const gtin: CdigitAlgo = new GTIN(
+  "gtin",
+  "GTINs (including UPC, EAN, ISBN-13, etc.)"
+);

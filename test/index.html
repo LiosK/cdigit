@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mocha Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+  </head>
+  <body>
+    <div id="mocha"></div>
+
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+
+    <script class="mocha-init">
+      mocha.setup("bdd");
+      mocha.checkLeaks();
+    </script>
+
+    <script type="module" src="./damm.js"></script>
+    <script type="module" src="./gtin.js"></script>
+    <script type="module" src="./luhn.js"></script>
+    <script type="module" src="./mod11_10.js"></script>
+    <script type="module" src="./mod11_2.js"></script>
+    <script type="module" src="./mod1271_36.js"></script>
+    <script type="module" src="./mod27_26.js"></script>
+    <script type="module" src="./mod37_2.js"></script>
+    <script type="module" src="./mod37_36.js"></script>
+    <script type="module" src="./mod661_26.js"></script>
+    <script type="module" src="./mod97_10.js"></script>
+    <script type="module" src="./names.js"></script>
+    <script type="module" src="./verhoeff.js"></script>
+
+    <script type="module" class="mocha-exec">
+      mocha.run();
+    </script>
+  </body>
+</html>

@@ -1,6 +1,5 @@
-const assert = require("assert").strict;
-const common = require("./common");
-const algo = require("..").luhn;
+import { common, assert } from "./common.js";
+import { luhn as algo } from "../lib/index.js";
 
 describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings
@@ -542,7 +541,11 @@ describe(`${algo.longName} (${algo.name})`, () => {
   ];
   // }}}
 
-  common.testAlgo(algo, valid, invalid);
+  const numVals = valid.map(([, src, cc]) => {
+    return [[...src.replace(/[^0-9]/g, "")].map(Number), [Number(cc)]];
+  });
+
+  common.testAlgo(algo, valid, invalid, numVals);
 
   describe("luhn.validate()", () => {
     it("accepts Number type as argument", () => {

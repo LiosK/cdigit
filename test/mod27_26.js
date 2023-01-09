@@ -1,5 +1,5 @@
-const common = require("./common");
-const algo = require("..").mod27_26;
+import { common } from "./common.js";
+import { mod27_26 as algo } from "../lib/index.js";
 
 describe(`${algo.longName} (${algo.name})`, () => {
   // {{{ List sample strings
@@ -22,7 +22,17 @@ describe(`${algo.longName} (${algo.name})`, () => {
   ];
   // }}}
 
-  common.testAlgo(algo, valid, invalid);
+  const charMap = Object.fromEntries(
+    [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map((c, i) => [c, i])
+  );
+  const numVals = valid.map(([, src, cc]) => {
+    return [
+      [...src.replace(/[^A-Z]/g, "")].map((c) => charMap[c]),
+      [...cc].map((c) => charMap[c]),
+    ];
+  });
+
+  common.testAlgo(algo, valid, invalid, numVals);
 });
 
 // vim: fdm=marker fmr&
