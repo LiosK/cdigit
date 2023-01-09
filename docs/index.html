@@ -214,6 +214,16 @@ character(s), which are combined in accordance with the algorithm.</p>
 <code>generate()</code>, this method returns the check character(s) only.</p>
 <pre><code class="language-javascript"><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-5">log</span><span class="hl-1">(</span><span class="hl-2">mod97_10</span><span class="hl-1">.</span><span class="hl-5">compute</span><span class="hl-1">(</span><span class="hl-3">&quot;1234&quot;</span><span class="hl-1">)); </span><span class="hl-4">// &quot;82&quot;</span>
 </code></pre>
+
+<a href="#computefromnumvalsnumvalswithoutcheckchars-number-number" id="computefromnumvalsnumvalswithoutcheckchars-number-number" style="color: inherit; text-decoration: none;">
+  <h3>computeFromNumVals(numValsWithoutCheckChars: number[]): number[]</h3>
+</a>
+<p>Generates the check character(s) from the argument using the algorithm. This
+method is an alphabet-independent equivalent of <code>compute()</code>, where the return
+value and argument are both represented as arrays of each digit&#39;s numerical
+value.</p>
+<pre><code class="language-javascript"><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-5">log</span><span class="hl-1">(</span><span class="hl-2">mod97_10</span><span class="hl-1">.</span><span class="hl-5">computeFromNumVals</span><span class="hl-1">([</span><span class="hl-6">1</span><span class="hl-1">, </span><span class="hl-6">2</span><span class="hl-1">, </span><span class="hl-6">3</span><span class="hl-1">, </span><span class="hl-6">4</span><span class="hl-1">])); </span><span class="hl-4">// [8, 2]</span>
+</code></pre>
 <p>See <a href="https://npm.runkit.com/cdigit">example.js</a> for usage examples.</p>
 
 <a href="#usage---command-line" id="usage---command-line" style="color: inherit; text-decoration: none;">

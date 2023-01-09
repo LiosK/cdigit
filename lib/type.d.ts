@@ -17,6 +17,9 @@ export interface CdigitAlgo {
      *
      * @param strWithoutCheckChars - String without check character(s)
      * @returns String with check character(s)
+     * @throws `SyntaxError` if an algorithm-specific syntax error occurs. Note
+     * that the bundled algorithm objects do not generally throw errors because
+     * they ignore the unknown letters in the string to be protected.
      */
     generate(strWithoutCheckChars: string): string;
     /**
@@ -24,6 +27,10 @@ export interface CdigitAlgo {
      *
      * @param strWithCheckChars - String with check character(s)
      * @returns True if the argument is valid
+     * @throws `SyntaxError` if the argument does not contain check character(s)
+     * or any other algorithm-specific syntax error occurs. Note that the bundled
+     * algorithm objects do not generally throw errors because they ignore the
+     * unknown letters in the string to be protected.
      */
     validate(strWithCheckChars: string): boolean;
     /**
@@ -32,6 +39,9 @@ export interface CdigitAlgo {
      *
      * @param strWithoutCheckChars - String without check character(s)
      * @returns Check character(s)
+     * @throws `SyntaxError` if an algorithm-specific syntax error occurs. Note
+     * that the bundled algorithm objects do not generally throw errors because
+     * they ignore the unknown letters in the string to be protected.
      */
     compute(strWithoutCheckChars: string): string;
     /**
@@ -43,7 +53,8 @@ export interface CdigitAlgo {
      * @param numValsWithoutCheckChars - String without check character(s) decoded
      * to an array of numerical values
      * @returns Check character(s) decoded to an array of numerical values
-     * @throws `SyntaxError` if the argument contains an invalid numerical value.
+     * @throws `SyntaxError` if the argument contains an invalid numerical value
+     * or any other algorithm-specific syntax error occurs.
      */
     computeFromNumVals(numValsWithoutCheckChars: number[]): number[];
     /**
@@ -52,6 +63,10 @@ export interface CdigitAlgo {
      *
      * @param strWithCheckChars - String with check character(s)
      * @returns Tuple of [string without check character(s), check character(s)]
+     * @throws `SyntaxError` if the argument does not contain check character(s)
+     * or any other algorithm-specific syntax error occurs. Note that the bundled
+     * algorithm objects do not generally throw errors because they ignore the
+     * unknown letters in the string to be protected.
      */
     parse(strWithCheckChars: string): [string, string];
 }
