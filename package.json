@@ -1,6 +1,6 @@
 {
   "name": "cdigit",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Collection of check digit algorithms implemented in JavaScript",
   "main": "lib/index.js",
   "types": "./lib/index.d.ts",
@@ -12,6 +12,7 @@
   "files": [
     "LICENSE-APACHE",
     "LICENSE-MIT",
+    "example.js",
     "lib"
   ],
   "scripts": {
