@@ -12,6 +12,7 @@
   "files": [
     "LICENSE-APACHE",
     "LICENSE-MIT",
+    "example.js",
     "lib"
   ],
   "scripts": {
