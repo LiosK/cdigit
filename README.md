@@ -37,9 +37,9 @@ npx cdigit --algo damm validate 12340
 | [Verhoeff] | verhoeff    | Numeric (0-9) | 1 digit (0-9)      |
 | [Damm]     | damm        | Numeric (0-9) | 1 digit (0-9)      |
 
-[luhn]: https://en.wikipedia.org/wiki/Luhn_algorithm
-[verhoeff]: https://en.wikipedia.org/wiki/Verhoeff_algorithm
-[damm]: https://en.wikipedia.org/wiki/Damm_algorithm
+[Luhn]: https://en.wikipedia.org/wiki/Luhn_algorithm
+[Verhoeff]: https://en.wikipedia.org/wiki/Verhoeff_algorithm
+[Damm]: https://en.wikipedia.org/wiki/Damm_algorithm
 
 ### [ISO/IEC 7064] Family
 
@@ -60,7 +60,7 @@ of systems that use the same algorithm with different parameters: Pure systems
 | ISO/IEC 7064, MOD 27,26   | mod27_26    | Alphabetic (A-Z)      | 1 letter (A-Z)                      |
 | ISO/IEC 7064, MOD 37,36   | mod37_36    | Alphanumeric (0-9A-Z) | 1 digit or letter (0-9A-Z)          |
 
-[iso/iec 7064]: https://www.iso.org/standard/31531.html
+[ISO/IEC 7064]: https://www.iso.org/standard/31531.html
 
 ### [GTIN] (Global Trade Item Number) Family
 
@@ -78,12 +78,12 @@ length or semantic validity of a given GTIN string.
 | GTIN-13   | gtin        | Numeric (0-9) | 1 digit (0-9)      | EAN, [JAN], ISBN-13, etc. |
 | GTIN-14   | gtin        | Numeric (0-9) | 1 digit (0-9)      | EAN, UCC-14               |
 
-[gtin]: https://www.gs1.org/standards/id-keys/gtin
-[upc]: https://en.wikipedia.org/wiki/Universal_Product_Code
-[ean]: https://en.wikipedia.org/wiki/International_Article_Number
-[isbn]: https://en.wikipedia.org/wiki/International_Standard_Book_Number
-[gs1 data structures]: https://www.gs1.org/standards/id-keys
-[jan]: https://en.wikipedia.org/wiki/International_Article_Number#Japanese_Article_Number
+[GTIN]: https://www.gs1.org/standards/id-keys/gtin
+[UPC]: https://en.wikipedia.org/wiki/Universal_Product_Code
+[EAN]: https://en.wikipedia.org/wiki/International_Article_Number
+[ISBN]: https://en.wikipedia.org/wiki/International_Standard_Book_Number
+[GS1 data structures]: https://www.gs1.org/standards/id-keys
+[JAN]: https://en.wikipedia.org/wiki/International_Article_Number#Japanese_Article_Number
 
 ## Usage - Node.js
 

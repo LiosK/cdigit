@@ -5,5 +5,5 @@
  * @license (MIT OR Apache-2.0)
  */
 import type { CdigitAlgo } from "../type.js";
-/** Luhn algorithm implementation */
+/** The Luhn algorithm implementation. */
 export declare const luhn: CdigitAlgo;

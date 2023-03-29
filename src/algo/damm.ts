@@ -10,7 +10,7 @@ import type { CdigitAlgo } from "../type.js";
 class Damm implements CdigitAlgo {
   constructor(readonly name: string, readonly longName: string) {}
 
-  /** Damm operation table */
+  /** The Damm operation table. */
   private readonly opTable = [
     [0, 3, 1, 7, 5, 9, 8, 6, 4, 2],
     [7, 0, 9, 2, 1, 5, 4, 8, 6, 3],
@@ -59,5 +59,5 @@ class Damm implements CdigitAlgo {
   }
 }
 
-/** Damm algorithm implementation */
+/** The Damm algorithm implementation. */
 export const damm: CdigitAlgo = new Damm("damm", "Damm Algorithm");

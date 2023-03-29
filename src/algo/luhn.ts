@@ -10,7 +10,7 @@ import type { CdigitAlgo } from "../type.js";
 class Luhn implements CdigitAlgo {
   constructor(readonly name: string, readonly longName: string) {}
 
-  /** Luhn lookup table */
+  /** The Luhn lookup table. */
   private readonly lookup = [0, 2, 4, 6, 8, 1, 3, 5, 7, 9];
 
   computeFromNumVals(ns: number[]): number[] {
@@ -58,5 +58,5 @@ class Luhn implements CdigitAlgo {
   }
 }
 
-/** Luhn algorithm implementation */
+/** The Luhn algorithm implementation. */
 export const luhn: CdigitAlgo = new Luhn("luhn", "Luhn Algorithm");

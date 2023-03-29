@@ -56,7 +56,7 @@ class GTIN implements CdigitAlgo {
 }
 
 /**
- * Standard check digit algorithm for GS1 data structures (including GTIN)
+ * The standard check digit algorithm for GS1 data structures (including GTIN).
  *
  * Note: This implementation does not check the length of a number; however, it
  * is not recommended to use numbers longer than 18 digits because GS1 General

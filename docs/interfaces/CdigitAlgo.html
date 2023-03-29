@@ -16,14 +16,14 @@
 <li><a href="CdigitAlgo.html">CdigitAlgo</a></li></ul>
 <h1>Interface CdigitAlgo</h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><p>Common interface for check digit algorithm implementations.</p>
+<div class="tsd-comment tsd-typography"><p>The common interface for check digit algorithm implementations.</p>
 </div></section>
 <section class="tsd-panel tsd-hierarchy">
 <h4>Hierarchy</h4>
 <ul class="tsd-hierarchy">
 <li><span class="target">CdigitAlgo</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.0/src/type.ts#L9">type.ts:9</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.1/src/type.ts#L9">type.ts:9</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -47,17 +47,17 @@
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="longName" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>long<wbr/>Name</span><a href="#longName" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></h3>
 <div class="tsd-signature">long<wbr/>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-<div class="tsd-comment tsd-typography"><p>Human-readable name of the algorithm</p>
+<div class="tsd-comment tsd-typography"><p>A human-readable name of the algorithm.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.0/src/type.ts#L14">type.ts:14</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.1/src/type.ts#L14">type.ts:14</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="name" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>name</span><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-<div class="tsd-comment tsd-typography"><p><code>cdigit</code> name of the algorithm</p>
+<div class="tsd-comment tsd-typography"><p>The <code>cdigit</code> name of the algorithm.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.0/src/type.ts#L11">type.ts:11</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.1/src/type.ts#L11">type.ts:11</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface"><a id="compute" class="tsd-anchor"></a>
@@ -65,10 +65,10 @@
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
 <li class="tsd-signature tsd-anchor-link" id="compute.compute-1">compute<span class="tsd-signature-symbol">(</span>strWithoutCheckChars<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#compute.compute-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Generates the check character(s) from the argument using the algorithm.
-Unlike <code>generate()</code>, this method returns the check character(s) only.</p>
+<div class="tsd-comment tsd-typography"><p>Generates the check characters from the argument using the algorithm.
+Unlike <code>generate()</code>, this method returns the check characters only.</p>
 
-<h3>Returns</h3><p>Check character(s)</p>
+<h3>Returns</h3><p>The check characters.</p>
 
 <h3>Throws</h3><p><code>SyntaxError</code> if an algorithm-specific syntax error occurs. Note
 that the bundled algorithm objects do not generally throw errors because
@@ -79,22 +79,22 @@ they ignore the unknown letters in the string to be protected.</p>
 <ul class="tsd-parameter-list">
 <li>
 <h5>strWithoutCheckChars: <span class="tsd-signature-type">string</span></h5>
-<div class="tsd-comment tsd-typography"><p>String without check character(s)</p>
+<div class="tsd-comment tsd-typography"><p>A string without check characters.</p>
 </div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.0/src/type.ts#L51">type.ts:51</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.1/src/type.ts#L51">type.ts:51</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface"><a id="computeFromNumVals" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>compute<wbr/>From<wbr/>Num<wbr/>Vals</span><a href="#computeFromNumVals" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
 <li class="tsd-signature tsd-anchor-link" id="computeFromNumVals.computeFromNumVals-1">compute<wbr/>From<wbr/>Num<wbr/>Vals<span class="tsd-signature-symbol">(</span>numValsWithoutCheckChars<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><a href="#computeFromNumVals.computeFromNumVals-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Generates the check character(s) from the argument using the algorithm.
-This method is an alphabet-independent equivalent of <code>compute()</code>, where the
+<div class="tsd-comment tsd-typography"><p>Generates the check characters from the argument using the algorithm. This
+method is an alphabet-independent equivalent of <code>compute()</code>, where the
 return value and argument are both represented as arrays of each digit&#39;s
 numerical value.</p>
 
-<h3>Returns</h3><p>Check character(s) decoded to an array of numerical values</p>
+<h3>Returns</h3><p>The check characters decoded to an array of numerical values.</p>
 
 <h3>Throws</h3><p><code>SyntaxError</code> if the argument contains an invalid numerical value
 or any other algorithm-specific syntax error occurs.</p>
@@ -104,12 +104,12 @@ or any other algorithm-specific syntax error occurs.</p>
 <ul class="tsd-parameter-list">
 <li>
 <h5>numValsWithoutCheckChars: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5>
-<div class="tsd-comment tsd-typography"><p>String without check character(s) decoded
-to an array of numerical values</p>
+<div class="tsd-comment tsd-typography"><p>A string without check characters decoded
+to an array of numerical values.</p>
 </div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.0/src/type.ts#L65">type.ts:65</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.1/src/type.ts#L65">type.ts:65</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface"><a id="generate" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>generate</span><a href="#generate" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
@@ -117,9 +117,9 @@ to an array of numerical values</p>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Generates the protected string from the argument using the algorithm. The
 generated string consists of the original bare string and computed check
-character(s), which are combined in accordance with the algorithm.</p>
+characters, which are combined in accordance with the algorithm.</p>
 
-<h3>Returns</h3><p>String with check character(s)</p>
+<h3>Returns</h3><p>The string with check characters.</p>
 
 <h3>Throws</h3><p><code>SyntaxError</code> if an algorithm-specific syntax error occurs. Note
 that the bundled algorithm objects do not generally throw errors because
@@ -130,23 +130,23 @@ they ignore the unknown letters in the string to be protected.</p>
 <ul class="tsd-parameter-list">
 <li>
 <h5>strWithoutCheckChars: <span class="tsd-signature-type">string</span></h5>
-<div class="tsd-comment tsd-typography"><p>String without check character(s)</p>
+<div class="tsd-comment tsd-typography"><p>A string without check characters.</p>
 </div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.0/src/type.ts#L27">type.ts:27</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.1/src/type.ts#L27">type.ts:27</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface"><a id="parse" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>parse</span><a href="#parse" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
 <li class="tsd-signature tsd-anchor-link" id="parse.parse-1">parse<span class="tsd-signature-symbol">(</span>strWithCheckChars<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span><a href="#parse.parse-1" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Splits a protected string into the pair of original bare string and check
-character(s).</p>
+characters.</p>
 
-<h3>Returns</h3><p>Tuple of [string without check character(s), check character(s)]</p>
+<h3>Returns</h3><p>The tuple of [string without check characters, check characters].</p>
 
-<h3>Throws</h3><p><code>SyntaxError</code> if the argument does not contain check character(s)
-or any other algorithm-specific syntax error occurs. Note that the bundled
+<h3>Throws</h3><p><code>SyntaxError</code> if the argument does not contain check characters or
+any other algorithm-specific syntax error occurs. Note that the bundled
 algorithm objects do not generally throw errors because they ignore the
 unknown letters in the string to be protected.</p>
 </div>
@@ -155,11 +155,11 @@ unknown letters in the string to be protected.</p>
 <ul class="tsd-parameter-list">
 <li>
 <h5>strWithCheckChars: <span class="tsd-signature-type">string</span></h5>
-<div class="tsd-comment tsd-typography"><p>String with check character(s)</p>
+<div class="tsd-comment tsd-typography"><p>A string with check characters.</p>
 </div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.0/src/type.ts#L78">type.ts:78</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.1/src/type.ts#L78">type.ts:78</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface"><a id="validate" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>validate</span><a href="#validate" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
@@ -167,10 +167,10 @@ unknown letters in the string to be protected.</p>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Checks if a protected string is valid per the algorithm.</p>
 
-<h3>Returns</h3><p>True if the argument is valid</p>
+<h3>Returns</h3><p>True if the argument is valid.</p>
 
-<h3>Throws</h3><p><code>SyntaxError</code> if the argument does not contain check character(s)
-or any other algorithm-specific syntax error occurs. Note that the bundled
+<h3>Throws</h3><p><code>SyntaxError</code> if the argument does not contain check characters or
+any other algorithm-specific syntax error occurs. Note that the bundled
 algorithm objects do not generally throw errors because they ignore the
 unknown letters in the string to be protected.</p>
 </div>
@@ -179,11 +179,11 @@ unknown letters in the string to be protected.</p>
 <ul class="tsd-parameter-list">
 <li>
 <h5>strWithCheckChars: <span class="tsd-signature-type">string</span></h5>
-<div class="tsd-comment tsd-typography"><p>String with check character(s)</p>
+<div class="tsd-comment tsd-typography"><p>A string with check characters.</p>
 </div></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.0/src/type.ts#L39">type.ts:39</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/LiosK/cdigit/blob/v4.0.1/src/type.ts#L39">type.ts:39</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">

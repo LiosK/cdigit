@@ -6,7 +6,7 @@
  */
 import type { CdigitAlgo } from "../type.js";
 /**
- * Verhoeff algorithm implementation
+ * The Verhoeff algorithm implementation.
  *
  * Note: There is not a firm consensus on the direction (left to right or right
  * to left) in which a Verhoeff calculator scans numeric text to construct an

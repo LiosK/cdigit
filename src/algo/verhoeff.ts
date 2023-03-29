@@ -10,7 +10,7 @@ import type { CdigitAlgo } from "../type.js";
 class Verhoeff implements CdigitAlgo {
   constructor(readonly name: string, readonly longName: string) {}
 
-  /** Verhoeff multiplication table */
+  /** The Verhoeff multiplication table. */
   private readonly d = [
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
@@ -24,7 +24,7 @@ class Verhoeff implements CdigitAlgo {
     [9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
   ];
 
-  /** Verhoeff permutation table */
+  /** The Verhoeff permutation table. */
   private readonly p = [
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     [1, 5, 7, 6, 2, 8, 3, 0, 9, 4],
@@ -36,7 +36,7 @@ class Verhoeff implements CdigitAlgo {
     [7, 0, 4, 6, 9, 1, 3, 2, 5, 8],
   ];
 
-  /** Verhoeff inverse table */
+  /** The Verhoeff inverse table. */
   private readonly inv = [0, 4, 3, 2, 1, 5, 6, 7, 8, 9];
 
   computeFromNumVals(ns: number[]): number[] {
@@ -80,7 +80,7 @@ class Verhoeff implements CdigitAlgo {
 }
 
 /**
- * Verhoeff algorithm implementation
+ * The Verhoeff algorithm implementation.
  *
  * Note: There is not a firm consensus on the direction (left to right or right
  * to left) in which a Verhoeff calculator scans numeric text to construct an

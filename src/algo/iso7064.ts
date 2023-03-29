@@ -27,7 +27,7 @@ const getCharMap = (alphabet: string): { [character: string]: number } => {
 };
 
 /**
- * Implements ISO 7064 pure system recursive method.
+ * Implements the ISO 7064 pure system recursive method.
  *
  * This implementation classifies the pure systems into two flavors:
  *
@@ -112,7 +112,7 @@ class Pure implements CdigitAlgo {
   }
 }
 
-/** Implements ISO 7064 hybrid system recursive method. */
+/** Implements the ISO 7064 hybrid system recursive method. */
 class Hybrid implements CdigitAlgo {
   constructor(
     readonly name: string,
@@ -171,7 +171,7 @@ class Hybrid implements CdigitAlgo {
   }
 }
 
-/** ISO/IEC 7064, MOD 11-2 implementation */
+/** The ISO/IEC 7064, MOD 11-2 implementation. */
 export const mod11_2: CdigitAlgo = new Pure(
   "mod11_2",
   "ISO/IEC 7064, MOD 11-2",
@@ -181,7 +181,7 @@ export const mod11_2: CdigitAlgo = new Pure(
   "EXTRA_CHAR"
 );
 
-/** ISO/IEC 7064, MOD 37-2 implementation */
+/** The ISO/IEC 7064, MOD 37-2 implementation. */
 export const mod37_2: CdigitAlgo = new Pure(
   "mod37_2",
   "ISO/IEC 7064, MOD 37-2",
@@ -191,7 +191,7 @@ export const mod37_2: CdigitAlgo = new Pure(
   "EXTRA_CHAR"
 );
 
-/** ISO/IEC 7064, MOD 97-10 implementation */
+/** The ISO/IEC 7064, MOD 97-10 implementation. */
 export const mod97_10: CdigitAlgo = new Pure(
   "mod97_10",
   "ISO/IEC 7064, MOD 97-10",
@@ -201,7 +201,7 @@ export const mod97_10: CdigitAlgo = new Pure(
   "TWO_CCS"
 );
 
-/** ISO/IEC 7064, MOD 661-26 implementation */
+/** The ISO/IEC 7064, MOD 661-26 implementation. */
 export const mod661_26: CdigitAlgo = new Pure(
   "mod661_26",
   "ISO/IEC 7064, MOD 661-26",
@@ -211,7 +211,7 @@ export const mod661_26: CdigitAlgo = new Pure(
   "TWO_CCS"
 );
 
-/** ISO/IEC 7064, MOD 1271-36 implementation */
+/** The ISO/IEC 7064, MOD 1271-36 implementation. */
 export const mod1271_36: CdigitAlgo = new Pure(
   "mod1271_36",
   "ISO/IEC 7064, MOD 1271-36",
@@ -221,21 +221,21 @@ export const mod1271_36: CdigitAlgo = new Pure(
   "TWO_CCS"
 );
 
-/** ISO/IEC 7064, MOD 11,10 implementation */
+/** The ISO/IEC 7064, MOD 11,10 implementation. */
 export const mod11_10: CdigitAlgo = new Hybrid(
   "mod11_10",
   "ISO/IEC 7064, MOD 11,10",
   "0123456789"
 );
 
-/** ISO/IEC 7064, MOD 27,26 implementation */
+/** The ISO/IEC 7064, MOD 27,26 implementation. */
 export const mod27_26: CdigitAlgo = new Hybrid(
   "mod27_26",
   "ISO/IEC 7064, MOD 27,26",
   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 );
 
-/** ISO/IEC 7064, MOD 37,36 implementation */
+/** The ISO/IEC 7064, MOD 37,36 implementation. */
 export const mod37_36: CdigitAlgo = new Hybrid(
   "mod37_36",
   "ISO/IEC 7064, MOD 37,36",
