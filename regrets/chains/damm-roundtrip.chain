@@ -1,0 +1,17 @@
+chain: damm-roundtrip
+chain_hash: 3bg2dm5
+captured: 2026-06-13T17:27:45.959Z
+steps:
+  1. cluster: damm-check-digit
+     fingerprint: 678ngm0
+  2. cluster: damm-validation
+     fingerprint: 4u369p9
+---
+STEP 1  damm-check-digit
+  INPUT  "572"
+  OUTPUT "4"
+  HASH   678ngm0
+STEP 2  damm-validation
+  INPUT  "5724"
+  OUTPUT true
+  HASH   4u369p9

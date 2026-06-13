@@ -1,0 +1,12 @@
+cluster: damm-check-digit
+version: 1
+fingerprint: 678ngm0
+captured: 2026-06-13T17:27:31.722Z
+watches: [dammCompute]
+entry: dammCompute
+stack: js
+fingerprintLevel: entry
+---
+INPUT  "572"
+OUTPUT "4"
+HASH   678ngm0

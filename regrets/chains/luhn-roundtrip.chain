@@ -1,0 +1,17 @@
+chain: luhn-roundtrip
+chain_hash: 4rauhy9
+captured: 2026-06-13T17:27:45.958Z
+steps:
+  1. cluster: luhn-check-digit
+     fingerprint: 3wvasjs
+  2. cluster: luhn-validation
+     fingerprint: 4fuaajp
+---
+STEP 1  luhn-check-digit
+  INPUT  "7992739871"
+  OUTPUT "3"
+  HASH   3wvasjs
+STEP 2  luhn-validation
+  INPUT  "79927398713"
+  OUTPUT true
+  HASH   4fuaajp

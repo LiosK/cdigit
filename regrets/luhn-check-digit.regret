@@ -1,0 +1,12 @@
+cluster: luhn-check-digit
+version: 1
+fingerprint: 3wvasjs
+captured: 2026-06-13T17:27:31.720Z
+watches: [luhnCompute]
+entry: luhnCompute
+stack: js
+fingerprintLevel: entry
+---
+INPUT  "7992739871"
+OUTPUT "3"
+HASH   3wvasjs

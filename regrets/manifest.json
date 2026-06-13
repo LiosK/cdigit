@@ -1,0 +1,124 @@
+{
+  "clusters": [
+    {
+      "id": "luhn-check-digit",
+      "entry": "luhnCompute",
+      "watches": ["luhnCompute"],
+      "file": "regret-adapters.mjs",
+      "stack": "js",
+      "fingerprintLevel": "entry",
+      "description": "Luhn algorithm check digit computation",
+      "inputs": ["7992739871", "1234567890", "4992739871"]
+    },
+    {
+      "id": "luhn-validation",
+      "entry": "luhnValidate",
+      "watches": ["luhnValidate"],
+      "file": "regret-adapters.mjs",
+      "stack": "js",
+      "fingerprintLevel": "entry",
+      "description": "Luhn algorithm validation of check digit",
+      "inputs": ["79927398713", "49927398716", "1234567812345678"]
+    },
+    {
+      "id": "verhoeff-check-digit",
+      "entry": "verhoeffCompute",
+      "watches": ["verhoeffCompute"],
+      "file": "regret-adapters.mjs",
+      "stack": "js",
+      "fingerprintLevel": "entry",
+      "description": "Verhoeff algorithm (dihedral group D5) check digit computation",
+      "inputs": ["1234", "236", "0"]
+    },
+    {
+      "id": "verhoeff-validation",
+      "entry": "verhoeffValidate",
+      "watches": ["verhoeffValidate"],
+      "file": "regret-adapters.mjs",
+      "stack": "js",
+      "fingerprintLevel": "entry",
+      "description": "Verhoeff algorithm validation",
+      "inputs": ["12340", "2363", "01"]
+    },
+    {
+      "id": "damm-check-digit",
+      "entry": "dammCompute",
+      "watches": ["dammCompute"],
+      "file": "regret-adapters.mjs",
+      "stack": "js",
+      "fingerprintLevel": "entry",
+      "description": "Damm algorithm (quasigroup) check digit computation",
+      "inputs": ["572", "1234", "0"]
+    },
+    {
+      "id": "damm-validation",
+      "entry": "dammValidate",
+      "watches": ["dammValidate"],
+      "file": "regret-adapters.mjs",
+      "stack": "js",
+      "fingerprintLevel": "entry",
+      "description": "Damm algorithm validation",
+      "inputs": ["5724", "12340", "00"]
+    },
+    {
+      "id": "mod97-10-iban",
+      "entry": "mod97_10Compute",
+      "watches": ["mod97_10Compute"],
+      "file": "regret-adapters.mjs",
+      "stack": "js",
+      "fingerprintLevel": "entry",
+      "description": "ISO 7064 MOD 97-10 (used in IBAN) two-check-character computation",
+      "inputs": ["1234567890", "99991234567890"]
+    },
+    {
+      "id": "mod97-10-validation",
+      "entry": "mod97_10Validate",
+      "watches": ["mod97_10Validate"],
+      "file": "regret-adapters.mjs",
+      "stack": "js",
+      "fingerprintLevel": "entry",
+      "description": "ISO 7064 MOD 97-10 validation",
+      "inputs": ["123456789092", "9999123456789001"]
+    },
+    {
+      "id": "mod11-2-numeric",
+      "entry": "mod11_2Compute",
+      "watches": ["mod11_2Compute"],
+      "file": "regret-adapters.mjs",
+      "stack": "js",
+      "fingerprintLevel": "entry",
+      "description": "ISO 7064 MOD 11-2 with X extra character computation",
+      "inputs": ["079", "211013"]
+    },
+    {
+      "id": "mod37-36-alphanumeric",
+      "entry": "mod37_36Compute",
+      "watches": ["mod37_36Compute"],
+      "file": "regret-adapters.mjs",
+      "stack": "js",
+      "fingerprintLevel": "entry",
+      "description": "ISO 7064 MOD 37,36 hybrid alphanumeric check digit computation",
+      "inputs": ["G1234865", "ABCD1234"]
+    },
+    {
+      "id": "gtin-check-digit",
+      "entry": "gtinCompute",
+      "watches": ["gtinCompute"],
+      "file": "regret-adapters.mjs",
+      "stack": "js",
+      "fingerprintLevel": "entry",
+      "description": "GTIN/EAN/UPC check digit computation (used in barcodes)",
+      "inputs": ["4006381333931", "01234567890", "00123456789"]
+    },
+    {
+      "id": "gtin-validation",
+      "entry": "gtinValidate",
+      "watches": ["gtinValidate"],
+      "file": "regret-adapters.mjs",
+      "stack": "js",
+      "fingerprintLevel": "entry",
+      "description": "GTIN validation",
+      "inputs": ["40063813339314", "012345678905", "001234567895"]
+    }
+  ]
+}

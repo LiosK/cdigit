@@ -1,0 +1,190 @@
+{
+  "luhn-check-digit": {
+    "entry": "luhnCompute",
+    "outputs": [
+      {
+        "input": "7992739871",
+        "output": "3"
+      },
+      {
+        "input": "1234567890",
+        "output": "3"
+      },
+      {
+        "input": "4992739871",
+        "output": "6"
+      }
+    ]
+  },
+  "luhn-validation": {
+    "entry": "luhnValidate",
+    "outputs": [
+      {
+        "input": "79927398713",
+        "output": true
+      },
+      {
+        "input": "49927398716",
+        "output": true
+      },
+      {
+        "input": "1234567812345678",
+        "output": false
+      }
+    ]
+  },
+  "verhoeff-check-digit": {
+    "entry": "verhoeffCompute",
+    "outputs": [
+      {
+        "input": "1234",
+        "output": "0"
+      },
+      {
+        "input": "236",
+        "output": "3"
+      },
+      {
+        "input": "0",
+        "output": "4"
+      }
+    ]
+  },
+  "verhoeff-validation": {
+    "entry": "verhoeffValidate",
+    "outputs": [
+      {
+        "input": "12340",
+        "output": true
+      },
+      {
+        "input": "2363",
+        "output": true
+      },
+      {
+        "input": "01",
+        "output": false
+      }
+    ]
+  },
+  "damm-check-digit": {
+    "entry": "dammCompute",
+    "outputs": [
+      {
+        "input": "572",
+        "output": "4"
+      },
+      {
+        "input": "1234",
+        "output": "0"
+      },
+      {
+        "input": "0",
+        "output": "0"
+      }
+    ]
+  },
+  "damm-validation": {
+    "entry": "dammValidate",
+    "outputs": [
+      {
+        "input": "5724",
+        "output": true
+      },
+      {
+        "input": "12340",
+        "output": true
+      },
+      {
+        "input": "00",
+        "output": true
+      }
+    ]
+  },
+  "mod97-10-iban": {
+    "entry": "mod97_10Compute",
+    "outputs": [
+      {
+        "input": "1234567890",
+        "output": "92"
+      },
+      {
+        "input": "99991234567890",
+        "output": "80"
+      }
+    ]
+  },
+  "mod97-10-validation": {
+    "entry": "mod97_10Validate",
+    "outputs": [
+      {
+        "input": "123456789092",
+        "output": true
+      },
+      {
+        "input": "9999123456789001",
+        "output": false
+      }
+    ]
+  },
+  "mod11-2-numeric": {
+    "entry": "mod11_2Compute",
+    "outputs": [
+      {
+        "input": "079",
+        "output": "X"
+      },
+      {
+        "input": "211013",
+        "output": "2"
+      }
+    ]
+  },
+  "mod37-36-alphanumeric": {
+    "entry": "mod37_36Compute",
+    "outputs": [
+      {
+        "input": "G1234865",
+        "output": "B"
+      },
+      {
+        "input": "ABCD1234",
+        "output": "N"
+      }
+    ]
+  },
+  "gtin-check-digit": {
+    "entry": "gtinCompute",
+    "outputs": [
+      {
+        "input": "4006381333931",
+        "output": "4"
+      },
+      {
+        "input": "01234567890",
+        "output": "5"
+      },
+      {
+        "input": "00123456789",
+        "output": "5"
+      }
+    ]
+  },
+  "gtin-validation": {
+    "entry": "gtinValidate",
+    "outputs": [
+      {
+        "input": "40063813339314",
+        "output": true
+      },
+      {
+        "input": "012345678905",
+        "output": true
+      },
+      {
+        "input": "001234567895",
+        "output": true
+      }
+    ]
+  }
+}

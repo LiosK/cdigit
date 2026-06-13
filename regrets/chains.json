@@ -1,0 +1,39 @@
+{
+  "chains": [
+    {
+      "id": "luhn-roundtrip",
+      "steps": [
+        { "cluster": "luhn-check-digit", "input": "7992739871" },
+        { "cluster": "luhn-validation", "input": "79927398713" }
+      ]
+    },
+    {
+      "id": "verhoeff-roundtrip",
+      "steps": [
+        { "cluster": "verhoeff-check-digit", "input": "1234" },
+        { "cluster": "verhoeff-validation", "input": "12340" }
+      ]
+    },
+    {
+      "id": "damm-roundtrip",
+      "steps": [
+        { "cluster": "damm-check-digit", "input": "572" },
+        { "cluster": "damm-validation", "input": "5724" }
+      ]
+    },
+    {
+      "id": "gtin-roundtrip",
+      "steps": [
+        { "cluster": "gtin-check-digit", "input": "4006381333931" },
+        { "cluster": "gtin-validation", "input": "40063813339314" }
+      ]
+    },
+    {
+      "id": "mod97-roundtrip",
+      "steps": [
+        { "cluster": "mod97-10-iban", "input": "1234567890" },
+        { "cluster": "mod97-10-validation", "input": "123456789092" }
+      ]
+    }
+  ]
+}

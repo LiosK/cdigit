@@ -1,0 +1,12 @@
+cluster: verhoeff-validation
+version: 1
+fingerprint: 34b3jkb
+captured: 2026-06-13T17:27:31.721Z
+watches: [verhoeffValidate]
+entry: verhoeffValidate
+stack: js
+fingerprintLevel: entry
+---
+INPUT  "12340"
+OUTPUT true
+HASH   34b3jkb

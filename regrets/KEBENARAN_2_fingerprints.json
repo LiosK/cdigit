@@ -1,0 +1,83 @@
+{
+  "fingerprints": {
+    "damm-check-digit": {
+      "fingerprint": "678ngm0",
+      "input": "\"572\"",
+      "output": "\"4\"",
+      "hash": "678ngm0"
+    },
+    "damm-validation": {
+      "fingerprint": "4u369p9",
+      "input": "\"5724\"",
+      "output": "true",
+      "hash": "4u369p9"
+    },
+    "gtin-check-digit": {
+      "fingerprint": "47j2h18",
+      "input": "\"4006381333931\"",
+      "output": "\"4\"",
+      "hash": "47j2h18"
+    },
+    "gtin-validation": {
+      "fingerprint": "1p4a26w",
+      "input": "\"40063813339314\"",
+      "output": "true",
+      "hash": "1p4a26w"
+    },
+    "luhn-check-digit": {
+      "fingerprint": "3wvasjs",
+      "input": "\"7992739871\"",
+      "output": "\"3\"",
+      "hash": "3wvasjs"
+    },
+    "luhn-validation": {
+      "fingerprint": "4fuaajp",
+      "input": "\"79927398713\"",
+      "output": "true",
+      "hash": "4fuaajp"
+    },
+    "mod11-2-numeric": {
+      "fingerprint": "5h8qnrt",
+      "input": "\"079\"",
+      "output": "\"X\"",
+      "hash": "5h8qnrt"
+    },
+    "mod37-36-alphanumeric": {
+      "fingerprint": "2q8v9l1",
+      "input": "\"G1234865\"",
+      "output": "\"B\"",
+      "hash": "2q8v9l1"
+    },
+    "mod97-10-iban": {
+      "fingerprint": "143erps",
+      "input": "\"1234567890\"",
+      "output": "\"92\"",
+      "hash": "143erps"
+    },
+    "mod97-10-validation": {
+      "fingerprint": "2g7hvng",
+      "input": "\"123456789092\"",
+      "output": "true",
+      "hash": "2g7hvng"
+    },
+    "verhoeff-check-digit": {
+      "fingerprint": "5ethyn1",
+      "input": "\"1234\"",
+      "output": "\"0\"",
+      "hash": "5ethyn1"
+    },
+    "verhoeff-validation": {
+      "fingerprint": "34b3jkb",
+      "input": "\"12340\"",
+      "output": "true",
+      "hash": "34b3jkb"
+    }
+  },
+  "chainHashes": {
+    "damm-roundtrip": "3bg2dm5",
+    "gtin-roundtrip": "1rguhbk",
+    "luhn-roundtrip": "4rauhy9",
+    "mod97-roundtrip": "2vwdzh3",
+    "verhoeff-roundtrip": "5oovoq4"
+  }
+}

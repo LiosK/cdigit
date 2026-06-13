@@ -1,0 +1,12 @@
+cluster: gtin-check-digit
+version: 1
+fingerprint: 47j2h18
+captured: 2026-06-13T17:27:31.724Z
+watches: [gtinCompute]
+entry: gtinCompute
+stack: js
+fingerprintLevel: entry
+---
+INPUT  "4006381333931"
+OUTPUT "4"
+HASH   47j2h18

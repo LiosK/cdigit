@@ -5,64 +5,48 @@
  * @license (MIT OR Apache-2.0)
  */
 
-import type { CdigitAlgo } from "../type.js";
-
-class GTIN implements CdigitAlgo {
-  constructor(readonly name: string, readonly longName: string) {}
-
-  computeFromNumVals(ns: number[]): number[] {
-    if (ns.length === 0) {
-      throw new SyntaxError("string to be protected is empty");
-    } else if (ns.some((e) => e < 0 || e > 9 || !Number.isInteger(e))) {
-      throw new SyntaxError("invalid numerical value detected");
-    }
-
-    let sum = 0;
-    let odd = 1;
-    for (let i = ns.length - 1; i >= 0; i -= 1) {
-      if (sum > 0xffff_ffff_ffff) {
-        // ~2^48 at max
-        sum %= 10;
-      }
-      sum += ns[i] * (odd ? 3 : 1);
-      odd ^= 1;
-    }
-    return [(10 - (sum % 10)) % 10];
-  }
-
-  compute(s: string): string {
-    const ds = String(s).replace(/[^0-9]/g, "");
-    const ns = [...ds].map(Number);
-    return String(this.computeFromNumVals(ns)[0]);
-  }
-
-  parse(s: string): [string, string] {
-    const m = String(s).match(/^(.*)([0-9])$/s);
-    if (m != null) {
-      return [m[1], m[2]];
-    } else {
-      throw new SyntaxError("could not find check character(s)");
-    }
-  }
-
-  generate(s: string): string {
-    return `${s}${this.compute(s)}`;
-  }
-
-  validate(s: string): boolean {
-    const [bare, cc] = this.parse(s);
-    return this.compute(bare) === cc;
-  }
-}
+import {
+  NumericCheckDigitAlgo,
+  validateDecimalNumVals,
+} from "./base.js";
 
 /**
- * The standard check digit algorithm for GS1 data structures (including GTIN).
+ * GTIN check digit algorithm implementation.
+ *
+ * The Global Trade Item Number (GTIN) check digit algorithm is used across
+ * GS1 data structures including GTIN-8, GTIN-12 (UPC-A), GTIN-13 (EAN-13/JAN),
+ * and GTIN-14. It uses a weighted sum where digits in odd positions (from right)
+ * are multiplied by 3 and even positions by 1 — the reverse weighting pattern
+ * compared to the Luhn algorithm.
  *
  * Note: This implementation does not check the length of a number; however, it
  * is not recommended to use numbers longer than 18 digits because GS1 General
  * Specifications do not explicitly specify an algorithm for them.
  */
-export const gtin: CdigitAlgo = new GTIN(
+class GTIN extends NumericCheckDigitAlgo {
+  /** Weight pattern for GTIN: odd positions (from right) get weight 3,
+   *  even positions get weight 1. Stored as array for clarity. */
+  private static readonly POSITION_WEIGHTS = [3, 1] as const;
+
+  computeFromNumVals(digitValues: number[]): number[] {
+    validateDecimalNumVals(digitValues);
+
+    let weightedSum = 0;
+    let weightIndex = 0; // Start with weight 3 for rightmost digit (odd position from right)
+    for (let i = digitValues.length - 1; i >= 0; i -= 1) {
+      if (weightedSum > 0xffff_ffff_ffff) {
+        // Prevent overflow: reduce modulo 10 when approaching ~2^48
+        weightedSum %= 10;
+      }
+      weightedSum += digitValues[i] * GTIN.POSITION_WEIGHTS[weightIndex];
+      weightIndex ^= 1; // Toggle between 0 (weight=3) and 1 (weight=1)
+    }
+    return [(10 - (weightedSum % 10)) % 10];
+  }
+}
+
+/** The standard check digit algorithm for GS1 data structures (including GTIN). */
+export const gtin: import("../type.js").CdigitAlgo = new GTIN(
   "gtin",
   "GTINs (including UPC, EAN, ISBN-13, etc.)"
 );

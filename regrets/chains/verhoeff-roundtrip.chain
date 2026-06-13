@@ -1,0 +1,17 @@
+chain: verhoeff-roundtrip
+chain_hash: 5oovoq4
+captured: 2026-06-13T17:27:45.959Z
+steps:
+  1. cluster: verhoeff-check-digit
+     fingerprint: 5ethyn1
+  2. cluster: verhoeff-validation
+     fingerprint: 34b3jkb
+---
+STEP 1  verhoeff-check-digit
+  INPUT  "1234"
+  OUTPUT "0"
+  HASH   5ethyn1
+STEP 2  verhoeff-validation
+  INPUT  "12340"
+  OUTPUT true
+  HASH   34b3jkb

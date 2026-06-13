@@ -1,0 +1,12 @@
+cluster: verhoeff-check-digit
+version: 1
+fingerprint: 5ethyn1
+captured: 2026-06-13T17:27:31.721Z
+watches: [verhoeffCompute]
+entry: verhoeffCompute
+stack: js
+fingerprintLevel: entry
+---
+INPUT  "1234"
+OUTPUT "0"
+HASH   5ethyn1

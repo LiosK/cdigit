@@ -1,0 +1,12 @@
+cluster: gtin-validation
+version: 1
+fingerprint: 1p4a26w
+captured: 2026-06-13T17:27:31.724Z
+watches: [gtinValidate]
+entry: gtinValidate
+stack: js
+fingerprintLevel: entry
+---
+INPUT  "40063813339314"
+OUTPUT true
+HASH   1p4a26w

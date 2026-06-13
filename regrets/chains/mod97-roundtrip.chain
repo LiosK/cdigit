@@ -1,0 +1,17 @@
+chain: mod97-roundtrip
+chain_hash: 2vwdzh3
+captured: 2026-06-13T17:27:45.961Z
+steps:
+  1. cluster: mod97-10-iban
+     fingerprint: 143erps
+  2. cluster: mod97-10-validation
+     fingerprint: 2g7hvng
+---
+STEP 1  mod97-10-iban
+  INPUT  "1234567890"
+  OUTPUT "92"
+  HASH   143erps
+STEP 2  mod97-10-validation
+  INPUT  "123456789092"
+  OUTPUT true
+  HASH   2g7hvng

@@ -1,0 +1,17 @@
+chain: gtin-roundtrip
+chain_hash: 1rguhbk
+captured: 2026-06-13T17:27:45.960Z
+steps:
+  1. cluster: gtin-check-digit
+     fingerprint: 47j2h18
+  2. cluster: gtin-validation
+     fingerprint: 1p4a26w
+---
+STEP 1  gtin-check-digit
+  INPUT  "4006381333931"
+  OUTPUT "4"
+  HASH   47j2h18
+STEP 2  gtin-validation
+  INPUT  "40063813339314"
+  OUTPUT true
+  HASH   1p4a26w

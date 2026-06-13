@@ -1,0 +1,12 @@
+cluster: mod37-36-alphanumeric
+version: 1
+fingerprint: 2q8v9l1
+captured: 2026-06-13T17:27:31.724Z
+watches: [mod37_36Compute]
+entry: mod37_36Compute
+stack: js
+fingerprintLevel: entry
+---
+INPUT  "G1234865"
+OUTPUT "B"
+HASH   2q8v9l1

@@ -1,0 +1,12 @@
+cluster: mod11-2-numeric
+version: 1
+fingerprint: 5h8qnrt
+captured: 2026-06-13T17:27:31.723Z
+watches: [mod11_2Compute]
+entry: mod11_2Compute
+stack: js
+fingerprintLevel: entry
+---
+INPUT  "079"
+OUTPUT "X"
+HASH   5h8qnrt

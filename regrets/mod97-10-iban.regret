@@ -1,0 +1,12 @@
+cluster: mod97-10-iban
+version: 1
+fingerprint: 143erps
+captured: 2026-06-13T17:27:31.722Z
+watches: [mod97_10Compute]
+entry: mod97_10Compute
+stack: js
+fingerprintLevel: entry
+---
+INPUT  "1234567890"
+OUTPUT "92"
+HASH   143erps

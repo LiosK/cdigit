@@ -1,0 +1,12 @@
+cluster: mod97-10-validation
+version: 1
+fingerprint: 2g7hvng
+captured: 2026-06-13T17:27:31.723Z
+watches: [mod97_10Validate]
+entry: mod97_10Validate
+stack: js
+fingerprintLevel: entry
+---
+INPUT  "123456789092"
+OUTPUT true
+HASH   2g7hvng

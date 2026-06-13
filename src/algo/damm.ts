@@ -5,13 +5,29 @@
  * @license (MIT OR Apache-2.0)
  */
 
-import type { CdigitAlgo } from "../type.js";
+import {
+  NumericCheckDigitAlgo,
+  validateDecimalNumVals,
+} from "./base.js";
 
-class Damm implements CdigitAlgo {
-  constructor(readonly name: string, readonly longName: string) {}
-
-  /** The Damm operation table. */
-  private readonly opTable = [
+/**
+ * Damm algorithm implementation.
+ *
+ * The Damm algorithm is a check digit algorithm that uses a quasigroup
+ * (specifically, a Latin square) to detect all single-digit errors and
+ * all adjacent transposition errors. It was developed by H. Michael Damm
+ * and published in 2004. Unlike Verhoeff, it requires no multiplication
+ * or permutation tables — only a single 10×10 operation table.
+ */
+class Damm extends NumericCheckDigitAlgo {
+  /**
+   * The Damm operation table (quasigroup/Cayley table).
+   * This particular table is one of the few that detects all
+   * single-digit errors and all adjacent transposition errors.
+   * The interim digit starts at 0 and is updated by table[row][col]
+   * for each digit, resulting in the check digit after processing all digits.
+   */
+  private readonly OPERATION_TABLE = [
     [0, 3, 1, 7, 5, 9, 8, 6, 4, 2],
     [7, 0, 9, 2, 1, 5, 4, 8, 6, 3],
     [4, 2, 0, 6, 8, 7, 1, 3, 5, 9],
@@ -24,40 +40,20 @@ class Damm implements CdigitAlgo {
     [2, 5, 8, 1, 4, 3, 6, 7, 9, 0],
   ];
 
-  computeFromNumVals(ns: number[]): number[] {
-    if (ns.length === 0) {
-      throw new SyntaxError("string to be protected is empty");
-    } else if (ns.some((e) => e < 0 || e > 9 || !Number.isInteger(e))) {
-      throw new SyntaxError("invalid numerical value detected");
-    }
+  computeFromNumVals(digitValues: number[]): number[] {
+    validateDecimalNumVals(digitValues);
 
-    return [ns.reduce((c, e) => this.opTable[c][e], 0)];
-  }
-
-  compute(s: string): string {
-    const ds = String(s).replace(/[^0-9]/g, "");
-    const ns = [...ds].map(Number);
-    return String(this.computeFromNumVals(ns)[0]);
-  }
-
-  parse(s: string): [string, string] {
-    const m = String(s).match(/^(.*)([0-9])$/s);
-    if (m != null) {
-      return [m[1], m[2]];
-    } else {
-      throw new SyntaxError("could not find check character(s)");
-    }
-  }
-
-  generate(s: string): string {
-    return `${s}${this.compute(s)}`;
-  }
-
-  validate(s: string): boolean {
-    const [bare, cc] = this.parse(s);
-    return this.compute(bare) === cc;
+    const checkDigit = digitValues.reduce(
+      (interimDigit, currentDigit) =>
+        this.OPERATION_TABLE[interimDigit][currentDigit],
+      0
+    );
+    return [checkDigit];
   }
 }
 
 /** The Damm algorithm implementation. */
-export const damm: CdigitAlgo = new Damm("damm", "Damm Algorithm");
+export const damm: import("../type.js").CdigitAlgo = new Damm(
+  "damm",
+  "Damm Algorithm"
+);
