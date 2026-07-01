@@ -74,11 +74,11 @@
   },
   "runkitExampleFilename": "example.js",
   "dependencies": {
-    "commander": "^14.0.2"
+    "commander": "^15.0.0"
   },
   "devDependencies": {
-    "mocha": "^11.7.5",
-    "typedoc": "^0.28.14",
-    "typescript": "^5.9.3"
+    "mocha": "^11.7.6",
+    "typedoc": "^0.28.19",
+    "typescript": "^6.0.3"
   }
 }

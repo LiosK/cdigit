@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es2018",
+    "rootDir": "./src",
+    "outDir": "./lib",
     "module": "node16",
-    "moduleResolution": "node16",
-    "typeRoots": [],
+    "target": "es2018",
+    "types": [],
     "declaration": true,
-    "outDir": "./lib/",
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    // "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
     "strict": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
     "skipLibCheck": true
   }
 }
