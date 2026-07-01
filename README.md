@@ -134,7 +134,8 @@ value.
 console.log(mod97_10.computeFromNumVals([1, 2, 3, 4])); // [8, 2]
 ```
 
-See [example.js](https://npm.runkit.com/cdigit) for usage examples.
+See [example.js](https://github.com/LiosK/cdigit/blob/main/example.js) for usage
+examples.
 
 ## Usage - Command-line
 

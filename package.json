@@ -72,7 +72,6 @@
     "lib": "lib",
     "test": "test"
   },
-  "runkitExampleFilename": "example.js",
   "dependencies": {
     "commander": "^15.0.0"
   },
