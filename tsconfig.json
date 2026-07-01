@@ -2,8 +2,8 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./lib",
-    "module": "node16",
-    "target": "es2018",
+    "module": "node20",
+    "target": "es2020",
     "types": [],
     "declaration": true,
     // "noUncheckedIndexedAccess": true,
