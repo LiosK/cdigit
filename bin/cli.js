@@ -18,10 +18,10 @@ program
         lines.push(`  ${name.padEnd(maxlen, " ")}  ${cdigit[name].longName}`);
       });
       lines.push(
-        "  (--algo defaults to 'luhn' or CDIGIT_CLI_DEFAULT_ALGO env var if set)"
+        "  (--algo defaults to 'luhn' or CDIGIT_CLI_DEFAULT_ALGO env var if set)",
       );
       return lines.join(EOL);
-    })()
+    })(),
   );
 
 // handler for subcommands

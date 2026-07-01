@@ -49,7 +49,7 @@ export const common = {
         assert.equal(
           typeof algo.computeFromNumVals,
           "function",
-          "typeof algo.computeFromNumVals"
+          "typeof algo.computeFromNumVals",
         );
       });
       it("implements parse()", () => {
@@ -67,7 +67,7 @@ export const common = {
         validCases.forEach(([, src]) => {
           assert.ok(
             algo.validate(algo.generate(src)),
-            `validate(generate(${src}))`
+            `validate(generate(${src}))`,
           );
         });
       });
@@ -87,7 +87,7 @@ export const common = {
               algo.generate(e);
             },
             SyntaxError,
-            `generate("${e}")`
+            `generate("${e}")`,
           );
         }
       });
@@ -111,7 +111,7 @@ export const common = {
               algo.validate(e);
             },
             SyntaxError,
-            `validate("${e}")`
+            `validate("${e}")`,
           );
         }
       });
@@ -130,7 +130,7 @@ export const common = {
               algo.compute(e);
             },
             SyntaxError,
-            `compute("${e}")`
+            `compute("${e}")`,
           );
         }
       });
@@ -144,7 +144,7 @@ export const common = {
           assert.equal(actual.length, cc.length, message);
           assert.ok(
             actual.every((c, i) => c === cc[i]),
-            message
+            message,
           );
         });
       });
@@ -154,7 +154,7 @@ export const common = {
             algo.computeFromNumVals([]);
           },
           SyntaxError,
-          "computeFromNumVals([])"
+          "computeFromNumVals([])",
         );
       });
     });
@@ -176,7 +176,7 @@ export const common = {
               algo.parse(e);
             },
             SyntaxError,
-            `parse("${e}")`
+            `parse("${e}")`,
           );
         }
       });

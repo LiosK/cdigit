@@ -8,7 +8,10 @@
 import type { CdigitAlgo } from "../type.js";
 
 class Luhn implements CdigitAlgo {
-  constructor(readonly name: string, readonly longName: string) {}
+  constructor(
+    readonly name: string,
+    readonly longName: string,
+  ) {}
 
   /** The Luhn lookup table. */
   private readonly lookup = [0, 2, 4, 6, 8, 1, 3, 5, 7, 9];

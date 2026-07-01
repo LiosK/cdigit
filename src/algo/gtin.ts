@@ -8,7 +8,10 @@
 import type { CdigitAlgo } from "../type.js";
 
 class GTIN implements CdigitAlgo {
-  constructor(readonly name: string, readonly longName: string) {}
+  constructor(
+    readonly name: string,
+    readonly longName: string,
+  ) {}
 
   computeFromNumVals(ns: number[]): number[] {
     if (ns.length === 0) {
@@ -64,5 +67,5 @@ class GTIN implements CdigitAlgo {
  */
 export const gtin: CdigitAlgo = new GTIN(
   "gtin",
-  "GTINs (including UPC, EAN, ISBN-13, etc.)"
+  "GTINs (including UPC, EAN, ISBN-13, etc.)",
 );

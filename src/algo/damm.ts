@@ -8,7 +8,10 @@
 import type { CdigitAlgo } from "../type.js";
 
 class Damm implements CdigitAlgo {
-  constructor(readonly name: string, readonly longName: string) {}
+  constructor(
+    readonly name: string,
+    readonly longName: string,
+  ) {}
 
   /** The Damm operation table. */
   private readonly opTable = [

@@ -23,7 +23,7 @@ describe(`${algo.longName} (${algo.name})`, () => {
   // }}}
 
   const charMap = Object.fromEntries(
-    [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map((c, i) => [c, i])
+    [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map((c, i) => [c, i]),
   );
   const numVals = valid.map(([, src, cc]) => {
     return [
