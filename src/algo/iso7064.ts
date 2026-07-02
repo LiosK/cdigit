@@ -66,11 +66,11 @@ class Pure implements CdigitAlgo {
       }
       c = c * this.radix + e;
     }
-    c = (this.mod + 1 - (c % this.mod)) % this.mod;
+    c = this.mod + 1 - (c % this.mod);
 
     return this.flavor === "TWO_CCS"
       ? [Math.floor(c / this.radix), c % this.radix]
-      : [c];
+      : [c % this.mod];
   }
 
   compute(s: string): string {
