@@ -32,4 +32,4 @@ export const names = [
   "mod27_26",
   "mod37_36",
   "gtin",
-];
+] as const;
