@@ -108,7 +108,29 @@ class Pure implements CdigitAlgo {
 
   validate(s: string): boolean {
     const [bare, cc] = this.parse(s);
-    return this.compute(bare) === cc;
+    if (bare.length === 0) {
+      throw new SyntaxError("string to be protected is empty");
+    }
+
+    const charMapBare =
+      this.flavor === "EXTRA_CHAR"
+        ? getCharMap(this.alphabet.slice(0, -1))
+        : getCharMap(this.alphabet);
+    const charMapCc = getCharMap(this.alphabet);
+    const ns = [
+      ...[...bare].flatMap((c) => charMapBare[c] ?? []),
+      ...[...cc].map((c) => charMapCc[c]), // index checked in `parse()`
+    ];
+
+    let c = 0;
+    for (const e of ns) {
+      if (c > 0xfff_ffff_ffff) {
+        // ~2^44 at max
+        c %= this.mod;
+      }
+      c = c * this.radix + e;
+    }
+    return c % this.mod === 1;
   }
 }
 
