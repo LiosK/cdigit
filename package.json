@@ -1,6 +1,6 @@
 {
   "name": "cdigit",
-  "version": "4.0.4",
+  "version": "5.0.0-rc.0",
   "description": "Collection of check digit algorithms implemented in JavaScript",
   "type": "module",
   "main": "lib/index.js",
