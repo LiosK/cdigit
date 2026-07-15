@@ -1,4 +1,4 @@
-import { common } from "./common.js";
+import { common, assert } from "./common.js";
 import { mod97_10 as algo } from "../lib/index.js";
 
 describe(`${algo.longName} (${algo.name})`, () => {
@@ -566,6 +566,14 @@ describe(`${algo.longName} (${algo.name})`, () => {
   });
 
   common.testAlgo(algo, valid, invalid, numVals);
+
+  describe("validate()", () => {
+    it("accepts alternative check digit pairs", () => {
+      assert.equal(algo.generate("97"), "9798");
+      assert.ok(algo.validate("9798"));
+      assert.ok(algo.validate("9701"));
+    });
+  });
 });
 
 // vim: fdm=marker fmr&

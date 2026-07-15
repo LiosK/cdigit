@@ -547,7 +547,7 @@ describe(`${algo.longName} (${algo.name})`, () => {
 
   common.testAlgo(algo, valid, invalid, numVals);
 
-  describe("luhn.validate()", () => {
+  describe("validate()", () => {
     it("accepts Number type as argument", () => {
       const shortCases = valid.slice(0, 16);
       shortCases.forEach(([num]) => {
