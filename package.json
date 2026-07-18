@@ -1,6 +1,6 @@
 {
   "name": "cdigit",
-  "version": "5.0.0-rc.0",
+  "version": "5.0.1",
   "description": "Collection of check digit algorithms implemented in JavaScript",
   "type": "module",
   "main": "lib/index.js",
@@ -77,7 +77,7 @@
   },
   "devDependencies": {
     "mocha": "^11.7.6",
-    "typedoc": "^0.28.19",
+    "typedoc": "^0.28.20",
     "typescript": "^6.0.3"
   }
 }
